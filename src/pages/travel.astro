@@ -1,0 +1,355 @@
+---
+interface TalkEntry {
+  date: string;
+  title: string;
+  notesHref: string;
+  event: string;
+  eventHref: string;
+}
+
+interface ConferenceEntry {
+  name: string;
+  href: string;
+  date: string;
+}
+
+const talkEntries: TalkEntry[] = [
+  {
+    date: "21 May 2026",
+    title: "GIT Wall Crossing in the Hilbert Scheme of an Expanded Degeneration",
+    notesHref: "https://drive.google.com/file/d/1A_dTPimX-5QTFeHCwzcc-hgsyosizGHf/view",
+    event: "GS25",
+    eventHref: "https://sites.google.com/view/gs25anniversary/startseite?authuser=0",
+  },
+];
+
+const conferenceEntries: ConferenceEntry[] = [
+  {
+    name: "25th anniversary of the Gross-Siebert program",
+    href: "https://sites.google.com/view/gs25anniversary/startseite?authuser=0",
+    date: "May 17–23, 2026",
+  },
+  {
+    name: "TAGS 2026",
+    href: "https://franksottile.github.io/conferences/TAGS26/index.html",
+    date: "April 17–19, 2026",
+  },
+  {
+    name: "SRI Algebraic Geometry Bootcamp",
+    href: "https://sites.google.com/view/agbootcamp2025",
+    date: "July 8–12, 2025",
+  },
+  {
+    name: "WAGS, Arizona",
+    href: "https://sites.google.com/a/wagsymposium.org/current/arizona-fall-2024",
+    date: "Nov 16–17, 2024",
+  },
+  {
+    name: "Logarithmic moduli theory: curves, sheaves, and beyond",
+    href: "https://web.ma.utexas.edu/users/ikmartin/logsincamb/#logarithmic_moduli_theory_curves_sheaves_and_beyond",
+    date: "July 29–Aug 2, 2024",
+  },
+  {
+    name: "TAGS 2024",
+    href: "https://franksottile.github.io/conferences/TAGS24/index.html",
+    date: "April 5–7, 2024",
+  },
+  {
+    name: "Simons Math Summer Workshop",
+    href: "https://scgp.stonybrook.edu/archives/39223",
+    date: "Aug 14–18, 2023",
+  },
+  {
+    name: "Kylerec 2023",
+    href: "https://kylerec.wordpress.com/kylerec-2023/",
+    date: "June 19–23, 2023",
+  },
+  {
+    name: "Graduate Summer School on Mirror Symmetry in the log Calabi-Yau setting",
+    href: "https://sites.google.com/view/hms-workshop2023/homepage",
+    date: "May 26–June 1, 2023",
+  },
+  {
+    name: "WAGS, Washington St. Louis",
+    href: "https://sites.google.com/a/wagsymposium.org/current/washington-spring-2023",
+    date: "April 1–2, 2023",
+  },
+  {
+    name: "Mirror symmetry for Looijenga interiors and beyond",
+    href: "https://umutvg.github.io/Looijenga.html",
+    date: "July 18–29, 2022 (online)",
+  },
+  {
+    name: "Geometric Structures (re)United",
+    href: "https://sites.google.com/view/geometry2022",
+    date: "June 13–17, 2022",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap"
+    />
+    <title>Travel | Suraj Dash</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/research">Research</a>
+        <a href="/teaching">Teaching</a>
+        <a href="/learning-seminars">Learning seminars</a>
+        <a aria-current="page" href="/travel">Travel</a>
+      </nav>
+
+      <section class="travel-sections" aria-label="Talks and conferences">
+        <article class="publication-card">
+          <header class="card-header">
+            <h2>Talks</h2>
+          </header>
+
+          <div class="talk-columns">
+            <table class="talk-table" aria-label="Talks">
+              <tbody>
+                {talkEntries.map((talk) => (
+                  <tr>
+                    <td class="talk-date">{talk.date}</td>
+                    <td class="talk-details">
+                      <span class="talk-title">{talk.title}</span>
+                      <span class="talk-notes">
+                        (<a href={talk.notesHref} target="_blank" rel="noreferrer">Notes</a>)
+                      </span>
+                    </td>
+                    <td class="talk-event">
+                      <a href={talk.eventHref} target="_blank" rel="noreferrer">
+                        {talk.event}
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="publication-card conferences-card">
+          <header class="card-header">
+            <h2>Conferences attended</h2>
+          </header>
+
+          <ul class="event-list">
+            {conferenceEntries.map((conference) => (
+              <li>
+                <a href={conference.href} target="_blank" rel="noreferrer">
+                  {conference.name}
+                </a><span class="event-date">, {conference.date}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    --bg: #c8d3d9;
+    --surface: #fcfaf6;
+    --text: #243640;
+    --heading: #2d4856;
+    --muted: #566a75;
+    --accent: #496f7a;
+    --nav-accent: #893833;
+    --link: #295b70;
+    --line: rgba(45, 72, 86, 0.18);
+    --divider: rgba(45, 72, 86, 0.14);
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34rem),
+      var(--bg);
+  }
+
+  :global(a) {
+    color: var(--link);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+
+  h1 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    color: var(--heading);
+  }
+
+  h2,
+  h3 {
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .page-shell {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 32px 0 72px;
+  }
+
+  .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 12px 0 56px;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  .top-nav a:hover,
+  .top-nav a[aria-current="page"] {
+    color: var(--nav-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--nav-accent);
+  }
+
+  .travel-sections {
+    display: grid;
+    gap: 14px;
+    width: min(100%, 1000px);
+    margin: 0 auto;
+  }
+
+  .publication-card {
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
+  }
+
+  .publication-card h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--heading);
+  }
+
+  .card-header {
+    padding-bottom: 13px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .talk-columns {
+    overflow-x: auto;
+  }
+
+  .talk-table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .talk-table tr + tr {
+    border-top: 1px solid rgba(45, 72, 86, 0.07);
+  }
+
+  .talk-table td {
+    padding: 12px 0 10px;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .talk-table td:first-child {
+    width: 16%;
+    color: var(--accent);
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .talk-table td:nth-child(2) {
+    width: 64%;
+    padding-left: clamp(42px, 5vw, 64px);
+  }
+
+  .talk-table td:last-child {
+    width: 20%;
+    padding-left: clamp(56px, 6vw, 76px);
+    white-space: nowrap;
+  }
+
+  .talk-title {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .talk-notes {
+    margin-left: 0.25rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  .event-list {
+    margin: 0;
+    padding: 10px 0 0 1.25rem;
+  }
+
+  .event-list li {
+    padding: 4px 0;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .event-list li::marker {
+    color: var(--accent);
+  }
+
+  .event-list a {
+    font-weight: 500;
+  }
+
+  .event-date {
+    color: var(--muted);
+  }
+
+  @media (max-width: 680px) {
+    .page-shell {
+      width: min(100% - 32px, 1100px);
+    }
+
+    .top-nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 42px;
+    }
+
+    .publication-card {
+      padding: 18px;
+    }
+  }
+</style>

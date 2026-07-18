@@ -1,0 +1,495 @@
+---
+interface TaCourse {
+  term: string;
+  code?: string;
+  title: string;
+}
+
+interface DrpEntry {
+  term: string;
+  mentee: string;
+  topic: string;
+  program?: string;
+}
+
+const taCourses: TaCourse[] = [
+  {
+    term: "Fall 2026",
+    title: "Course details to be added",
+  },
+  {
+    term: "Fall 2025",
+    code: "M 341",
+    title: "Linear Algebra",
+  },
+  {
+    term: "Spring 2025",
+    code: "M 362L",
+    title: "Algebraic Topology",
+  },
+  {
+    term: "Fall 2024",
+    code: "M 362K",
+    title: "Probability Theory",
+  },
+  {
+    term: "Summer 2024",
+    code: "M 325K",
+    title: "Discrete Mathematics",
+  },
+  {
+    term: "Spring 2024",
+    code: "M 340L",
+    title: "Matrix Calculations and Linear Algebra",
+  },
+  {
+    term: "Fall 2023",
+    code: "M 340L",
+    title: "Matrix Calculations and Linear Algebra",
+  },
+  {
+    term: "Spring 2022",
+    code: "M 408D",
+    title: "Multivariable Calculus",
+  },
+  {
+    term: "Fall 2021",
+    code: "M 427L",
+    title: "Advanced Calculus for Applications II",
+  },
+];
+
+const drpEntries: DrpEntry[] = [
+  {
+    term: "Spring 2026",
+    mentee: "Dekan Chan",
+    topic: "Divisors on Graphs and the Baker-Norine Riemann-Roch theorem",
+  },
+  {
+    term: "Fall 2025",
+    mentee: "Gerardo Vega",
+    topic: "Enumerative Algebraic Geometry of Conics",
+  },
+  {
+    term: "Spring 2025",
+    mentee: "Yang Shao",
+    topic: "Graph theory and applications",
+  },
+  {
+    term: "Fall 2024",
+    mentee: "Yash Totlani",
+    topic: "Geometry and combinatorics of the Hilbert scheme of points on nodal curves",
+  },
+  {
+    term: "Fall 2024",
+    mentee: "Malaika Shah",
+    topic: "Graph theory and applications in Probability theory",
+  },
+  {
+    term: "Spring 2024",
+    mentee: "Trevor Jess",
+    topic: "Mahler's theorem, Monsky's theorem and recurring sequences using p-adic analysis",
+  },
+  {
+    term: "Fall 2023",
+    mentee: "Harshavardhan Iyer",
+    topic: "Monsky's theorem and p-adic numbers",
+  },
+  {
+    term: "Spring 2023",
+    mentee: "Catherine Watson",
+    topic: "Lagrange sum of four squares: Classical and modern proofs",
+  },
+  {
+    term: "Spring 2023",
+    mentee: "Vincent Tran",
+    topic: "An introduction to algebraic number theory",
+  },
+  {
+    term: "Fall 2022",
+    mentee: "Utkarsh Nigam",
+    topic: "A gentle introduction to moduli spaces via illustrations",
+  },
+  {
+    term: "Fall 2022",
+    mentee: "Krishnendu Kar",
+    topic: "A gentle introduction to topological stacks",
+    program: "Twoples DRP",
+  },
+  {
+    term: "Spring 2022",
+    mentee: "Michael Panner",
+    topic: "Moduli Spaces and Geometric Invariant Theory",
+  },
+  {
+    term: "Fall 2021",
+    mentee: "Min Ho Lee",
+    topic: "Algebro-Geometric methods in Sudoku puzzles",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap"
+    />
+    <title>Learning and teaching | Suraj Dash</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/research">Research</a>
+        <a aria-current="page" href="/teaching">Teaching</a>
+        <a href="/learning-seminars">Learning seminars</a>
+        <a href="/travel">Travel</a>
+      </nav>
+
+      <section class="teaching-sections" aria-label="Learning and teaching">
+        <article class="publication-card ta-card">
+          <header class="card-header">
+            <h2>TA duties (UT Austin)</h2>
+          </header>
+          <div class="ta-columns">
+            <table class="ta-table" aria-label="Teaching assistant duties by semester and course">
+              <tbody>
+                {taCourses.map((course) => (
+                  <tr>
+                    <td class="term">{course.term}</td>
+                    <td class="mentee">{course.code ?? "—"}</td>
+                    <td class="topic">{course.title}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="publication-card drp-card">
+          <header class="card-header drp-header">
+            <h2>Directed Reading Program </h2>
+            <p class="drp-info">
+              Learn more about the
+              <a href="https://sites.google.com/view/utmathdrp/about">DRP at UT Austin</a>.
+            </p>
+          </header>
+          <ul class="record-list drp-list">
+            {drpEntries.map((entry) => (
+              <li>
+                <span class="term">{entry.term}</span>
+                <div class="entry-details">
+                  <span class="mentee">{entry.mentee}</span>
+                  <span class="topic">{entry.topic}</span>
+                  {entry.program && <span class="program">{entry.program}</span>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    --bg: #c8d3d9;
+    --surface: #fcfaf6;
+    --text: #243640;
+    --heading: #2d4856;
+    --muted: #566a75;
+    --accent: #496f7a;
+    --nav-accent: #893833;
+    --link: #295b70;
+    --line: rgba(45, 72, 86, 0.18);
+    --divider: rgba(45, 72, 86, 0.14);
+    --ta-divider: rgba(45, 72, 86, 0.07);
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34rem),
+      var(--bg);
+  }
+
+  :global(p) {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  :global(a) {
+    color: var(--link);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+
+  :global(strong) {
+    font-weight: 650;
+  }
+
+  h1 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    color: var(--heading);
+  }
+
+  h2,
+  h3 {
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .page-shell {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 32px 0 72px;
+  }
+
+  .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 12px 0 56px;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  .top-nav a:hover,
+  .top-nav a[aria-current="page"] {
+    color: var(--nav-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--nav-accent);
+  }
+
+  .teaching-sections {
+    display: grid;
+    gap: 14px;
+    width: min(100%, 1000px);
+    margin: 0 auto;
+  }
+
+  .publication-card {
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
+  }
+
+  .compact-card {
+    padding: 14px 18px;
+    background: rgba(252, 250, 246, 0.84);
+    box-shadow: 0 6px 18px rgba(36, 54, 64, 0.035);
+  }
+
+  .publication-card.compact-card h2 {
+    margin-bottom: 4px;
+  }
+
+  .compact-card .placeholder {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .publication-card h2 {
+    margin: 0 0 9px;
+    font-size: 1.2rem;
+    color: var(--heading);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 13px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .card-header h2 {
+    margin: 0;
+  }
+
+  .drp-header h2 span {
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .drp-info {
+    flex: 0 0 auto;
+    margin: 0;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .drp-info a {
+    color: var(--link);
+    text-underline-offset: 2px;
+  }
+
+  .drp-info a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  .placeholder {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .record-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .record-list li {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid var(--divider);
+  }
+
+  .record-list li:first-child {
+    padding-top: 10px;
+    border-top: 0;
+  }
+
+  .record-list li:last-child {
+    padding-bottom: 0;
+  }
+
+  .term {
+    padding-top: 2px;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.82rem;
+    color: var(--accent);
+  }
+
+  .entry-details {
+    display: grid;
+    gap: 3px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .mentee {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .topic {
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .ta-columns {
+    overflow-x: auto;
+  }
+
+  .ta-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .ta-table tr + tr {
+    border-top: 1px solid var(--ta-divider);
+  }
+
+  .ta-table td {
+    padding: 10px 0;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .ta-table td:first-child {
+    width: 22%;
+    white-space: nowrap;
+  }
+
+  .ta-table td:nth-child(2) {
+    width: 22%;
+    padding-left: clamp(56px, 6vw, 72px);
+    white-space: nowrap;
+  }
+
+  .ta-table td:last-child {
+    width: 56%;
+    padding-left: clamp(72px, 8vw, 96px);
+  }
+
+  .program {
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 680px) {
+    .page-shell {
+      width: min(100% - 32px, 1100px);
+    }
+
+    .top-nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 42px;
+    }
+
+    .publication-card {
+      padding: 18px;
+    }
+
+    .compact-card {
+      padding: 14px 16px;
+    }
+
+    .card-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .record-list li {
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+
+    .term {
+      padding-top: 0;
+    }
+  }
+</style>

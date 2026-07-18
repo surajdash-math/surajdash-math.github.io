@@ -1,0 +1,262 @@
+---
+interface SeminarEntry {
+  title: string;
+  titleHref?: string;
+  note?: string;
+  planLabel: string;
+  planHref: string;
+  term: string;
+}
+
+const seminarEntries: SeminarEntry[] = [
+  {
+    title: "Gross-Siebert mirror symmetry ansatz",
+    planLabel: "Seminar plan",
+    planHref: "https://www.overleaf.com/read/skvbjbzwchzv#a0628c",
+    term: "Fall 2024",
+  },
+  {
+    title: "Tropical Geometry",
+    titleHref: "https://web.ma.utexas.edu/users/ikmartin/pages/additional-pages/tropical-learning-seminar/",
+    note: "co-organised with Isaac Martin",
+    planLabel: "Seminar plan",
+    planHref: "https://www.overleaf.com/read/kzmhxhgwzdqr#2c659e",
+    term: "Spring 2023",
+  },
+  {
+    title: "Logarithmic Geometry",
+    note: "co-organised with Khai Hoan",
+    planLabel: "Seminar Plan",
+    planHref: "https://sites.google.com/view/nguyen-dang-khai-hoan/activities/seminars/log-seminar",
+    term: "Fall 2021",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap"
+    />
+    <title>Learning seminars | Suraj Dash</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/research">Research</a>
+        <a href="/teaching">Teaching</a>
+        <a aria-current="page" href="/learning-seminars">Learning seminars</a>
+        <a href="/travel">Travel</a>
+      </nav>
+
+      <section class="seminar-sections" aria-label="Learning seminars">
+        <article class="publication-card">
+          <header class="card-header">
+            <h2>Learning seminars</h2>
+          </header>
+
+          <div class="seminar-columns">
+            <table class="seminar-table" aria-label="Learning seminar entries">
+              <tbody>
+                {seminarEntries.map((seminar) => (
+                  <tr>
+                    <td class="seminar-name">
+                      {seminar.titleHref ? (
+                        <a href={seminar.titleHref} target="_blank" rel="noreferrer">
+                          {seminar.title}
+                        </a>
+                      ) : (
+                        seminar.title
+                      )}
+                      {seminar.note && <span> ({seminar.note})</span>}
+                    </td>
+                    <td class="seminar-plan">
+                      <a href={seminar.planHref} target="_blank" rel="noreferrer">
+                        {seminar.planLabel}
+                      </a>
+                    </td>
+                    <td class="term">{seminar.term}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    --bg: #c8d3d9;
+    --surface: #fcfaf6;
+    --text: #243640;
+    --heading: #2d4856;
+    --muted: #566a75;
+    --accent: #496f7a;
+    --nav-accent: #893833;
+    --link: #295b70;
+    --line: rgba(45, 72, 86, 0.18);
+    --divider: rgba(45, 72, 86, 0.14);
+  }
+
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34rem),
+      var(--bg);
+  }
+
+  :global(a) {
+    color: var(--link);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+  }
+
+  h1 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    color: var(--heading);
+  }
+
+  h2,
+  h3 {
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .page-shell {
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 32px 0 72px;
+  }
+
+  .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 12px 0 56px;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+  }
+
+  .top-nav a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  .top-nav a:hover,
+  .top-nav a[aria-current="page"] {
+    color: var(--nav-accent);
+    text-decoration: underline;
+    text-decoration-color: var(--nav-accent);
+  }
+
+  .seminar-sections {
+    width: min(100%, 1000px);
+    margin: 0 auto;
+  }
+
+  .publication-card {
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
+  }
+
+  .publication-card h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--heading);
+  }
+
+  .card-header {
+    padding-bottom: 13px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .seminar-columns {
+    overflow-x: auto;
+  }
+
+  .seminar-table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .seminar-table tr + tr {
+    border-top: 1px solid rgba(45, 72, 86, 0.07);
+  }
+
+  .seminar-table td {
+    padding: 12px 0 10px;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .seminar-name {
+    width: 52%;
+  }
+
+  .seminar-name a {
+    font-weight: 500;
+  }
+
+  .seminar-name span {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .seminar-plan {
+    width: 28%;
+    padding-left: clamp(48px, 5vw, 68px) !important;
+    white-space: nowrap;
+  }
+
+  .term {
+    width: 20%;
+    padding-left: clamp(56px, 6vw, 76px) !important;
+    color: var(--accent);
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 680px) {
+    .page-shell {
+      width: min(100% - 32px, 1100px);
+    }
+
+    .top-nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: 42px;
+    }
+
+    .publication-card {
+      padding: 18px;
+    }
+  }
+</style>
