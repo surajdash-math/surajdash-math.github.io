@@ -15,7 +15,8 @@ interface DrpEntry {
 const taCourses: TaCourse[] = [
   {
     term: "Fall 2026",
-    title: "Course details to be added",
+    code: "M 408K",
+    title: "Differential Calculus",
   },
   {
     term: "Fall 2025",
@@ -154,7 +155,7 @@ const drpEntries: DrpEntry[] = [
       <section class="teaching-sections" aria-label="Learning and teaching">
         <article class="publication-card ta-card">
           <header class="card-header">
-            <h2>TA duties (UT Austin)</h2>
+            <h2>Teaching Assistant (UT Austin)</h2>
           </header>
           <div class="ta-columns">
             <table class="ta-table" aria-label="Teaching assistant duties by semester and course">
@@ -227,7 +228,11 @@ const drpEntries: DrpEntry[] = [
     line-height: 1.6;
     color: var(--text);
     background:
-      radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34rem),
+      linear-gradient(
+        rgba(200, 211, 217, 0.7),
+        rgba(200, 211, 217, 0.7)
+      ),
+      url("/board-watermark.jpeg") center / cover fixed no-repeat,
       var(--bg);
   }
 
@@ -296,13 +301,13 @@ const drpEntries: DrpEntry[] = [
     padding: 20px 22px;
     border: 1px solid var(--line);
     border-radius: 14px;
-    background: var(--surface);
+    background: rgba(252, 250, 246, 0.9);
     box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
   }
 
   .compact-card {
     padding: 14px 18px;
-    background: rgba(252, 250, 246, 0.84);
+    background: rgba(252, 250, 246, 0.9);
     box-shadow: 0 6px 18px rgba(36, 54, 64, 0.035);
   }
 
