@@ -1,4 +1,11 @@
 ---
+import ThemeInit from "../components/ThemeInit.astro";
+import SiteNav from "../components/SiteNav.astro";
+import PageWatermark from "../components/PageWatermark.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const watermarkSrc = "/Board work.jpg";
+
 interface TaCourse {
   term: string;
   code?: string;
@@ -61,6 +68,11 @@ const taCourses: TaCourse[] = [
 ];
 
 const drpEntries: DrpEntry[] = [
+{
+    term: "Fall 2026",
+    mentee: "Mai Huynh",
+    topic: "The Apéry–Beukers proof of the irrationality of ζ(3)",
+  },
   {
     term: "Spring 2026",
     mentee: "Dekan Chan",
@@ -89,7 +101,7 @@ const drpEntries: DrpEntry[] = [
   {
     term: "Spring 2024",
     mentee: "Trevor Jess",
-    topic: "Mahler's theorem, Monsky's theorem and recurring sequences using p-adic analysis",
+    topic: "Mahler's theorem, Monsky's theorem and recurrence sequences using p-adic analysis",
   },
   {
     term: "Fall 2023",
@@ -99,7 +111,7 @@ const drpEntries: DrpEntry[] = [
   {
     term: "Spring 2023",
     mentee: "Catherine Watson",
-    topic: "Lagrange sum of four squares: Classical and modern proofs",
+    topic: "Lagrange’s four-square theorem: classical and modern proofs",
   },
   {
     term: "Spring 2023",
@@ -136,24 +148,21 @@ const drpEntries: DrpEntry[] = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preload" as="image" href={watermarkSrc} />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap"
     />
+    <ThemeInit />
     <title>Learning and teaching | Suraj Dash</title>
   </head>
-  <body>
+  <body class="teaching-page">
+    <PageWatermark src={watermarkSrc} />
     <main class="page-shell">
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/research">Research</a>
-        <a aria-current="page" href="/teaching">Teaching</a>
-        <a href="/learning-seminars">Learning seminars</a>
-        <a href="/travel">Travel</a>
-      </nav>
+      <SiteNav current="/teaching" />
 
       <section class="teaching-sections" aria-label="Learning and teaching">
-        <article class="publication-card ta-card">
+        <article class="publication-card">
           <header class="card-header">
             <h2>Teaching Assistant (UT Austin)</h2>
           </header>
@@ -172,7 +181,7 @@ const drpEntries: DrpEntry[] = [
           </div>
         </article>
 
-        <article class="publication-card drp-card">
+        <article class="publication-card">
           <header class="card-header drp-header">
             <h2>Directed Reading Program </h2>
             <p class="drp-info">
@@ -180,7 +189,7 @@ const drpEntries: DrpEntry[] = [
               <a href="https://sites.google.com/view/utmathdrp/about">DRP at UT Austin</a>.
             </p>
           </header>
-          <ul class="record-list drp-list">
+          <ul class="record-list">
             {drpEntries.map((entry) => (
               <li>
                 <span class="term">{entry.term}</span>
@@ -196,6 +205,8 @@ const drpEntries: DrpEntry[] = [
 
         
       </section>
+       <p class="background-caption">Watermark: Discussions with Yixian Wu</p>
+      <SiteFooter />
     </main>
   </body>
 </html>
@@ -209,10 +220,17 @@ const drpEntries: DrpEntry[] = [
     --muted: #566a75;
     --accent: #496f7a;
     --nav-accent: #893833;
-    --link: #295b70;
+    --link: #286784;
     --line: rgba(45, 72, 86, 0.18);
     --divider: rgba(45, 72, 86, 0.14);
     --ta-divider: rgba(45, 72, 86, 0.07);
+    --card-edge: rgba(73, 111, 122, 0.42);
+    --background-overlay-start: rgba(200, 211, 217, 0.28);
+    --background-overlay-end: rgba(200, 211, 217, 0.48);
+    --card-bg: rgba(252, 250, 246, 0.9);
+    --shadow: rgba(36, 54, 64, 0.06);
+    --caption: #405661;
+    --caption-shadow: rgba(252, 250, 246, 0.85);
   }
 
   :global(*) {
@@ -227,13 +245,8 @@ const drpEntries: DrpEntry[] = [
     font-weight: 400;
     line-height: 1.6;
     color: var(--text);
-    background:
-      linear-gradient(
-        rgba(200, 211, 217, 0.7),
-        rgba(200, 211, 217, 0.7)
-      ),
-      url("/board-watermark.jpeg") center / cover fixed no-repeat,
-      var(--bg);
+    background: var(--bg);
+    transition: color 180ms ease, background-color 180ms ease;
   }
 
   :global(p) {
@@ -247,77 +260,59 @@ const drpEntries: DrpEntry[] = [
     text-underline-offset: 0.16em;
   }
 
-  :global(strong) {
-    font-weight: 650;
+  .teaching-sections :global(a) {
+    font-weight: 600;
+    text-decoration: none;
   }
 
-  h1 {
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
-    color: var(--heading);
+  .teaching-sections :global(a:hover),
+  .teaching-sections :global(a:focus-visible) {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.18em;
   }
 
-  h2,
-  h3 {
+  h2 {
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-weight: 600;
     color: var(--heading);
   }
 
   .page-shell {
+    position: relative;
+    z-index: 1;
     width: min(1100px, calc(100% - 48px));
     margin: 0 auto;
-    padding: 32px 0 72px;
-  }
-
-  .top-nav {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    padding: 12px 0 56px;
-    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.95rem;
-  }
-
-  .top-nav a {
-    color: var(--link);
-    text-decoration: none;
-  }
-
-  .top-nav a:hover,
-  .top-nav a[aria-current="page"] {
-    color: var(--nav-accent);
-    text-decoration: underline;
-    text-decoration-color: var(--nav-accent);
+    padding: 32px 0 112px;
   }
 
   .teaching-sections {
     display: grid;
-    gap: 14px;
-    width: min(100%, 1000px);
+    gap: 20px;
+    width: min(100%, 980px);
     margin: 0 auto;
   }
 
   .publication-card {
-    padding: 20px 22px;
+    position: relative;
+    padding: 24px 26px;
     border: 1px solid var(--line);
     border-radius: 14px;
-    background: rgba(252, 250, 246, 0.9);
-    box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
+    background: var(--card-bg);
+    box-shadow: 0 10px 28px var(--shadow);
   }
 
-  .compact-card {
-    padding: 14px 18px;
-    background: rgba(252, 250, 246, 0.9);
-    box-shadow: 0 6px 18px rgba(36, 54, 64, 0.035);
-  }
-
-  .publication-card.compact-card h2 {
-    margin-bottom: 4px;
-  }
-
-  .compact-card .placeholder {
-    color: var(--muted);
-    font-size: 0.92rem;
+  .publication-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: var(--card-edge);
+    box-shadow: 1px 0 8px var(--card-edge);
+    pointer-events: none;
   }
 
   .publication-card h2 {
@@ -340,11 +335,6 @@ const drpEntries: DrpEntry[] = [
     margin: 0;
   }
 
-  .drp-header h2 span {
-    font-weight: 500;
-    color: var(--muted);
-  }
-
   .drp-info {
     flex: 0 0 auto;
     margin: 0;
@@ -364,12 +354,6 @@ const drpEntries: DrpEntry[] = [
     text-decoration-color: var(--accent);
   }
 
-  .placeholder {
-    margin: 0;
-    color: var(--text);
-    line-height: 1.6;
-  }
-
   .record-list {
     display: grid;
     gap: 0;
@@ -385,9 +369,22 @@ const drpEntries: DrpEntry[] = [
     padding: 10px 0;
     border-top: 1px solid var(--divider);
   }
+  .background-caption {
+    position: absolute;
+    right: 0;
+    bottom: 58px;
+    margin: 0;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: normal;
+    color: var(--caption);
+    text-align: right;
+    text-shadow: 0 1px 2px var(--caption-shadow);
+  }
 
   .record-list li:first-child {
-    padding-top: 10px;
     border-top: 0;
   }
 
@@ -397,9 +394,7 @@ const drpEntries: DrpEntry[] = [
 
   .term {
     padding-top: 2px;
-    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.82rem;
-    color: var(--accent);
+    color: var(--date-accent, var(--accent));
   }
 
   .entry-details {
@@ -442,23 +437,22 @@ const drpEntries: DrpEntry[] = [
   }
 
   .ta-table td:first-child {
-    width: 22%;
+    width: 20%;
     white-space: nowrap;
   }
 
   .ta-table td:nth-child(2) {
-    width: 22%;
-    padding-left: clamp(56px, 6vw, 72px);
+    width: 20%;
+    padding-left: clamp(32px, 4vw, 44px);
     white-space: nowrap;
   }
 
   .ta-table td:last-child {
-    width: 56%;
-    padding-left: clamp(72px, 8vw, 96px);
+    width: 60%;
+    padding-left: clamp(40px, 5vw, 56px);
   }
 
   .program {
-    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 0.78rem;
     color: var(--muted);
   }
@@ -468,18 +462,9 @@ const drpEntries: DrpEntry[] = [
       width: min(100% - 32px, 1100px);
     }
 
-    .top-nav {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      padding-bottom: 42px;
-    }
-
     .publication-card {
-      padding: 18px;
-    }
-
-    .compact-card {
-      padding: 14px 16px;
+      min-width: 0;
+      padding: 20px;
     }
 
     .card-header {
@@ -495,6 +480,120 @@ const drpEntries: DrpEntry[] = [
 
     .term {
       padding-top: 0;
+    }
+  }
+
+  /* Light mode: a cool slate ledger treatment. */
+  :global(html[data-theme="light"]) {
+    --bg: #d8e4e9;
+    --surface: #f7fafb;
+    --text: #243640;
+    --heading: #294957;
+    --muted: #586b75;
+    --accent: #4b7280;
+    --nav-accent: #4b7280;
+    --date-accent: #3f7081;
+    --link: #286784;
+    --line: rgba(41, 73, 88, 0.46);
+    --divider: rgba(41, 73, 88, 0.27);
+    --ta-divider: rgba(41, 73, 88, 0.19);
+    --card-edge: #547684;
+    --background-overlay-start: rgba(205, 220, 226, 0.45);
+    --background-overlay-end: rgba(215, 228, 233, 0.58);
+    --card-bg: rgba(248, 251, 252, 0.95);
+    --shadow: rgba(31, 57, 69, 0.15);
+    --caption: #294957;
+    --caption-shadow: rgba(247, 250, 251, 0.96);
+  }
+
+  :global(html[data-theme="light"] body.teaching-page .page-watermark)::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 176px;
+    background: linear-gradient(
+      to bottom,
+      rgba(225, 235, 239, 0.46),
+      rgba(225, 235, 239, 0.22) 58%,
+      rgba(225, 235, 239, 0)
+    );
+  }
+
+  :global(html[data-theme="light"]) .publication-card {
+    min-width: 0;
+    border-radius: 14px;
+    box-shadow: 6px 6px 0 rgba(31, 57, 69, 0.15);
+  }
+
+  :global(html[data-theme="light"]) .publication-card::before {
+    box-shadow: none;
+  }
+
+  :global(html[data-theme="light"]) .publication-card h2 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    font-size: 1.34rem;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+
+  :global(html[data-theme="light"]) .card-header {
+    padding-bottom: 15px;
+    border-bottom-color: rgba(41, 73, 88, 0.42);
+  }
+
+  :global(html[data-theme="light"]) .term {
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+
+  :global(html[data-theme="light"]) .mentee {
+    color: #283c46;
+    font-weight: 500;
+  }
+
+  :global(html[data-theme="light"]) .topic {
+    color: #526873;
+  }
+
+  :global(html[data-theme="light"]) .background-caption {
+    opacity: 0.78;
+  }
+
+  @media (max-width: 680px) {
+    .ta-columns {
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    .ta-table {
+      min-width: 0;
+      table-layout: auto;
+    }
+
+    .ta-table tbody {
+      display: grid;
+    }
+
+    .ta-table tr {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 16px;
+      padding: 12px 0;
+    }
+
+    .ta-table td {
+      width: auto !important;
+      padding: 0 !important;
+      white-space: normal !important;
+    }
+
+    .ta-table td:nth-child(2) {
+      white-space: nowrap !important;
+    }
+
+    .ta-table .topic {
+      grid-column: 1 / -1;
     }
   }
 </style>

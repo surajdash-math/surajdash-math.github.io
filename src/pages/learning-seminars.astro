@@ -1,4 +1,11 @@
 ---
+import ThemeInit from "../components/ThemeInit.astro";
+import SiteNav from "../components/SiteNav.astro";
+import PageWatermark from "../components/PageWatermark.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const watermarkSrc = "/Board work.jpg";
+
 interface SeminarEntry {
   title: string;
   titleHref?: string;
@@ -9,6 +16,12 @@ interface SeminarEntry {
 }
 
 const seminarEntries: SeminarEntry[] = [
+{
+    title: "The Motivic Monodromy Conjecture",
+    planLabel: "Seminar plan",
+    planHref: "https://www.overleaf.com/read/jwdhxjmgnxsc#94a078",
+    term: "Fall 2024–Fall 2025",
+  },
   {
     title: "Gross-Siebert mirror symmetry ansatz",
     planLabel: "Seminar plan",
@@ -31,6 +44,146 @@ const seminarEntries: SeminarEntry[] = [
     term: "Fall 2021",
   },
 ];
+
+interface ExpositoryTalkEntry {
+  date: string;
+  datetime: string;
+  title: string;
+  seminar: string;
+  place: string;
+  notesHref?: string;
+}
+
+const today = new Date().toISOString().slice(0, 10);
+
+const expositoryTalkEntries: ExpositoryTalkEntry[] = [
+  {
+    date: "22/11/2026",
+    datetime: "2026-11-22",
+    title: "The period map and transversality",
+    seminar: "Geometry literature seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "19/10/2026",
+    datetime: "2026-10-19",
+    title: "Deformation of complex structures",
+    seminar: "Geometry literature seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "18/09/2026",
+    datetime: "2026-09-18",
+    title: "Hodge theory on Kähler manifolds",
+    seminar: "Geometry literature seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "05/12/2024",
+    datetime: "2024-12-05",
+    title: "Donaldson–Thomas invariants via microlocal geometry",
+    seminar: "Moduli in Algebraic and Symplectic geometry",
+    place: "UT Austin",
+  },
+  {
+    date: "07/11/2024",
+    datetime: "2024-11-07",
+    title: "Donaldson invariants and the geometry of four-manifolds",
+    seminar: "Moduli in Algebraic and Symplectic geometry",
+    place: "UT Austin",
+  },
+  {
+    date: "20/09/2024",
+    datetime: "2024-09-20",
+    title: "A gentle introduction to the virtual fundamental class",
+    seminar: "Junior Quantum Field Theory seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "05/03/2024",
+    datetime: "2024-03-05",
+    title: "Variation of GIT quotients and wall crossings",
+    seminar: "Algebraic geometry mirror symmetry seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "15/01/2024",
+    datetime: "2024-01-15",
+    title: "Artin fans III: log modifications and log blow-ups",
+    seminar: "Log and tropical geometry learning seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "27/11/2023",
+    datetime: "2023-11-27",
+    title: "Degenerations of the Hilbert scheme of points on K3 surfaces",
+    seminar: "Algebraic geometry mirror symmetry seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "18/11/2023",
+    datetime: "2023-11-18",
+    title: "Tropicalisation of log schemes II: log smooth curves and Artin fans",
+    seminar: "Log and tropical geometry learning seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "11/11/2023",
+    datetime: "2023-11-11",
+    title: "Introduction to log geometry via smoothing a semistable degeneration",
+    seminar: "Log and tropical geometry learning seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "27/09/2023",
+    datetime: "2023-09-27",
+    title: "Introduction to intersection homology II",
+    seminar: "Algebraic geometry mirror symmetry seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "20/09/2023",
+    datetime: "2023-09-20",
+    title: "Introduction to intersection homology I",
+    seminar: "Algebraic geometry mirror symmetry seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "22/06/2023",
+    datetime: "2023-06-22",
+    title: "Fourier–Mukai transform and derived autoequivalences",
+    seminar: "Homological Mirror Symmetry Summer School",
+    place: "Kylerec 2023",
+  },
+  {
+    date: "30/05/2023",
+    datetime: "2023-05-30",
+    title: "Introduction to log GW invariants",
+    seminar: "Graduate Summer School on Mirror Symmetry in the log Calabi–Yau setting",
+    place: "Eyam, UK",
+  },
+  {
+    date: "20/04/2023",
+    datetime: "2023-04-20",
+    title: "Bridgeland stability conditions",
+    seminar: "Literature seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "02/03/2023",
+    datetime: "2023-03-02",
+    title: "Stability in geometry and analysis: the Hitchin–Kobayashi correspondence",
+    seminar: "Literature seminar",
+    place: "UT Austin",
+  },
+  {
+    date: "24/01/2023",
+    datetime: "2023-01-24",
+    title: "Moduli space of vector bundles on elliptic curves",
+    seminar: "Literature seminar",
+    place: "UT Austin",
+  },
+];
 ---
 
 <html lang="en">
@@ -39,23 +192,20 @@ const seminarEntries: SeminarEntry[] = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preload" as="image" href={watermarkSrc} />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap"
     />
-    <title>Learning seminars | Suraj Dash</title>
+    <ThemeInit />
+    <title>Seminars | Suraj Dash</title>
   </head>
-  <body>
+  <body class="seminars-page">
+    <PageWatermark src={watermarkSrc} />
     <main class="page-shell">
-      <nav class="top-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/research">Research</a>
-        <a href="/teaching">Teaching</a>
-        <a aria-current="page" href="/learning-seminars">Learning seminars</a>
-        <a href="/travel">Travel</a>
-      </nav>
+      <SiteNav current="/learning-seminars" />
 
-      <section class="seminar-sections" aria-label="Learning seminars">
+      <section class="seminar-sections" aria-label="Learning seminars and expository talks">
         <article class="publication-card">
           <header class="card-header">
             <h2>Learning seminars</h2>
@@ -88,7 +238,42 @@ const seminarEntries: SeminarEntry[] = [
             </table>
           </div>
         </article>
+
+        <article class="publication-card">
+          <header class="card-header">
+            <h2>Expository talks</h2>
+          </header>
+
+          <div class="seminar-columns">
+            <table class="seminar-table expository-table" aria-label="Expository talk entries">
+              <tbody>
+                {expositoryTalkEntries.map((talk) => (
+                  <tr>
+                    <td class="seminar-name">
+                      {talk.title}
+                      <span class="talk-event">{talk.seminar} · {talk.place}</span>
+                    </td>
+                    <td class="term talk-date">
+                      <time datetime={talk.datetime}>{talk.date}</time>
+                      {talk.datetime > today && <span class="talk-status">Upcoming</span>}
+                    </td>
+                    <td class="seminar-plan talk-notes">
+                      {talk.notesHref && (
+                        <a href={talk.notesHref} target="_blank" rel="noreferrer">
+                          Notes
+                        </a>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
       </section>
+
+      <p class="background-caption">Watermark: Discussions with Yixian Wu</p>
+      <SiteFooter />
     </main>
   </body>
 </html>
@@ -102,9 +287,21 @@ const seminarEntries: SeminarEntry[] = [
     --muted: #566a75;
     --accent: #496f7a;
     --nav-accent: #893833;
-    --link: #295b70;
+    --link: #286784;
     --line: rgba(45, 72, 86, 0.18);
     --divider: rgba(45, 72, 86, 0.14);
+    --row-divider: rgba(45, 72, 86, 0.07);
+    --card-edge: rgba(73, 111, 122, 0.42);
+    --background-overlay-start: rgba(200, 211, 217, 0.10);
+    --background-overlay-end: rgba(200, 211, 217, 0.60);
+    --seminar-card-bg: rgba(252, 250, 246, 0.90);
+    --shadow: rgba(36, 54, 64, 0.06);
+    --caption: #405661;
+    --caption-shadow: rgba(252, 250, 246, 0.85);
+  }
+
+  :global(html[data-theme="dark"]) {
+    --seminar-card-bg: rgba(31, 46, 54, 0.93);
   }
 
   :global(*) {
@@ -119,9 +316,8 @@ const seminarEntries: SeminarEntry[] = [
     font-weight: 400;
     line-height: 1.6;
     color: var(--text);
-    background:
-      radial-gradient(circle at top right, rgba(255, 255, 255, 0.22), transparent 34rem),
-      var(--bg);
+    background: var(--bg);
+    transition: color 180ms ease, background-color 180ms ease;
   }
 
   :global(a) {
@@ -130,56 +326,62 @@ const seminarEntries: SeminarEntry[] = [
     text-underline-offset: 0.16em;
   }
 
-  h1 {
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
-    color: var(--heading);
+  .seminar-sections :global(a) {
+    font-weight: 600;
+    text-decoration: none;
   }
 
-  h2,
-  h3 {
+  .seminar-sections :global(a:hover),
+  .seminar-sections :global(a:focus-visible) {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.18em;
+  }
+
+  h2 {
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-weight: 600;
     color: var(--heading);
   }
 
   .page-shell {
+    position: relative;
+    z-index: 1;
     width: min(1100px, calc(100% - 48px));
+    min-height: 100vh;
     margin: 0 auto;
-    padding: 32px 0 72px;
-  }
-
-  .top-nav {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    padding: 12px 0 56px;
-    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.95rem;
-  }
-
-  .top-nav a {
-    color: var(--link);
-    text-decoration: none;
-  }
-
-  .top-nav a:hover,
-  .top-nav a[aria-current="page"] {
-    color: var(--nav-accent);
-    text-decoration: underline;
-    text-decoration-color: var(--nav-accent);
+    padding: 32px 0 112px;
   }
 
   .seminar-sections {
-    width: min(100%, 1000px);
+    width: min(100%, 920px);
     margin: 0 auto;
   }
 
   .publication-card {
-    padding: 20px 22px;
+    position: relative;
+    padding: 24px 26px;
     border: 1px solid var(--line);
     border-radius: 14px;
-    background: var(--surface);
-    box-shadow: 0 10px 28px rgba(36, 54, 64, 0.06);
+    background: var(--seminar-card-bg);
+    box-shadow: 0 10px 28px var(--shadow);
+  }
+
+  .publication-card + .publication-card {
+    margin-top: 28px;
+  }
+
+  .publication-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: var(--card-edge);
+    box-shadow: 1px 0 8px var(--card-edge);
+    pointer-events: none;
   }
 
   .publication-card h2 {
@@ -200,13 +402,13 @@ const seminarEntries: SeminarEntry[] = [
 
   .seminar-table {
     width: 100%;
-    min-width: 820px;
+    min-width: 720px;
     border-collapse: collapse;
     table-layout: fixed;
   }
 
   .seminar-table tr + tr {
-    border-top: 1px solid rgba(45, 72, 86, 0.07);
+    border-top: 1px solid var(--row-divider);
   }
 
   .seminar-table td {
@@ -217,11 +419,7 @@ const seminarEntries: SeminarEntry[] = [
   }
 
   .seminar-name {
-    width: 52%;
-  }
-
-  .seminar-name a {
-    font-weight: 500;
+    width: 58%;
   }
 
   .seminar-name span {
@@ -230,18 +428,48 @@ const seminarEntries: SeminarEntry[] = [
   }
 
   .seminar-plan {
-    width: 28%;
-    padding-left: clamp(48px, 5vw, 68px) !important;
+    width: 22%;
+    padding-left: clamp(28px, 3.5vw, 40px) !important;
     white-space: nowrap;
   }
 
   .term {
     width: 20%;
-    padding-left: clamp(56px, 6vw, 76px) !important;
-    color: var(--accent);
+    padding-left: clamp(32px, 4vw, 44px) !important;
+    color: var(--date-accent, var(--accent));
+    white-space: normal;
+  }
+
+  .talk-event {
+    display: block;
+  }
+
+  .talk-date {
+    width: 22%;
+  }
+
+  .talk-notes {
+    width: 20%;
+  }
+
+  .talk-status {
+    display: block;
+    font-size: 0.75rem;
+  }
+
+  .background-caption {
+    position: absolute;
+    right: 0;
+    bottom: 58px;
+    margin: 0;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.82rem;
-    white-space: nowrap;
+    font-size: 0.7rem;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: normal;
+    color: var(--caption);
+    text-align: right;
+    text-shadow: 0 1px 2px var(--caption-shadow);
   }
 
   @media (max-width: 680px) {
@@ -249,14 +477,129 @@ const seminarEntries: SeminarEntry[] = [
       width: min(100% - 32px, 1100px);
     }
 
-    .top-nav {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      padding-bottom: 42px;
+    .publication-card {
+      padding: 20px;
+    }
+  }
+
+  /* Light mode: a cool slate seminar ledger. */
+  :global(html[data-theme="light"]) {
+    --bg: #d8e4e9;
+    --surface: #f7fafb;
+    --text: #243640;
+    --heading: #294957;
+    --muted: #586b75;
+    --accent: #4b7280;
+    --nav-accent: #4b7280;
+    --date-accent: #3f7081;
+    --link: #286784;
+    --line: rgba(41, 73, 88, 0.46);
+    --divider: rgba(41, 73, 88, 0.27);
+    --row-divider: rgba(41, 73, 88, 0.19);
+    --card-edge: #547684;
+    --background-overlay-start: rgba(205, 220, 226, 0.42);
+    --background-overlay-end: rgba(215, 228, 233, 0.56);
+    --seminar-card-bg: rgba(248, 251, 252, 0.95);
+    --shadow: rgba(31, 57, 69, 0.15);
+    --caption: #294957;
+    --caption-shadow: rgba(247, 250, 251, 0.96);
+  }
+
+  :global(html[data-theme="light"] body.seminars-page .page-watermark)::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 176px;
+    background: linear-gradient(
+      to bottom,
+      rgba(225, 235, 239, 0.46),
+      rgba(225, 235, 239, 0.22) 58%,
+      rgba(225, 235, 239, 0)
+    );
+  }
+
+  :global(html[data-theme="light"]) .publication-card {
+    min-width: 0;
+    border-radius: 14px;
+    box-shadow: 6px 6px 0 rgba(31, 57, 69, 0.15);
+  }
+
+  :global(html[data-theme="light"]) .publication-card::before {
+    box-shadow: none;
+  }
+
+  :global(html[data-theme="light"]) .publication-card h2 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    font-size: 1.34rem;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+
+  :global(html[data-theme="light"]) .card-header {
+    padding-bottom: 15px;
+    border-bottom-color: rgba(41, 73, 88, 0.42);
+  }
+
+  :global(html[data-theme="light"]) .seminar-table td {
+    padding-top: 14px;
+    padding-bottom: 13px;
+  }
+
+  :global(html[data-theme="light"]) .term {
+    font-size: 0.84rem;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+  }
+
+  :global(html[data-theme="light"]) .background-caption {
+    opacity: 0.78;
+  }
+
+  @media (max-width: 680px) {
+    .seminar-columns {
+      overflow: visible;
     }
 
-    .publication-card {
-      padding: 18px;
+    .seminar-table {
+      min-width: 0;
+      table-layout: auto;
+    }
+
+    .seminar-table tbody {
+      display: grid;
+    }
+
+    .seminar-table tr {
+      display: grid;
+      grid-template-columns: minmax(min-content, 1fr) auto;
+      gap: 5px 16px;
+      padding: 14px 0;
+    }
+
+    .seminar-table td {
+      width: auto !important;
+      padding: 0 !important;
+      white-space: normal !important;
+    }
+
+    .seminar-name {
+      grid-column: 1 / -1;
+    }
+
+    .seminar-plan {
+      grid-column: 1;
+    }
+
+    .term {
+      grid-column: 2;
+    }
+
+    .talk-date {
+      grid-column: 1;
+    }
+
+    .talk-notes {
+      grid-column: 2;
     }
   }
 </style>

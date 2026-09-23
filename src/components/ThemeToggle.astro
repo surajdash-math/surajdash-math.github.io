@@ -1,0 +1,182 @@
+<button
+  class="theme-toggle"
+  type="button"
+  aria-label="Switch to dark mode"
+  aria-pressed="false"
+  title="Switch to dark mode"
+>
+  <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <circle cx="12" cy="12" r="3.5"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+  </svg>
+  <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z"></path>
+  </svg>
+</button>
+
+<script>
+  const storageKey = "suraj-dash-theme";
+
+  function updateToggle(theme: "light" | "dark") {
+    const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    if (!toggle) return;
+
+    const isDark = theme === "dark";
+    const label = `Switch to ${isDark ? "light" : "dark"} mode`;
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("aria-label", label);
+    toggle.title = label;
+  }
+
+  function setTheme(theme: "light" | "dark", remember = false) {
+    document.documentElement.dataset.theme = theme;
+    updateToggle(theme);
+
+    if (remember) {
+      try {
+        localStorage.setItem(storageKey, theme);
+      } catch {
+        // The theme still applies for this page if storage is unavailable.
+      }
+    }
+  }
+
+  function setupToggle() {
+    const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    updateToggle(currentTheme);
+
+    if (toggle) {
+      toggle.onclick = () => {
+        const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        setTheme(nextTheme, true);
+      };
+    }
+  }
+
+  setupToggle();
+
+</script>
+
+<style>
+  :global(:root) {
+    color-scheme: light;
+  }
+
+  :global(html[data-theme="light"]) {
+    --caption: #2d4652;
+    --caption-shadow: rgba(252, 250, 246, 0.96);
+  }
+
+  :global(html[data-theme="light"] .background-caption) {
+    opacity: 1;
+  }
+
+  :global(html[data-theme="dark"]) {
+    color-scheme: dark;
+    --bg: #111a20;
+    --surface: #1f2e36;
+    --surface-2: #24353e;
+    --text: #d7e0e4;
+    --heading: #edf2f4;
+    --muted: #aab9c0;
+    --accent: #d17b74;
+    --nav-accent: #d17b74;
+    --date-accent: #7fb9c9;
+    --conference-bullet: #718995;
+    --link: #8fc4dc;
+    --line: rgba(195, 215, 224, 0.2);
+    --divider: rgba(195, 215, 224, 0.14);
+    --ta-divider: rgba(195, 215, 224, 0.1);
+    --row-divider: rgba(195, 215, 224, 0.1);
+    --card-edge: rgba(143, 196, 220, 0.36);
+    --map-surface: #1d303a;
+    --map-line: #537586;
+    --diagram-grid: rgba(176, 204, 216, 0.09);
+    --diagram-connector: #6f9aab;
+    --body-glow: rgba(83, 125, 146, 0.14);
+    --background-overlay-start: rgba(11, 18, 23, 0.82);
+    --background-overlay-end: rgba(11, 18, 23, 0.88);
+    --card-bg: rgba(31, 46, 54, 0.92);
+    --card-bg-soft: rgba(31, 46, 54, 0.86);
+    --shadow: rgba(0, 0, 0, 0.24);
+    --caption: #b7c5ca;
+    --caption-shadow: rgba(0, 0, 0, 0.8);
+    --footer-bg: #2a404b;
+    --footer-text: #dce7eb;
+  }
+
+  :global(html[data-theme="dark"] .background-caption) {
+    font-weight: 400;
+    opacity: 0.45;
+  }
+
+  .theme-toggle {
+    position: relative;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: -0.35rem 0 -0.35rem 2px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--link);
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    cursor: pointer;
+    transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .theme-toggle:hover {
+    color: var(--nav-accent, var(--accent));
+    border-color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  :global(.site-header[data-hero-tone="sunset"]) .theme-toggle {
+    color: #fff0dd !important;
+    border-color: rgba(255, 240, 221, 0.58) !important;
+    background: rgba(67, 22, 30, 0.3) !important;
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 3px;
+  }
+
+  .theme-toggle svg {
+    position: absolute;
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(-18deg) scale(0.7);
+  }
+
+  :global(html[data-theme="dark"]) .sun-icon {
+    opacity: 0;
+    transform: rotate(18deg) scale(0.7);
+  }
+
+  :global(html[data-theme="dark"]) .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .theme-toggle svg {
+      transition: none;
+    }
+  }
+</style>

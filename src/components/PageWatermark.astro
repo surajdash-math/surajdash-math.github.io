@@ -1,0 +1,30 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<div
+  class="page-watermark"
+  style={`--watermark-image: url("${src}")`}
+  aria-hidden="true"
+></div>
+
+<style>
+  .page-watermark {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        var(--background-overlay-start, rgba(200, 211, 217, 0.65)),
+        var(--background-overlay-end, rgba(200, 211, 217, 0.65))
+      ),
+      var(--watermark-image) center / cover no-repeat,
+      var(--bg, #c8d3d9);
+  }
+
+</style>

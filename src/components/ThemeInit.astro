@@ -1,0 +1,18 @@
+<script is:inline>
+  (() => {
+    const storageKey = "suraj-dash-theme";
+
+    function getTheme() {
+      try {
+        const savedTheme = localStorage.getItem(storageKey);
+        return savedTheme === "dark" || savedTheme === "light"
+          ? savedTheme
+          : "light";
+      } catch {
+        return "light";
+      }
+    }
+
+    document.documentElement.dataset.theme = getTheme();
+  })();
+</script>
