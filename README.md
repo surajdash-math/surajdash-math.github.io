@@ -43,6 +43,10 @@ For visible changes, inspect the rebuilt pages at phone and desktop widths and i
 
 ## Publish updates
 
-The website remains editable after publication. Edit the source, check the build, commit the changes, and push them to GitHub. Once a hosting deployment workflow is configured, it can rebuild and publish the updated website automatically.
+Website: https://surajdash-math.github.io
 
-The production website address should be set in `astro.config.mjs` when hosting is configured, so the canonical address and social preview image use the public website URL.
+The website remains editable after publication. Edit the source, check the build and preview, commit the changes, and push to the `main` branch on GitHub. The “Publish website” workflow rebuilds the site and publishes it to GitHub Pages automatically. Local edits appear publicly only after they are pushed and that workflow succeeds.
+
+The workflow is in `.github/workflows/deploy.yml`. It uses Node.js 24 and the official Astro and GitHub Pages actions. You can also run it manually from the repository’s Actions tab. Check the latest workflow run there if an update has not appeared.
+
+GitHub Pages uses GitHub Actions as its publishing source. The repository is named `surajdash-math.github.io` so the website is served at the root address without a project-name suffix. The production address in `astro.config.mjs` supplies the canonical URL and social preview image address.
