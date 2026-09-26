@@ -67,7 +67,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </p>
                       <button class="diagram-toggle" id="git-coarse-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-coarse-diagram">
                         <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
-                        <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><mo>⟶</mo><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math>
+                        <span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-dasharray=".1 3" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span>
                         <span class="diagram-toggle-arrow" aria-hidden="true">↗</span>
                       </button>
                       <p id="git-toric-paragraph">
@@ -85,7 +85,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                     <div class="diagram-panels" id="git-diagrams" hidden>
                     <aside class="diagram-panel" id="git-coarse-diagram" aria-labelledby="git-coarse-diagram-title" hidden>
                       <div class="diagram-panel-heading">
-                        <h3 id="git-coarse-diagram-title"><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math></h3>
+                        <h3 class="diagram-map-title" id="git-coarse-diagram-title"><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math><span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-dasharray=".1 3" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span></h3>
                         <button class="diagram-close" type="button" aria-label="Close LogHilb diagram">×</button>
                       </div>
                       <a class="diagram-image-link" href="/diagrams/loghilb2-p1-coarse.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the LogHilb diagram at full size in a new tab">
@@ -519,6 +519,9 @@ import SiteFooter from "../components/SiteFooter.astro";
     text-align: left;
     cursor: pointer;
   }
+  .diagram-map-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; min-width: 0; }
+  .diagram-map-target { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
+  .diagram-map-arrow { width: 2em; height: .75em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; }
   .diagram-toggle:hover { text-decoration: underline; text-underline-offset: .18em; }
   .diagram-toggle-arrow { font-size: 1.1em; }
   .diagram-toggle[aria-expanded="true"] .diagram-toggle-arrow { transform: rotate(90deg); }
@@ -539,7 +542,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
   .diagram-panel[hidden] { display: none; }
   .diagram-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-  .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .9rem; font-weight: 600; }
+  .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .8rem; font-weight: 600; }
   .diagram-close {
     display: grid;
     place-items: center;
