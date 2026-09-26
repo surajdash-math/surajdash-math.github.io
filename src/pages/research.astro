@@ -54,7 +54,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                         then impose a transversality condition, requiring the support of limiting
                         subschemes to avoid the boundary and singular locus of the expanded fibre.
                       </p>
-                      <p>
+                      <p id="git-coarse-paragraph">
                         In this project, we ask how relaxing this transversality condition changes the
                         compactification. Building on the GIT construction of
                         Gulbrandsen–Halle–Hulek, we study the full relative Hilbert
@@ -194,23 +194,28 @@ import SiteFooter from "../components/SiteFooter.astro";
   );
   const diagramPanels = document.querySelector<HTMLElement>("#git-diagrams");
   const descriptionContent = document.querySelector<HTMLElement>("#git-description .research-description-content");
+  const coarseParagraph = document.querySelector<HTMLElement>("#git-coarse-paragraph");
   const toricParagraph = document.querySelector<HTMLElement>("#git-toric-paragraph");
   const coarsePanel = document.querySelector<HTMLElement>("#git-coarse-diagram");
   const toricPanel = document.querySelector<HTMLElement>("#git-toric-diagram");
   let openDiagramOrder: HTMLButtonElement[] = [];
   let alignmentFrame = 0;
 
-  function alignToricPanel() {
-    if (!diagramPanels || !toricParagraph || !coarsePanel || !toricPanel) return;
-    if (toricPanel.hidden || !window.matchMedia("(min-width: 1100px)").matches) {
+  function alignDiagramPanels() {
+    if (!diagramPanels || !coarseParagraph || !toricParagraph || !coarsePanel || !toricPanel) return;
+    if (diagramPanels.hidden || !window.matchMedia("(min-width: 1100px)").matches) {
+      coarsePanel.style.marginTop = "";
       toricPanel.style.marginTop = "";
       return;
     }
     const columnTop = diagramPanels.getBoundingClientRect().top;
     const gap = parseFloat(getComputedStyle(diagramPanels).rowGap) || 0;
-    const precedingHeight = coarsePanel.hidden ? 0 : coarsePanel.getBoundingClientRect().height + gap;
+    const coarseOffset = coarsePanel.hidden ? 0 : Math.max(0, coarseParagraph.getBoundingClientRect().top - columnTop);
+    const coarseMargin = coarsePanel.hidden ? "" : `${coarseOffset}px`;
+    if (coarsePanel.style.marginTop !== coarseMargin) coarsePanel.style.marginTop = coarseMargin;
+    const precedingHeight = coarsePanel.hidden ? 0 : coarseOffset + coarsePanel.getBoundingClientRect().height + gap;
     const paragraphTop = toricParagraph.getBoundingClientRect().top;
-    const marginTop = `${Math.max(0, paragraphTop - columnTop - precedingHeight)}px`;
+    const marginTop = toricPanel.hidden ? "" : `${Math.max(0, paragraphTop - columnTop - precedingHeight)}px`;
     if (toricPanel.style.marginTop !== marginTop) toricPanel.style.marginTop = marginTop;
   }
 
@@ -218,7 +223,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     if (alignmentFrame) return;
     alignmentFrame = requestAnimationFrame(() => {
       alignmentFrame = 0;
-      alignToricPanel();
+      alignDiagramPanels();
     });
   }
 
@@ -241,10 +246,10 @@ import SiteFooter from "../components/SiteFooter.astro";
     const anyOpen = openDiagramOrder.length > 0;
     diagramPanels.hidden = !anyOpen;
     researchCard.dataset.diagramOpen = String(anyOpen);
-    alignToricPanel();
+    alignDiagramPanels();
     if (open) {
       requestAnimationFrame(() => {
-        alignToricPanel();
+        alignDiagramPanels();
         if (!panel.hidden) panel.scrollIntoView({ block: "nearest" });
       });
     }
