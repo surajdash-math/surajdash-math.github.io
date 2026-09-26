@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 375.485488 222.36404" role="img" aria-labelledby="loghilb-title loghilb-description">
 <title id="loghilb-title">Coarse LogHilb²(P¹, D) and Hilb²(P¹) diagram</title>
-<desc id="loghilb-description">The local coarse logarithmic Hilbert space is a sky-blue disc on the left, containing the exceptional curve E in red, its A₁ singularity, two black boundary branches, and the discriminant Δ in green. A blow-down arrow leads to the affine chart U = A² with its discriminant parabola. Below, Hilb²(P¹) = P² is an unfilled disc containing incidence lines and a dotted sky-blue neighbourhood U centred at the double point V(u²). Here D = {∞}.</desc>
+<desc id="loghilb-description">The local coarse logarithmic Hilbert space is a sky-blue disc on the left, containing the exceptional curve E in red, its A₁ singularity, two black boundary branches, and the discriminant Δ in green. A blow-down arrow leads to the affine chart U = A² with its discriminant parabola. Below, Hilb²(P¹) = P² is an unfilled disc containing incidence lines and a dotted sky-blue neighbourhood U centred at the double point V(u²).</desc>
 <rect x="0" y="0" width="375.485488" height="222.36404" fill="#fff"/>
 <defs>
 <g>
