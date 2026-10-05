@@ -38,7 +38,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                     <span class="research-arrow" aria-hidden="true">▶</span>
                     <span class="publication-title">Variation of GIT for Hilbert Schemes of Expansions.</span>
                   </button>
-                  <span class="publication-status">(<a href="https://drive.google.com/file/d/18Io3wjVQvM8LqcXM3m1eAkqtJTcxZ7yO/view?usp=sharing" target="_blank" rel="noreferrer">Draft available</a>)</span>
+                  <span class="publication-document">(<a href="https://drive.google.com/file/d/18Io3wjVQvM8LqcXM3m1eAkqtJTcxZ7yO/view?usp=sharing" target="_blank" rel="noreferrer">Draft available</a>)</span>
                 </div>
                 <div class="research-description" id="git-description" role="region" aria-labelledby="git-title" aria-hidden="true" inert>
                   <div class="research-description-clip">
@@ -142,7 +142,7 @@ import SiteFooter from "../components/SiteFooter.astro";
               <li>
                 <strong>Master’s thesis:</strong>
                 Logarithmic construction of the moduli space of admissible covers
-                (<a href="http://tesi.cab.unipd.it/65771" target="_blank" rel="noreferrer">Thesis</a>).
+                <span class="publication-document">(<a href="http://tesi.cab.unipd.it/65771" target="_blank" rel="noreferrer">Thesis</a>)</span>.
               </li>
             </ul>
           </article>
@@ -409,16 +409,19 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   .publication-title { min-width: 0; }
 
-  .publication-status {
+  .publication-status,
+  .publication-document {
     flex-shrink: 0;
     font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
     font-size: 0.9rem;
     font-weight: 400;
     font-style: italic;
     line-height: 1.4;
-    color: #925c45;
     white-space: nowrap;
   }
+
+  .publication-status { color: #925c45; }
+  .publication-document { color: var(--text); }
 
   :global(html[data-theme="dark"]) .publication-status {
     color: #d6a387;
@@ -592,7 +595,8 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (max-width: 680px) {
     .publication-heading { display: block; }
-    .publication-status { margin-left: 0.2em; }
+    .publication-status,
+    .publication-heading .publication-document { margin-left: 0.2em; }
   }
 
   .writing-context {
