@@ -43,7 +43,6 @@ import SiteFooter from "../components/SiteFooter.astro";
                 </div>
                 <button class="research-description-toggle" id="git-description-toggle" type="button" aria-expanded="false" aria-controls="git-description" aria-describedby="git-title">
                   <span class="description-toggle-label">Show description</span>
-                  <span class="description-toggle-arrow" aria-hidden="true">▾</span>
                 </button>
                 <div class="research-description" id="git-description" role="region" aria-labelledby="git-title" aria-hidden="true" inert>
                   <div class="research-description-clip">
@@ -291,9 +290,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     article.querySelectorAll<HTMLButtonElement>(".research-description-toggle").forEach((cue) => {
       cue.setAttribute("aria-expanded", String(open));
       const label = cue.querySelector<HTMLElement>(".description-toggle-label");
-      const arrow = cue.querySelector<HTMLElement>(".description-toggle-arrow");
       if (label) label.textContent = open ? "Hide description" : "Show description";
-      if (arrow) arrow.textContent = open ? "▴" : "▾";
     });
   }
 
@@ -507,7 +504,6 @@ import SiteFooter from "../components/SiteFooter.astro";
     cursor: pointer;
   }
 
-  .description-toggle-arrow { font-size: 0.85em; }
   .research-description-toggle:hover .description-toggle-label,
   .research-description-toggle:focus-visible .description-toggle-label {
     text-decoration: underline;
