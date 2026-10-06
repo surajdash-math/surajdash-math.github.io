@@ -136,7 +136,7 @@ import SiteFooter from "../components/SiteFooter.astro";
             <h2>Theses</h2>
             <ul>
               <li>
-                <div class="publication-heading">
+                <div class="publication-heading thesis-heading">
                   <span class="publication-title"><strong>PhD thesis:</strong> Variation of GIT for Hilbert Schemes of Expansions.</span>
                   <span class="publication-status">(In progress, expected 2027)</span>
                 </div>
@@ -430,6 +430,9 @@ import SiteFooter from "../components/SiteFooter.astro";
     align-items: baseline;
     gap: 0.25rem 0.45rem;
   }
+
+  .thesis-heading { display: block; }
+  .thesis-heading .publication-status { font-size: 0.9rem; }
 
   .publication-title { min-width: 0; }
 
