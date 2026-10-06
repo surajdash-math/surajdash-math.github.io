@@ -1,6 +1,7 @@
 ---
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
+import SiteVersion from "../components/SiteVersion.astro";
 import PageWatermark from "../components/PageWatermark.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
@@ -109,6 +110,7 @@ const conferenceEntries: ConferenceEntry[] = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SiteVersion />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="preload" as="image" href="/cetraro-watermark.jpg" />

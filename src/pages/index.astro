@@ -1,6 +1,7 @@
 ---
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
+import SiteVersion from "../components/SiteVersion.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import FrontPageGallery from "../components/FrontPageGallery.astro";
 
@@ -17,6 +18,7 @@ const socialImageURL = Astro.site
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SiteVersion canonical={false} />
     <meta name="author" content="Suraj Dash" />
     <meta name="description" content={pageDescription} />
     <meta name="google-site-verification" content="B6xzUBD4Oy9mMmSlBcgPKF7FQAdAsrhs2VlewSv1UEo" />

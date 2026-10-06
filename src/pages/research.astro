@@ -2,6 +2,7 @@
 // The research page collects preprints, theses, and other writings.
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
+import SiteVersion from "../components/SiteVersion.astro";
 import PageWatermark from "../components/PageWatermark.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 ---
@@ -10,6 +11,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SiteVersion />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="preload" as="image" href="/Chow%20quotient.jpg" />
@@ -138,7 +140,7 @@ import SiteFooter from "../components/SiteFooter.astro";
               <li>
                 <div class="publication-heading thesis-heading">
                   <span class="publication-title"><strong>PhD thesis:</strong> Variation of GIT for Hilbert Schemes of Expansions.</span>
-                  <span class="publication-status">(In progress, expected 2027)</span>
+                  <span class="publication-status">(Expected 2027)</span>
                 </div>
               </li>
               <li>
@@ -432,7 +434,6 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   .thesis-heading { display: block; }
-  .thesis-heading .publication-status { font-size: 0.9rem; }
 
   .publication-title { min-width: 0; }
 
@@ -447,7 +448,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     white-space: nowrap;
   }
 
-  .publication-status { color: #925c45; }
+  .publication-status { color: #925c45; font-size: 17.6px; }
   .publication-document { color: var(--text); }
   .research-articles .publication-document { font-size: 17.6px; }
 

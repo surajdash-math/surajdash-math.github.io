@@ -1,0 +1,23 @@
+---
+import { siteBuildVersion } from "../lib/site-build-version";
+
+interface Props {
+  canonical?: boolean;
+}
+
+const { canonical = true } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+---
+
+<meta name="site-build-version" content={siteBuildVersion} />
+{canonical && canonicalURL && <link rel="canonical" href={canonicalURL} />}
+<script is:inline>
+  (() => {
+    const buildVersion = document.querySelector('meta[name="site-build-version"]')?.getAttribute("content");
+    const url = new URL(window.location.href);
+    if (buildVersion && url.searchParams.get("v") === buildVersion) {
+      url.searchParams.delete("v");
+      window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  })();
+</script>

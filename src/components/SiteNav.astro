@@ -1,6 +1,7 @@
 ---
 import NavIndicator from "./NavIndicator.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import { siteBuildVersion } from "../lib/site-build-version";
 
 interface Props {
   current: "/" | "/research" | "/teaching" | "/learning-seminars" | "/travel";
@@ -23,7 +24,7 @@ const links = [
 >
   {links.map((link) => (
     <a
-      href={link.href}
+      href={`${link.href === "/" ? "/" : `${link.href}/`}?v=${siteBuildVersion}`}
       aria-current={link.href === current ? "page" : undefined}
     >{link.label}</a>
   ))}
