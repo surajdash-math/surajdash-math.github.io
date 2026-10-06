@@ -485,18 +485,19 @@ import SiteFooter from "../components/SiteFooter.astro";
   .research-article-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
 
   .research-description-toggle {
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
     align-items: center;
     gap: 0.35em;
     min-height: 24px;
-    margin: 4px 0 0;
+    margin: 0;
     padding: 2px 0;
     border: 0;
     border-radius: 3px;
     background: transparent;
     color: var(--link);
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 400;
     font-style: normal;
     line-height: 1.45;
@@ -629,6 +630,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (pointer: coarse) {
     .research-article-toggle, .research-description-toggle { min-height: 44px; }
+    .research-description-toggle { padding: 2px 0 10px; }
     .research-arrow { top: calc(50% - 0.5em); }
   }
 
@@ -649,7 +651,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (max-width: 680px) {
     .publication-heading { display: block; }
-    .research-description-toggle { min-height: 44px; margin-top: 0; }
+    .research-description-toggle { min-height: 44px; margin-top: 0; padding: 2px 0 10px; }
     .publication-status,
     .publication-heading .publication-document { margin-left: 0.2em; }
   }
