@@ -35,7 +35,6 @@ import SiteFooter from "../components/SiteFooter.astro";
               <li class="research-article">
                 <div class="publication-heading">
                   <button class="research-article-toggle" id="git-title" type="button" aria-expanded="false" aria-controls="git-description">
-                    <span class="research-arrow" aria-hidden="true">▶</span>
                     <span class="publication-title">Variation of GIT for Hilbert Schemes of Expansions.</span>
                   </button>
                   <span class="publication-document">(<a href="https://drive.google.com/file/d/1IGGHpXvxhv1mvXLpCDbvB1ciOg1WG6uG/view?usp=sharing" target="_blank" rel="noreferrer">Draft available</a>)</span>
@@ -115,7 +114,6 @@ import SiteFooter from "../components/SiteFooter.astro";
               <li class="research-article">
                 <div class="publication-heading">
                   <button class="research-article-toggle" id="stability-title" type="button" aria-expanded="false" aria-controls="stability-description">
-                    <span class="research-arrow" aria-hidden="true">▶</span>
                     <span class="publication-title">K-stability of singular del Pezzo surfaces.</span>
                   </button>
                   <span class="publication-status">(In preparation)</span>
@@ -464,7 +462,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     --description-bg: rgba(214, 163, 135, 0.065);
   }
 
-  .research-article-list { list-style: none; }
+  .research-article-list { list-style: disc; }
 
   .research-article-toggle {
     position: relative;
@@ -497,7 +495,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     background: transparent;
     color: var(--link);
     font-family: inherit;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 400;
     font-style: normal;
     line-height: 1.45;
@@ -512,20 +510,6 @@ import SiteFooter from "../components/SiteFooter.astro";
     text-underline-offset: 3px;
   }
   .research-description-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
-
-  .research-arrow {
-    position: absolute;
-    left: -1.3rem;
-    top: 0.65em;
-    width: 0.75rem;
-    color: var(--link);
-    font-size: 0.63em;
-    line-height: 1;
-    transform-origin: center;
-    transition: transform 180ms ease;
-  }
-
-  .research-article-toggle[aria-expanded="true"] .research-arrow { transform: rotate(90deg); }
 
   .research-description {
     display: grid;
@@ -631,11 +615,9 @@ import SiteFooter from "../components/SiteFooter.astro";
   @media (pointer: coarse) {
     .research-article-toggle, .research-description-toggle { min-height: 44px; }
     .research-description-toggle { padding: 2px 0 10px; }
-    .research-arrow { top: calc(50% - 0.5em); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .research-arrow,
     .research-description,
     .research-article[data-expanded="true"] .research-description { transition: none; }
   }
@@ -651,6 +633,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (max-width: 680px) {
     .publication-heading { display: block; }
+    .research-article-toggle { vertical-align: top; }
     .research-description-toggle { min-height: 44px; margin-top: 0; padding: 2px 0 10px; }
     .publication-status,
     .publication-heading .publication-document { margin-left: 0.2em; }
