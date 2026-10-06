@@ -40,6 +40,10 @@ import SiteFooter from "../components/SiteFooter.astro";
                   </button>
                   <span class="publication-document">(<a href="https://drive.google.com/file/d/1IGGHpXvxhv1mvXLpCDbvB1ciOg1WG6uG/view?usp=sharing" target="_blank" rel="noreferrer">Draft available</a>)</span>
                 </div>
+                <button class="research-description-toggle" id="git-description-toggle" type="button" aria-expanded="false" aria-controls="git-description" aria-describedby="git-title">
+                  <span class="description-toggle-label">Show description</span>
+                  <span class="description-toggle-arrow" aria-hidden="true">▾</span>
+                </button>
                 <div class="research-description" id="git-description" role="region" aria-labelledby="git-title" aria-hidden="true" inert>
                   <div class="research-description-clip">
                     <div class="research-description-layout">
@@ -189,6 +193,10 @@ import SiteFooter from "../components/SiteFooter.astro";
   const researchToggles = Array.from(
     researchCard?.querySelectorAll<HTMLButtonElement>(".research-article-toggle") ?? []
   );
+  const descriptionToggles = Array.from(
+    researchCard?.querySelectorAll<HTMLButtonElement>(".research-description-toggle") ?? []
+  );
+  let descriptionOpener: HTMLButtonElement | null = null;
   const diagramToggles = Array.from(
     researchCard?.querySelectorAll<HTMLButtonElement>(".diagram-toggle") ?? []
   );
@@ -280,13 +288,29 @@ import SiteFooter from "../components/SiteFooter.astro";
     article.dataset.expanded = String(open);
     description.setAttribute("aria-hidden", String(!open));
     description.inert = !open;
+    article.querySelectorAll<HTMLButtonElement>(".research-description-toggle").forEach((cue) => {
+      cue.setAttribute("aria-expanded", String(open));
+      const label = cue.querySelector<HTMLElement>(".description-toggle-label");
+      const arrow = cue.querySelector<HTMLElement>(".description-toggle-arrow");
+      if (label) label.textContent = open ? "Hide description" : "Show description";
+      if (arrow) arrow.textContent = open ? "▴" : "▾";
+    });
+  }
+
+  function toggleDescription(toggle: HTMLButtonElement, trigger: HTMLButtonElement) {
+    const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
+    researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
+    descriptionOpener = shouldOpen ? trigger : null;
   }
 
   researchToggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
-      researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
-    });
+    toggle.addEventListener("click", () => toggleDescription(toggle, toggle));
+  });
+
+  descriptionToggles.forEach((cue) => {
+    const toggle = researchToggles.find((other) => other.getAttribute("aria-controls") === cue.getAttribute("aria-controls"));
+    if (!toggle) return;
+    cue.addEventListener("click", () => toggleDescription(toggle, cue));
   });
 
   researchCard?.addEventListener("keydown", (event) => {
@@ -304,8 +328,10 @@ import SiteFooter from "../components/SiteFooter.astro";
     }
     const openToggle = researchToggles.find((toggle) => toggle.getAttribute("aria-expanded") === "true");
     if (!openToggle) return;
+    const focusTarget = descriptionOpener ?? openToggle;
     setDescriptionOpen(openToggle, false);
-    openToggle.focus();
+    descriptionOpener = null;
+    focusTarget.focus();
     event.preventDefault();
   });
 </script>
@@ -456,14 +482,35 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   .research-article-toggle:hover { color: var(--link); }
-  #git-title { color: var(--link); font-weight: 500; }
-  #git-title:hover .publication-title,
-  #git-title:focus-visible .publication-title {
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.18em;
-  }
   .research-article-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
+
+  .research-description-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    min-height: 24px;
+    margin: 4px 0 0;
+    padding: 2px 0;
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    color: var(--link);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+
+  .description-toggle-arrow { font-size: 0.85em; }
+  .research-description-toggle:hover .description-toggle-label,
+  .research-description-toggle:focus-visible .description-toggle-label {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .research-description-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
   .research-arrow {
     position: absolute;
@@ -581,7 +628,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   @media (pointer: coarse) {
-    .research-article-toggle { min-height: 44px; }
+    .research-article-toggle, .research-description-toggle { min-height: 44px; }
     .research-arrow { top: calc(50% - 0.5em); }
   }
 
@@ -602,6 +649,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (max-width: 680px) {
     .publication-heading { display: block; }
+    .research-description-toggle { min-height: 44px; margin-top: 0; }
     .publication-status,
     .publication-heading .publication-document { margin-left: 0.2em; }
   }
