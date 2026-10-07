@@ -90,7 +90,9 @@ const links = [
     });
 
     phoneWidth.addEventListener("change", () => setOpen(false));
-    window.addEventListener("pageshow", () => setOpen(false));
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) setOpen(false);
+    });
   });
 </script>
 
