@@ -56,7 +56,7 @@ const links = [
     const navigation = wrapper.querySelector<HTMLElement>(".site-navigation");
     if (!toggle || !navigation) return;
 
-    const phoneWidth = window.matchMedia("(max-width: 680px)");
+    const phoneWidth = window.matchMedia("(max-width: 680px), (max-width: 1024px) and (max-height: 500px)");
 
     function setOpen(open: boolean, restoreFocus = false) {
       const expanded = open && phoneWidth.matches;
@@ -231,7 +231,7 @@ const links = [
     }
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 680px), (max-width: 1024px) and (max-height: 500px) {
     .mobile-navigation {
       position: relative;
       z-index: 10;
@@ -288,9 +288,14 @@ const links = [
     .mobile-navigation .site-navigation {
       grid-column: 1 / -1;
       flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
       align-items: stretch;
       gap: 0;
       width: min(300px, 100%);
+      max-height: calc(100dvh - 110px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
       margin: 0;
       padding: 12px;
       border: 1px solid var(--line);
@@ -334,6 +339,7 @@ const links = [
 
     .navigation-theme-control {
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
