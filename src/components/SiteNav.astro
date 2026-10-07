@@ -233,6 +233,7 @@ const links = [
 
   @media (max-width: 680px), (max-width: 1024px) and (max-height: 500px) {
     .mobile-navigation {
+      --mobile-nav-active: #a7443e;
       position: relative;
       z-index: 10;
       display: grid;
@@ -242,6 +243,10 @@ const links = [
       width: 100%;
       margin-bottom: 32px;
       padding-top: 8px;
+    }
+
+    :global(html[data-theme="dark"]) .mobile-navigation {
+      --mobile-nav-active: #d17b74;
     }
 
     .mobile-site-name {
@@ -324,13 +329,13 @@ const links = [
     }
 
     :global(html[data-theme]) .mobile-navigation .site-navigation a[aria-current="page"] {
-      color: var(--accent) !important;
-      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      color: var(--mobile-nav-active) !important;
+      background: color-mix(in srgb, var(--mobile-nav-active) 8%, transparent);
     }
 
     .site-navigation.top-nav.nav-indicator-ready a[aria-current="page"] {
       text-decoration: underline !important;
-      text-decoration-color: var(--accent);
+      text-decoration-color: var(--mobile-nav-active);
       text-decoration-thickness: 2px;
       text-underline-offset: 4px;
     }
