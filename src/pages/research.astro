@@ -39,7 +39,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                   <button class="research-article-toggle" id="git-title" type="button" aria-expanded="false" aria-controls="git-description">
                     <span class="publication-title">Variation of GIT for Hilbert Schemes of Expansions.</span>
                   </button>
-                  <span class="publication-document">(<a href="https://drive.google.com/file/d/1IGGHpXvxhv1mvXLpCDbvB1ciOg1WG6uG/view?usp=sharing" target="_blank" rel="noreferrer">Draft available</a>)</span>
+                  <span class="publication-document">(<span class="publication-document-label">Draft available</span>)</span>
                 </div>
                 <button class="research-description-toggle" id="git-description-toggle" type="button" aria-expanded="false" aria-controls="git-description" aria-describedby="git-title">
                   <span class="description-toggle-label">Show description</span>
@@ -447,6 +447,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   .publication-status { color: #925c45; }
   .publication-document { color: var(--text); }
+  .publication-document-label { color: var(--link); font-weight: 600; }
 
   :global(html[data-theme="dark"]) .publication-status {
     color: #d6a387;
