@@ -1,6 +1,7 @@
 ---
 import NavIndicator from "./NavIndicator.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import OdiaName from "./OdiaName.astro";
 import { siteBuildVersion } from "../lib/site-build-version";
 
 interface Props {
@@ -19,7 +20,10 @@ const links = [
 ---
 
 <div class="mobile-navigation" data-mobile-navigation>
-  <a class="mobile-site-name" href={`/?v=${siteBuildVersion}`} aria-label="Suraj Dash — Home">Suraj Dash</a>
+  <div class="mobile-site-name">
+    <a class="mobile-site-home" href={`/?v=${siteBuildVersion}`} aria-label="Suraj Dash — Home">Suraj Dash</a>
+    <OdiaName />
+  </div>
   <button
     class="mobile-menu-toggle"
     type="button"
@@ -262,6 +266,11 @@ const links = [
       white-space: nowrap;
     }
 
+    .mobile-site-home {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .mobile-navigation[data-menu-ready="true"] .mobile-menu-toggle {
       display: grid;
       place-items: center;
@@ -285,7 +294,7 @@ const links = [
     }
 
     .mobile-menu-toggle:focus-visible,
-    .mobile-site-name:focus-visible {
+    .mobile-site-home:focus-visible {
       outline: 2px solid currentColor;
       outline-offset: 3px;
     }
@@ -298,7 +307,7 @@ const links = [
       align-items: stretch;
       gap: 0;
       width: min(300px, 100%);
-      max-height: calc(100dvh - 110px);
+      max-height: calc(100dvh - 150px);
       overflow-y: auto;
       overscroll-behavior: contain;
       margin: 0;
