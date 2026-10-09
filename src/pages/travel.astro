@@ -18,7 +18,10 @@ interface ConferenceEntry {
   href: string;
   place: string;
   date: string;
+  datetime?: string;
 }
+
+const today = new Date().toISOString().slice(0, 10);
 
 const talkEntries: TalkEntry[] = [
   {
@@ -31,6 +34,20 @@ const talkEntries: TalkEntry[] = [
 ];
 
 const conferenceEntries: ConferenceEntry[] = [
+  {
+    name: "AGNES",
+    href: "https://sites.google.com/site/agneshomepage/brown-2026",
+    place: "Brown University, Rhode Island",
+    date: "Nov 20–22, 2026",
+    datetime: "2026-11-20",
+  },
+  {
+    name: "WAGS",
+    href: "https://sites.google.com/a/wagsymposium.org/current/utah-fall-2026",
+    place: "University of Utah",
+    date: "Dec 4–6, 2026",
+    datetime: "2026-12-04",
+  },
   {
     name: "25th anniversary of the Gross-Siebert program",
     href: "https://sites.google.com/view/gs25anniversary/startseite?authuser=0",
@@ -165,6 +182,7 @@ const conferenceEntries: ConferenceEntry[] = [
             {conferenceEntries.map((conference) => (
               <li>
                 <a href={conference.href} target="_blank" rel="noreferrer">{conference.name}</a><span class="event-date">{conference.place ? `, ${conference.place}` : ""} · {conference.date}</span>
+                {conference.datetime && conference.datetime > today && <span class="event-status">Upcoming</span>}
               </li>
             ))}
           </ul>
@@ -366,6 +384,17 @@ const conferenceEntries: ConferenceEntry[] = [
 
   .event-date {
     color: var(--muted);
+  }
+
+  .event-status {
+    margin-left: 0.35rem;
+    color: #925c45;
+    font-size: 0.825rem;
+    white-space: nowrap;
+  }
+
+  :global(html[data-theme="dark"]) .event-status {
+    color: #d6a387;
   }
 
   .background-caption {
