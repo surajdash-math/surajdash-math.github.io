@@ -49,25 +49,13 @@ import SiteFooter from "../components/SiteFooter.astro";
                     <div class="research-description-layout">
                     <div class="research-description-content">
                       <p>
-                        For a smooth projective variety <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="X"><mi>X</mi></math> with normal crossings boundary <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>,
-                        compactifying <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X minus D"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>∖</mo><mi>D</mi><mo>)</mo></mrow></math> requires understanding limits of
-                        subschemes approaching <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>. Ordinary flat limits may acquire support on
-                        <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>, or on the singular locus when the target degenerates. The expanded
-                        constructions of Li and Li–Wu insert additional components into the target
-                        to accommodate such limits. Logarithmic Hilbert spaces
-                        then impose a transversality condition, requiring the support of limiting
-                        subschemes to avoid the boundary and singular locus of the expanded fibre.
+                        Let <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="X"><mi>X</mi></math> be a smooth projective variety with a simple normal crossings boundary <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>. To compactify <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X minus D"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>∖</mo><mi>D</mi><mo>)</mo></mrow></math>, one must understand subschemes approaching <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>. Logarithmic Hilbert spaces require limiting subschemes to avoid the boundary and singular locus of the expanded fibre.
+                      </p>
+                      <p>
+                        In this project, we ask how relaxing this transversality condition changes the compactification. Building on the GIT construction of Gulbrandsen–Halle–Hulek, we vary the torus linearisation on the full relative Hilbert scheme of an expansion. This allows certain non-transverse limits to become stable.
                       </p>
                       <p id="git-coarse-paragraph">
-                        In this project, we ask how relaxing this transversality condition changes the
-                        compactification. Building on the GIT construction of
-                        Gulbrandsen–Halle–Hulek, we study the full relative Hilbert
-                        scheme of an expansion and vary stability using its natural torus action.
-                        Different stability conditions allow different boundary configurations,
-                        with transitions occurring along walls in the parameter space. We classify
-                        the configurations responsible for these walls and the resulting birational
-                        transformations, providing a systematic way to compare the corresponding
-                        compactifications and their geometric invariants.
+                        For smooth pointed curves in length two, <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of two points on X equals the second symmetric power of X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><msup><mi mathvariant="normal">Sym</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> records collision at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> as the point <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>. The logarithmic space instead retains the configuration on the expansion: the comparison is a <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="1, 2"><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo></mrow></math>-weighted blow-up of the ordinary Hilbert scheme at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, with exceptional fibre <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="weighted projective line with weights 1 and 2"><mrow><mi mathvariant="normal">ℙ</mi><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo></mrow></math>.
                       </p>
                       <button class="diagram-toggle" id="git-coarse-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-coarse-diagram">
                         <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
@@ -75,7 +63,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                         <span class="diagram-toggle-arrow" aria-hidden="true">↗</span>
                       </button>
                       <p id="git-toric-paragraph">
-                        We use invariant divisorial valuations, inspired by Altmann–Hausen, to encode the support walls for expanded SNC pairs; for pointed curves, the additional discriminant walls sensitive to the scheme structure exhaust the full equivariant ample cone. This gives an explicit VGIT path from <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilb"><mi mathvariant="normal">Hilb</mi></math>. We use these wall-crossings to compute the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> and, in genus zero, study its Mori geometry.
+                        We use invariant divisorial valuations, inspired by Altmann–Hausen, to encode the support walls for expanded SNC pairs; for pointed curves, the additional discriminant walls sensitive to the infinitesimal scheme structure exhaust the full equivariant ample cone. This gives an explicit VGIT path from <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilb"><mi mathvariant="normal">Hilb</mi></math>. We use these wall-crossings to compute the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> and, in genus zero, study its Mori geometry.
                       </p>
                       <button class="diagram-toggle" id="git-toric-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-toric-diagram">
                         <span>Toric</span>
@@ -83,7 +71,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                         <span class="diagram-toggle-arrow" aria-hidden="true">↗</span>
                       </button>
                       <p>
-                        For surfaces, new wall crossings appear already in length two, including a Francia flip. For <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="the projective plane with a line"><mrow><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup><mo>,</mo><mtext>line</mtext><mo>)</mo></mrow></math>, this wall-crossing computes the integral Chow ring, recovering Setayesh’s rational result obtained by torus localization. I am currently working on extending these methods to general toric pairs.
+                        We are extending the wall-crossing analysis to smooth projective surfaces <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="X"><mi>X</mi></math> with smooth boundary <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math>. The principal goal is to compute integral Chow rings of logarithmic Hilbert stacks for toric surface pairs in arbitrary length. For surfaces, new wall crossings appear already in length two, including a Francia flip. For <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="the projective plane with a line"><mrow><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup><mo>,</mo><mtext>line</mtext><mo>)</mo></mrow></math>, this wall-crossing computes the integral Chow ring, recovering Setayesh’s rational result obtained by torus localization.
                       </p>
                     </div>
                     <div class="diagram-panels" id="git-diagrams" hidden>
