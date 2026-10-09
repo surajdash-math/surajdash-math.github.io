@@ -263,7 +263,7 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
                     </td>
                     <td class="term talk-date">
                       <time datetime={talk.datetime}>{talk.date}</time>
-                      {talk.datetime > today && <span class="talk-status">Upcoming</span>}
+                      {talk.datetime > today && <span class="talk-status">(Upcoming)</span>}
                     </td>
                     <td class="seminar-plan talk-notes">
                       {talk.notesHref && (
@@ -462,7 +462,8 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
 
   .talk-status {
     display: block;
-    font-size: 0.825rem;
+    font-size: 0.95rem;
+    font-style: italic;
     color: #925c45;
   }
 

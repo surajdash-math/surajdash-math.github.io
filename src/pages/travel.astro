@@ -182,7 +182,7 @@ const conferenceEntries: ConferenceEntry[] = [
             {conferenceEntries.map((conference) => (
               <li>
                 <a href={conference.href} target="_blank" rel="noreferrer">{conference.name}</a><span class="event-date">{conference.place ? `, ${conference.place}` : ""} · {conference.date}</span>
-                {conference.datetime && conference.datetime > today && <span class="event-status">Upcoming</span>}
+                {conference.datetime && conference.datetime > today && <span class="event-status">(Upcoming)</span>}
               </li>
             ))}
           </ul>
@@ -389,7 +389,8 @@ const conferenceEntries: ConferenceEntry[] = [
   .event-status {
     margin-left: 0.35rem;
     color: #925c45;
-    font-size: 0.825rem;
+    font-size: 0.95rem;
+    font-style: italic;
     white-space: nowrap;
   }
 
