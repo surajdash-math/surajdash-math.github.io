@@ -56,10 +56,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </p>
                       <button class="diagram-toggle" id="git-coarse-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-coarse-diagram">
                         <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
-                        <span class="diagram-map-target diagram-map-equalities">
-                          <span class="diagram-map-step"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span>
-                          <span class="diagram-map-step"><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="equals the projective plane"><mrow><mo>=</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup></mrow></math><span class="diagram-toggle-arrow" aria-hidden="true">↗</span></span>
-                        </span>
+                        <span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line equals the projective plane"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo><mo lspace=".22em" rspace=".22em">=</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup></mrow></math><span class="diagram-toggle-arrow" aria-hidden="true">↗</span></span>
                       </button>
                       <p id="git-toric-paragraph">
                         We use invariant divisorial valuations, inspired by Altmann–Hausen, to encode the support walls for expanded SNC pairs; for pointed curves, the additional discriminant walls sensitive to the infinitesimal scheme structure exhaust the full equivariant ample cone. This gives an explicit VGIT path from <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilb"><mi mathvariant="normal">Hilb</mi></math>. We use these wall-crossings to compute the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb"><mi mathvariant="normal">LogHilb</mi></math> and, in genus zero, study its Mori geometry.
@@ -536,25 +533,31 @@ import SiteFooter from "../components/SiteFooter.astro";
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px 7px;
+    gap: 4px .25em;
     max-width: 100%;
     min-height: 44px;
     margin: 12px 0;
     padding: 4px 0;
     border: 0;
     border-radius: 3px;
+    --diagram-toggle-highlight: color-mix(in srgb, var(--link) 9%, transparent);
     background: transparent;
     color: var(--link);
     font: inherit;
     text-align: left;
+    text-decoration: none;
     cursor: pointer;
   }
   .diagram-map-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; min-width: 0; }
   .diagram-map-target { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
-  .diagram-map-equalities { flex-wrap: wrap; max-width: 100%; white-space: normal; }
-  .diagram-map-step { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
+  .diagram-toggle .diagram-map-target { gap: .25em; }
   .diagram-map-arrow { width: 2em; height: .75em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; }
-  .diagram-toggle:hover { text-decoration: underline; text-underline-offset: .18em; }
+  .diagram-toggle:hover,
+  .diagram-toggle:focus-visible {
+    background: var(--diagram-toggle-highlight);
+    box-shadow: 0 0 0 3px var(--diagram-toggle-highlight);
+    text-decoration: none;
+  }
   .diagram-toggle-arrow { font-size: 1.1em; }
   .diagram-toggle[aria-expanded="true"] .diagram-toggle-arrow { transform: rotate(90deg); }
   .diagram-toggle:focus-visible,
