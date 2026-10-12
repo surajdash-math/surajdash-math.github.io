@@ -56,7 +56,11 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </p>
                       <button class="diagram-toggle" id="git-coarse-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-coarse-diagram">
                         <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
-                        <span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span>
+                        <span class="diagram-map-target diagram-map-equalities">
+                          <span class="diagram-map-step"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span>
+                          <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="equals the second symmetric power of the projective line"><mrow><mo>=</mo><msup><mi mathvariant="normal">Sym</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math>
+                          <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="equals the projective plane"><mrow><mo>=</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup></mrow></math>
+                        </span>
                         <span class="diagram-toggle-arrow" aria-hidden="true">↗</span>
                       </button>
                       <p id="git-toric-paragraph">
@@ -549,6 +553,8 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
   .diagram-map-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; min-width: 0; }
   .diagram-map-target { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
+  .diagram-map-equalities { flex-wrap: wrap; max-width: 100%; white-space: normal; }
+  .diagram-map-step { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
   .diagram-map-arrow { width: 2em; height: .75em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; }
   .diagram-toggle:hover { text-decoration: underline; text-underline-offset: .18em; }
   .diagram-toggle-arrow { font-size: 1.1em; }
