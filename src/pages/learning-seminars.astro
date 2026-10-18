@@ -1,4 +1,5 @@
 ---
+import "../styles/site-design.css";
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteVersion from "../components/SiteVersion.astro";
@@ -320,9 +321,9 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
     margin: 0;
     min-height: 100vh;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 19.8px;
+    font-size: var(--site-body-size);
     font-weight: 400;
-    line-height: 1.6;
+    line-height: var(--site-body-leading);
     color: var(--text);
     background: var(--bg);
     transition: color 180ms ease, background-color 180ms ease;
@@ -355,28 +356,27 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
   .page-shell {
     position: relative;
     z-index: 1;
-    width: min(1100px, calc(100% - 48px));
+    width: min(var(--site-shell-width), calc(100% - 2 * var(--site-gutter)));
     min-height: 100vh;
     margin: 0 auto;
     padding: 32px 0 112px;
   }
 
   .seminar-sections {
-    width: min(100%, 920px);
+    width: min(100%, var(--site-content-width));
     margin: 0 auto;
+    display: grid;
+    gap: var(--site-section-gap);
   }
 
   .publication-card {
+    min-width: 0;
     position: relative;
-    padding: 24px 26px;
+    padding: var(--site-panel-padding);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: var(--site-panel-radius);
     background: var(--seminar-card-bg);
     box-shadow: 0 10px 28px var(--shadow);
-  }
-
-  .publication-card + .publication-card {
-    margin-top: 28px;
   }
 
   .publication-card::before {
@@ -393,13 +393,17 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
   }
 
   .publication-card h2 {
-    margin: 0;
-    font-size: 1.32rem;
+    margin: 0 0 var(--site-heading-gap);
+    font-size: var(--site-heading-size);
     color: var(--heading);
+    font-family: var(--site-heading-font);
+    font-weight: var(--site-heading-weight);
+    line-height: var(--site-heading-leading);
+    letter-spacing: var(--site-heading-tracking);
   }
 
   .card-header {
-    padding-bottom: 13px;
+    padding-bottom: var(--site-heading-gap);
     margin-bottom: 2px;
     border-bottom: 1px solid var(--divider);
   }
@@ -420,7 +424,7 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
   }
 
   .seminar-table td {
-    padding: 12px 0 10px;
+    padding: 14px 0 13px;
     line-height: 1.5;
     text-align: left;
     vertical-align: top;
@@ -446,6 +450,9 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
     padding-left: clamp(32px, 4vw, 44px) !important;
     color: var(--date-accent, var(--accent));
     white-space: normal;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.025em;
   }
 
   .talk-event {
@@ -488,11 +495,11 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
 
   @media (max-width: 680px) {
     .page-shell {
-      width: min(100% - 32px, 1100px);
+      width: min(var(--site-shell-width), calc(100% - 2 * var(--site-gutter)));
     }
 
     .publication-card {
-      padding: 20px;
+      padding: var(--site-panel-padding);
     }
   }
 
@@ -533,8 +540,6 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
   }
 
   :global(html[data-theme="light"]) .publication-card {
-    min-width: 0;
-    border-radius: 14px;
     box-shadow: 6px 6px 0 rgba(31, 57, 69, 0.15);
   }
 
@@ -542,28 +547,13 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
     box-shadow: none;
   }
 
-  :global(html[data-theme="light"]) .publication-card h2 {
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
-    font-size: 1.474rem;
-    font-weight: 700;
-    letter-spacing: -0.012em;
-  }
-
   :global(html[data-theme="light"]) .card-header {
-    padding-bottom: 15px;
     border-bottom-color: rgba(41, 73, 88, 0.42);
   }
 
-  :global(html[data-theme="light"]) .seminar-table td {
-    padding-top: 14px;
-    padding-bottom: 13px;
-  }
 
-  :global(html[data-theme="light"]) .term {
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.025em;
-  }
+
+
 
   :global(html[data-theme="light"]) .background-caption {
     opacity: 0.78;
@@ -616,4 +606,5 @@ const expositoryTalkEntries: ExpositoryTalkEntry[] = [
       grid-column: 2;
     }
   }
+  .card-header h2 { margin: 0; }
 </style>
