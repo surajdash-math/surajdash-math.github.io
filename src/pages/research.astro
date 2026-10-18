@@ -206,14 +206,13 @@ import SiteFooter from "../components/SiteFooter.astro";
   const diagramPanels = document.querySelector<HTMLElement>("#git-diagrams");
   const descriptionContent = document.querySelector<HTMLElement>("#git-description .research-description-content");
   const coarseParagraph = document.querySelector<HTMLElement>("#git-coarse-paragraph");
-  const toricParagraph = document.querySelector<HTMLElement>("#git-toric-paragraph");
   const coarsePanel = document.querySelector<HTMLElement>("#git-coarse-diagram");
   const toricPanel = document.querySelector<HTMLElement>("#git-toric-diagram");
   let openDiagramOrder: HTMLButtonElement[] = [];
   let alignmentFrame = 0;
 
   function alignDiagramPanels() {
-    if (!diagramPanels || !coarseParagraph || !toricParagraph || !coarsePanel || !toricPanel) return;
+    if (!diagramPanels || !descriptionContent || !coarseParagraph || !coarsePanel || !toricPanel) return;
     if (diagramPanels.hidden || !window.matchMedia("(min-width: 1100px)").matches) {
       coarsePanel.style.marginTop = "";
       toricPanel.style.marginTop = "";
@@ -225,8 +224,9 @@ import SiteFooter from "../components/SiteFooter.astro";
     const coarseMargin = coarsePanel.hidden ? "" : `${coarseOffset}px`;
     if (coarsePanel.style.marginTop !== coarseMargin) coarsePanel.style.marginTop = coarseMargin;
     const precedingHeight = coarsePanel.hidden ? 0 : coarseOffset + coarsePanel.getBoundingClientRect().height + gap;
-    const paragraphTop = toricParagraph.getBoundingClientRect().top;
-    const marginTop = toricPanel.hidden ? "" : `${Math.max(0, paragraphTop - columnTop - precedingHeight)}px`;
+    const descriptionBottom = descriptionContent.getBoundingClientRect().bottom;
+    const toricHeight = toricPanel.getBoundingClientRect().height;
+    const marginTop = toricPanel.hidden ? "" : `${Math.max(0, descriptionBottom - columnTop - precedingHeight - toricHeight)}px`;
     if (toricPanel.style.marginTop !== marginTop) toricPanel.style.marginTop = marginTop;
   }
 
@@ -244,6 +244,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     descriptionContent.querySelectorAll("p").forEach((paragraph) => diagramResizeObserver.observe(paragraph));
   }
   if (coarsePanel) diagramResizeObserver.observe(coarsePanel);
+  if (toricPanel) diagramResizeObserver.observe(toricPanel);
   window.addEventListener("resize", scheduleDiagramAlignment);
 
   function setDiagramOpen(toggle: HTMLButtonElement, open: boolean, restoreFocus = false) {
