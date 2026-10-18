@@ -46,52 +46,41 @@ import SiteFooter from "../components/SiteFooter.astro";
                 </button>
                 <div class="research-description" id="git-description" role="region" aria-labelledby="git-title" aria-hidden="true" inert>
                   <div class="research-description-clip">
-                    <div class="research-description-layout">
+                    <div class="research-description-layout illustrated-description">
                     <div class="research-description-content">
                       <p>
                         Let <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="the pair X, D"><mrow><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math> be a smooth projective simple normal crossings pair. Expansions of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="X"><mi>X</mi></math> along <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> retain information about point configurations approaching the boundary that the ordinary Hilbert scheme <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> may forget. Logarithmic Hilbert stacks impose transversality and stability on subschemes of these expansions. Building on the GIT construction of Gulbrandsen–Halle–Hulek, we vary the torus linearisation on the full relative Hilbert scheme to study the resulting walls and birational transformations. These wall crossings also provide a way to compute invariants of logarithmic Hilbert stacks using the geometry of ordinary Hilbert schemes.
                       </p>
                       <p id="git-coarse-paragraph">
-                        For a smooth pointed curve, <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of two points on X equals the second symmetric power of X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><msup><mi mathvariant="normal">Sym</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> records the collision of two points at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> as <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, whereas the logarithmic Hilbert stack retains their configuration on an expansion. The comparison is a <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="1, 2"><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo></mrow></math>-weighted blow-up at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, illustrated below.
+                        For a smooth pointed curve, <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of two points on X equals the second symmetric power of X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><msup><mi mathvariant="normal">Sym</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> records the collision of two points at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> as <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, whereas the logarithmic Hilbert stack retains their configuration on an expansion. The comparison is a <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="1, 2"><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo></mrow></math>-weighted blow-up at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, as illustrated.
                       </p>
-                      <button class="diagram-toggle" id="git-coarse-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-coarse-diagram">
-                        <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
-                        <span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line equals the projective plane"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo><mo lspace=".22em" rspace=".22em">=</mo><msup><mi mathvariant="normal">ℙ</mi><mn>2</mn></msup></mrow></math><span class="diagram-toggle-arrow" aria-hidden="true">↗</span></span>
-                      </button>
-                      <p>
-                        For general SNC pairs, we construct finite Hilbert–Mumford criteria for GIT semistability of associated zero-cycles, determined by their support types. For smooth pointed curves, we classify the GIT walls—bubbling and discriminant—and their birational transformations, including walls sensitive to infinitesimal scheme structure. We construct a discriminant-only VGIT path, followed by a semiample contraction to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math>, and factor its wall-crossing diagram. This yields an explicit presentation of the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="logarithmic Hilbert stack of n points on X relative to D"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math>.
-                      </p>
-                      <p id="git-toric-paragraph">
-                        In genus zero, the full relative Hilbert scheme and the logarithmic Hilbert stack are toric; we determine the relative Mori and nef cones of the former over the expansion base, and the absolute Mori and nef cones of the latter.
-                      </p>
-                      <button class="diagram-toggle" id="git-toric-diagram-toggle" type="button" aria-expanded="false" aria-controls="git-toric-diagram">
-                        <span>Toric</span>
-                        <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math>
-                        <span class="diagram-toggle-arrow" aria-hidden="true">↗</span>
-                      </button>
                     </div>
-                    <div class="diagram-panels" id="git-diagrams" hidden>
-                    <aside class="diagram-panel" id="git-coarse-diagram" aria-labelledby="git-coarse-diagram-title" hidden>
+                    <aside class="diagram-panel" id="git-coarse-diagram" aria-labelledby="git-coarse-diagram-title">
                       <div class="diagram-panel-heading">
                         <h3 class="diagram-map-title" id="git-coarse-diagram-title"><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math><span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span></h3>
-                        <button class="diagram-close" type="button" aria-label="Close LogHilb diagram">×</button>
                       </div>
                       <a class="diagram-image-link" href="/diagrams/loghilb2-p1-coarse.svg?v=d3ddebd214c1" target="_blank" rel="noopener noreferrer" aria-label="Open the LogHilb diagram at full size in a new tab">
                         <img src="/diagrams/loghilb2-p1-coarse.svg?v=d3ddebd214c1" width="1502" height="889" alt="Coarse LogHilb²(ℙ¹, D) over the chart U, mapping by the blow-up of (x², y) to U = 𝔸² inside Hilb²(ℙ¹) = ℙ². The coarse space and the dotted neighbourhood U are filled sky blue; the exceptional curve E is red and the discriminant Δ is green." loading="lazy" decoding="async" />
                       </a>
                       <p class="diagram-caption">Select the diagram to view full size.</p>
                     </aside>
-                    <aside class="diagram-panel" id="git-toric-diagram" aria-labelledby="git-toric-diagram-title" hidden>
+                    <div class="research-description-content">
+                      <p>
+                        For general SNC pairs, we construct finite Hilbert–Mumford criteria for GIT semistability of associated zero-cycles, determined by their support types. For smooth pointed curves, we classify the GIT walls—bubbling and discriminant—and their birational transformations, including walls sensitive to infinitesimal scheme structure. We construct a discriminant-only VGIT path, followed by a semiample contraction to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math>, and factor its wall-crossing diagram. This yields an explicit presentation of the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="logarithmic Hilbert stack of n points on X relative to D"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math>.
+                      </p>
+                      <p id="git-toric-paragraph">
+                        In genus zero, the full relative Hilbert scheme and the logarithmic Hilbert stack are toric; we determine the relative Mori and nef cones of the former over the expansion base, and the absolute Mori and nef cones of the latter.
+                      </p>
+                    </div>
+                    <aside class="diagram-panel" id="git-toric-diagram" aria-labelledby="git-toric-diagram-title">
                       <div class="diagram-panel-heading">
                         <h3 id="git-toric-diagram-title">Toric <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math></h3>
-                        <button class="diagram-close" type="button" aria-label="Close toric LogHilb diagram">×</button>
                       </div>
                       <a class="diagram-image-link" href="/diagrams/loghilb2-p1-toric.svg" target="_blank" rel="noopener noreferrer" aria-label="Open the toric LogHilb diagram at full size in a new tab">
                         <img src="/diagrams/loghilb2-p1-toric.svg" width="2000" height="687" alt="Toric diagram showing successive subdivisions of the triangular sector from Σ for ℙ³ to Σ₃,₃ and then Σ for Q₀, with w₃ = 3v₀ + 2v₁ + v₂ and w₂ = 2v₀ + v₁; the polyhedral diagram on the right has labelled vertices v₀, v₁, v₂, v₃, w₃ and w₂." loading="lazy" decoding="async" />
                       </a>
                       <p class="diagram-caption">Select the diagram to view full size.</p>
                     </aside>
-                    </div>
                     </div>
                   </div>
                 </div>
@@ -200,94 +189,24 @@ import SiteFooter from "../components/SiteFooter.astro";
     researchCard?.querySelectorAll<HTMLButtonElement>(".research-description-toggle") ?? []
   );
   let descriptionOpener: HTMLButtonElement | null = null;
-  let descriptionSwitch = 0;
-  const diagramToggles = Array.from(
-    researchCard?.querySelectorAll<HTMLButtonElement>(".diagram-toggle") ?? []
-  );
-  const diagramPanels = document.querySelector<HTMLElement>("#git-diagrams");
-  const descriptionContent = document.querySelector<HTMLElement>("#git-description .research-description-content");
-  const coarseParagraph = document.querySelector<HTMLElement>("#git-coarse-paragraph");
-  const coarsePanel = document.querySelector<HTMLElement>("#git-coarse-diagram");
-  const toricPanel = document.querySelector<HTMLElement>("#git-toric-diagram");
-  let openDiagramOrder: HTMLButtonElement[] = [];
-  let alignmentFrame = 0;
+  let cancelDescriptionScroll = () => {};
 
-  function alignDiagramPanels() {
-    if (!diagramPanels || !descriptionContent || !coarseParagraph || !coarsePanel || !toricPanel) return;
-    if (diagramPanels.hidden || !window.matchMedia("(min-width: 1100px)").matches) {
-      coarsePanel.style.marginTop = "";
-      toricPanel.style.marginTop = "";
-      return;
+  // User input takes priority over an in-progress description transition.
+  window.addEventListener("wheel", () => cancelDescriptionScroll(), { passive: true });
+  window.addEventListener("touchstart", () => cancelDescriptionScroll(), { passive: true });
+  window.addEventListener("pointerdown", () => cancelDescriptionScroll(), { passive: true });
+  window.addEventListener("resize", () => cancelDescriptionScroll());
+  window.addEventListener("pagehide", () => cancelDescriptionScroll());
+  document.addEventListener("keydown", (event) => {
+    if (["Escape", "Tab", "ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
+      cancelDescriptionScroll();
     }
-    const columnTop = diagramPanels.getBoundingClientRect().top;
-    const gap = parseFloat(getComputedStyle(diagramPanels).rowGap) || 0;
-    const coarseOffset = coarsePanel.hidden ? 0 : Math.max(0, coarseParagraph.getBoundingClientRect().top - columnTop);
-    const coarseMargin = coarsePanel.hidden ? "" : `${coarseOffset}px`;
-    if (coarsePanel.style.marginTop !== coarseMargin) coarsePanel.style.marginTop = coarseMargin;
-    const precedingHeight = coarsePanel.hidden ? 0 : coarseOffset + coarsePanel.getBoundingClientRect().height + gap;
-    const descriptionBottom = descriptionContent.getBoundingClientRect().bottom;
-    const toricHeight = toricPanel.getBoundingClientRect().height;
-    const marginTop = toricPanel.hidden ? "" : `${Math.max(0, descriptionBottom - columnTop - precedingHeight - toricHeight)}px`;
-    if (toricPanel.style.marginTop !== marginTop) toricPanel.style.marginTop = marginTop;
-  }
-
-  function scheduleDiagramAlignment() {
-    if (alignmentFrame) return;
-    alignmentFrame = requestAnimationFrame(() => {
-      alignmentFrame = 0;
-      alignDiagramPanels();
-    });
-  }
-
-  const diagramResizeObserver = new ResizeObserver(scheduleDiagramAlignment);
-  if (descriptionContent) {
-    diagramResizeObserver.observe(descriptionContent);
-    descriptionContent.querySelectorAll("p").forEach((paragraph) => diagramResizeObserver.observe(paragraph));
-  }
-  if (coarsePanel) diagramResizeObserver.observe(coarsePanel);
-  if (toricPanel) diagramResizeObserver.observe(toricPanel);
-  window.addEventListener("resize", scheduleDiagramAlignment);
-
-  function setDiagramOpen(toggle: HTMLButtonElement, open: boolean, restoreFocus = false) {
-    const panelId = toggle.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : null;
-    if (!panel || !diagramPanels || !researchCard) return;
-    toggle.setAttribute("aria-expanded", String(open));
-    panel.hidden = !open;
-    openDiagramOrder = openDiagramOrder.filter((other) => other !== toggle);
-    if (open) openDiagramOrder.push(toggle);
-    const anyOpen = openDiagramOrder.length > 0;
-    diagramPanels.hidden = !anyOpen;
-    researchCard.dataset.diagramOpen = String(anyOpen);
-    alignDiagramPanels();
-    if (open) {
-      requestAnimationFrame(() => {
-        alignDiagramPanels();
-        if (!panel.hidden) panel.scrollIntoView({ block: "nearest" });
-      });
-    }
-    if (restoreFocus) toggle.focus();
-  }
-
-  diagramToggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-      setDiagramOpen(toggle, toggle.getAttribute("aria-expanded") !== "true");
-    });
-    const panelId = toggle.getAttribute("aria-controls");
-    const panel = panelId ? document.getElementById(panelId) : null;
-    panel?.querySelector<HTMLButtonElement>(".diagram-close")?.addEventListener("click", () => {
-      setDiagramOpen(toggle, false, true);
-    });
   });
 
   function setDescriptionOpen(toggle: HTMLButtonElement, open: boolean) {
     const article = toggle.closest<HTMLElement>(".research-article");
     const description = article?.querySelector<HTMLElement>(".research-description");
     if (!article || !description) return;
-
-    if (!open && toggle.id === "git-title") {
-      diagramToggles.forEach((diagramToggle) => setDiagramOpen(diagramToggle, false));
-    }
 
     toggle.setAttribute("aria-expanded", String(open));
     article.dataset.expanded = String(open);
@@ -301,29 +220,56 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   function toggleDescription(toggle: HTMLButtonElement, trigger: HTMLButtonElement) {
+    cancelDescriptionScroll();
     const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
     const switchingDescriptions = shouldOpen && researchToggles.some((other) =>
       other !== toggle && other.getAttribute("aria-expanded") === "true"
     );
-    const currentSwitch = ++descriptionSwitch;
+    const initialTop = toggle.getBoundingClientRect().top;
+    const root = document.documentElement;
+    if (switchingDescriptions) root.dataset.descriptionSwitching = "true";
+
     researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
     descriptionOpener = shouldOpen ? trigger : null;
+    if (!switchingDescriptions) return;
 
-    if (switchingDescriptions) {
-      requestAnimationFrame(async () => {
-        // Wait for the previous description to collapse, including reduced-motion layouts.
-        const animations = Array.from(researchCard?.querySelectorAll(".research-description") ?? [])
-          .flatMap((description) => description.getAnimations());
-        await Promise.allSettled(animations.map((animation) => animation.finished));
-        if (currentSwitch !== descriptionSwitch || toggle.getAttribute("aria-expanded") !== "true") return;
-        const heading = toggle.getBoundingClientRect();
-        const description = toggle.closest(".research-article")?.querySelector(".research-description");
-        const descriptionTop = description?.getBoundingClientRect().top ?? heading.bottom;
-        if (heading.top < 0 || descriptionTop >= window.innerHeight) {
-          toggle.scrollIntoView({ block: "start", behavior: "instant" });
-        }
+    let frame = 0;
+    let cancelled = false;
+    cancelDescriptionScroll = () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+      delete root.dataset.descriptionSwitching;
+      cancelDescriptionScroll = () => {};
+    };
+
+    const positionHeading = (top: number) => {
+      const currentTop = toggle.getBoundingClientRect().top;
+      window.scrollTo({
+        top: window.scrollY + currentTop - top,
+        behavior: "instant",
       });
+    };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      positionHeading(24);
+      cancelDescriptionScroll();
+      return;
     }
+
+    const animations = Array.from(researchCard?.querySelectorAll(".research-description") ?? [])
+      .flatMap((description) => description.getAnimations());
+    let settled = false;
+    Promise.allSettled(animations.map((animation) => animation.finished)).then(() => { settled = true; });
+    const started = performance.now();
+    const animate = (now: number) => {
+      if (cancelled) return;
+      const progress = Math.min(1, (now - started) / 320);
+      const eased = progress * progress * (3 - 2 * progress);
+      // Follow the selected heading during the collapse, before each frame is painted.
+      positionHeading(initialTop + (24 - initialTop) * eased);
+      if (progress < 1 || !settled) frame = requestAnimationFrame(animate);
+      else cancelDescriptionScroll();
+    };
+    frame = requestAnimationFrame(animate);
   }
 
   researchToggles.forEach((toggle) => {
@@ -338,23 +284,13 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   researchCard?.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
-    if (openDiagramOrder.length > 0) {
-      const target = event.target instanceof Element ? event.target : null;
-      const focusedPanel = target?.closest<HTMLElement>(".diagram-panel");
-      const focusedToggle = target?.closest<HTMLButtonElement>(".diagram-toggle");
-      const diagramToggle = openDiagramOrder.find((toggle) =>
-        toggle === focusedToggle || toggle.getAttribute("aria-controls") === focusedPanel?.id
-      ) ?? openDiagramOrder[openDiagramOrder.length - 1];
-      setDiagramOpen(diagramToggle, false, true);
-      event.preventDefault();
-      return;
-    }
+    cancelDescriptionScroll();
     const openToggle = researchToggles.find((toggle) => toggle.getAttribute("aria-expanded") === "true");
     if (!openToggle) return;
     const focusTarget = descriptionOpener ?? openToggle;
     setDescriptionOpen(openToggle, false);
     descriptionOpener = null;
-    focusTarget.focus();
+    focusTarget.focus({ preventScroll: true });
     event.preventDefault();
   });
 </script>
@@ -409,7 +345,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     align-items: start;
   }
 
-  .publications { display: grid; gap: 18px; max-width: 820px; }
+  .publications { display: grid; gap: 18px; width: min(100%, 980px); margin: 0 auto; }
 
   .publication-card {
     position: relative;
@@ -538,17 +474,19 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
   .research-description-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 
+  :global(html[data-description-switching="true"]) { overflow-anchor: none; }
+
   .research-description {
     display: grid;
     grid-template-rows: 0fr;
     visibility: hidden;
-    transition: grid-template-rows 200ms ease, visibility 0s linear 200ms;
+    transition: grid-template-rows 320ms ease, visibility 0s linear 320ms;
   }
 
   .research-article[data-expanded="true"] .research-description {
     grid-template-rows: 1fr;
     visibility: visible;
-    transition: grid-template-rows 200ms ease, visibility 0s;
+    transition: grid-template-rows 320ms ease, visibility 0s;
   }
 
   .research-description-clip { min-height: 0; overflow: hidden; }
@@ -571,43 +509,11 @@ import SiteFooter from "../components/SiteFooter.astro";
   .research-description-layout { display: grid; min-width: 0; align-items: start; }
   .research-description-layout > .research-description-content { min-width: 0; }
 
-  .diagram-toggle {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 4px .25em;
-    max-width: 100%;
-    min-height: 44px;
-    margin: 12px 0;
-    padding: 4px 0;
-    border: 0;
-    border-radius: 3px;
-    --diagram-toggle-highlight: color-mix(in srgb, var(--link) 9%, transparent);
-    background: transparent;
-    color: var(--link);
-    font: inherit;
-    text-align: left;
-    text-decoration: none;
-    cursor: pointer;
-  }
   .diagram-map-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; min-width: 0; }
   .diagram-map-target { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
-  .diagram-toggle .diagram-map-target { gap: .25em; }
   .diagram-map-arrow { width: 2em; height: .75em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.2; }
-  .diagram-toggle:hover,
-  .diagram-toggle:focus-visible {
-    background: var(--diagram-toggle-highlight);
-    box-shadow: 0 0 0 3px var(--diagram-toggle-highlight);
-    text-decoration: none;
-  }
-  .diagram-toggle-arrow { font-size: 1.1em; }
-  .diagram-toggle[aria-expanded="true"] .diagram-toggle-arrow { transform: rotate(90deg); }
-  .diagram-toggle:focus-visible,
-  .diagram-close:focus-visible,
   .diagram-image-link:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
 
-  .diagram-panels { display: grid; min-width: 0; gap: 24px; margin: 16px 0 4px; align-content: start; }
-  .diagram-panels[hidden] { display: none; }
   .diagram-panel {
     min-width: 0;
     margin: 0;
@@ -617,34 +523,21 @@ import SiteFooter from "../components/SiteFooter.astro";
     background: var(--card-bg);
     box-shadow: 0 6px 18px var(--shadow);
   }
-  .diagram-panel[hidden] { display: none; }
+  .illustrated-description .diagram-panel { margin: 16px 0 4px; }
   .diagram-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
   .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .88rem; font-weight: 600; }
-  .diagram-close {
-    display: grid;
-    place-items: center;
-    flex: 0 0 44px;
-    width: 44px;
-    height: 44px;
-    margin: -8px -8px -8px 0;
-    padding: 0;
-    border: 0;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--muted);
-    font: inherit;
-    font-size: 1.54rem;
-    cursor: pointer;
-  }
-  .diagram-close:hover { color: var(--link); background: var(--description-bg); }
   .diagram-image-link { display: block; border-radius: 6px; background: #fff; }
   .diagram-image-link img { display: block; width: 100%; height: auto; border-radius: inherit; }
   .diagram-caption { margin: 10px 0 0; color: var(--muted); font-size: .682rem; line-height: 1.5; opacity: .72; }
 
-  @media (min-width: 1100px) {
-    .research-articles[data-diagram-open="true"] { width: min(1100px, calc(100vw - 48px)); }
-    .research-articles[data-diagram-open="true"] .research-description-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; }
-    .diagram-panels { margin-top: 12px; }
+  @media (min-width: 960px) {
+    .illustrated-description {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 16px 20px;
+      margin-top: 12px;
+    }
+    .illustrated-description > .research-description-content,
+    .illustrated-description > .diagram-panel { margin: 0; }
   }
 
   @media (pointer: coarse) {
@@ -667,6 +560,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   @media (max-width: 680px) {
+    .page-shell { width: min(100% - 32px, 1100px); }
     .publication-heading { display: block; }
     .research-article-toggle { vertical-align: top; }
     .research-description-toggle { min-height: 44px; margin-top: 0; padding: 2px 0 10px; }
