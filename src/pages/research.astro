@@ -98,6 +98,26 @@ import SiteFooter from "../components/SiteFooter.astro";
               </li>
               <li class="research-article">
                 <div class="publication-heading">
+                  <button class="research-article-toggle" id="surfaces-title" type="button" aria-expanded="false" aria-controls="surfaces-description">
+                    <span class="publication-title">Wall-crossings in Hilbert scheme of expansion of surfaces</span>
+                  </button>
+                  <span class="publication-status">(In preparation)</span>
+                </div>
+                <button class="research-description-toggle" id="surfaces-description-toggle" type="button" aria-expanded="false" aria-controls="surfaces-description" aria-describedby="surfaces-title">
+                  <span class="description-toggle-label">Show description</span>
+                </button>
+                <div class="research-description" id="surfaces-description" role="region" aria-labelledby="surfaces-title" aria-hidden="true" inert>
+                  <div class="research-description-clip">
+                    <div class="research-description-layout">
+                      <div class="research-description-content">
+                        <p>We are extending the wall-crossing analysis to smooth projective surface pairs.  New wall crossings appear already in length two, including a Francia flip. For the projective plane with a line as boundary, we compute the integral Chow ring of the logarithmic Hilbert stack and the integral operational Chow ring of its coarse moduli space. Using the length-two wall crossing, we determine numerical cones, establish non-toricity for the logarithmic Hilbert stack of the projective plane with a line as boundary, and compute its motivic class using Göttsche’s results on ordinary Hilbert schemes.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="research-article">
+                <div class="publication-heading">
                   <button class="research-article-toggle" id="stability-title" type="button" aria-expanded="false" aria-controls="stability-description">
                     <span class="publication-title">K-stability of singular del Pezzo surfaces.</span>
                   </button>
