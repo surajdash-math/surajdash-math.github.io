@@ -46,15 +46,14 @@ import SiteFooter from "../components/SiteFooter.astro";
                 </button>
                 <div class="research-description" id="git-description" role="region" aria-labelledby="git-title" aria-hidden="true" inert>
                   <div class="research-description-clip">
-                    <div class="research-description-layout illustrated-description">
-                    <div class="research-description-content">
+                    <div class="research-description-layout">
+                    <div class="research-description-content illustrated-description">
                       <p>
                         Let <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="the pair X, D"><mrow><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math> be a smooth projective simple normal crossings pair. Expansions of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="X"><mi>X</mi></math> along <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> retain information about point configurations approaching the boundary that the ordinary Hilbert scheme <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> may forget. Logarithmic Hilbert stacks impose transversality and stability on subschemes of these expansions. Building on the GIT construction of Gulbrandsen–Halle–Hulek, we vary the torus linearisation on the full relative Hilbert scheme to study the resulting walls and birational transformations. These wall crossings also provide a way to compute invariants of logarithmic Hilbert stacks using the geometry of ordinary Hilbert schemes.
                       </p>
                       <p id="git-coarse-paragraph">
                         For a smooth pointed curve, <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of two points on X equals the second symmetric power of X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><msup><mi mathvariant="normal">Sym</mi><mn>2</mn></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math> records the collision of two points at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="D"><mi>D</mi></math> as <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, whereas the logarithmic Hilbert stack retains their configuration on an expansion. The comparison is a <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="1, 2"><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>)</mo></mrow></math>-weighted blow-up at <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="2 D"><mrow><mn>2</mn><mi>D</mi></mrow></math>, as illustrated.
                       </p>
-                    </div>
                     <aside class="diagram-panel" id="git-coarse-diagram" aria-labelledby="git-coarse-diagram-title">
                       <div class="diagram-panel-heading">
                         <h3 class="diagram-map-title" id="git-coarse-diagram-title"><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math><span class="diagram-map-target"><svg class="diagram-map-arrow" viewBox="0 0 32 12" aria-hidden="true" focusable="false"><path d="M2 6H26" stroke-linecap="round" /><path d="m23 2 5 4-5 4" /></svg><math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="maps to Hilb squared of the projective line"><mrow><msup><mi mathvariant="normal">Hilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>)</mo></mrow></math></span></h3>
@@ -64,14 +63,12 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </a>
                       <p class="diagram-caption">Select the diagram to view full size.</p>
                     </aside>
-                    <div class="research-description-content">
                       <p>
                         For general SNC pairs, we construct finite Hilbert–Mumford criteria for GIT semistability of associated zero-cycles, determined by their support types. For smooth pointed curves, we classify the GIT walls—bubbling and discriminant—and their birational transformations, including walls sensitive to infinitesimal scheme structure. We construct a discriminant-only VGIT path, followed by a semiample contraction to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math>, and factor its wall-crossing diagram. This yields an explicit presentation of the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="logarithmic Hilbert stack of n points on X relative to D"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math>.
                       </p>
                       <p id="git-toric-paragraph">
                         In genus zero, the full relative Hilbert scheme and the logarithmic Hilbert stack are toric; we determine the relative Mori and nef cones of the former over the expansion base, and the absolute Mori and nef cones of the latter.
                       </p>
-                    </div>
                     <aside class="diagram-panel" id="git-toric-diagram" aria-labelledby="git-toric-diagram-title">
                       <div class="diagram-panel-heading">
                         <h3 id="git-toric-diagram-title">Toric <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="LogHilb squared of the projective line with infinity"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mn>2</mn></msup><mo>(</mo><msup><mi mathvariant="normal">ℙ</mi><mn>1</mn></msup><mo>,</mo><mo>∞</mo><mo>)</mo></mrow></math></h3>
@@ -81,6 +78,7 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </a>
                       <p class="diagram-caption">Select the diagram to view full size.</p>
                     </aside>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -502,12 +500,16 @@ import SiteFooter from "../components/SiteFooter.astro";
     line-height: 1.65;
   }
 
-  .research-description-content p { margin: 0; line-height: inherit; }
-  .research-description-content p + p { margin-top: 12px; }
+  .research-description-content > p { margin: 0; line-height: inherit; }
+  .research-description-content > p + p { margin-top: 12px; }
   .inline-math { font-family: "STIX Two Math", "Cambria Math", math; font-size: 1em; }
 
   .research-description-layout { display: grid; min-width: 0; align-items: start; }
   .research-description-layout > .research-description-content { min-width: 0; }
+
+  .illustrated-description { display: grid; gap: 12px; align-items: start; }
+  .illustrated-description > p { min-width: 0; }
+  .illustrated-description > p + p { margin-top: 0; }
 
   .diagram-map-title { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 7px; min-width: 0; }
   .diagram-map-target { display: inline-flex; align-items: center; gap: .4em; white-space: nowrap; }
@@ -523,7 +525,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     background: var(--card-bg);
     box-shadow: 0 6px 18px var(--shadow);
   }
-  .illustrated-description .diagram-panel { margin: 16px 0 4px; }
+  .illustrated-description .diagram-panel { width: 100%; max-width: 320px; margin: 4px 0; justify-self: center; }
   .diagram-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
   .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .88rem; font-weight: 600; }
   .diagram-image-link { display: block; border-radius: 6px; background: #fff; }
@@ -532,11 +534,16 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   @media (min-width: 960px) {
     .illustrated-description {
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-      gap: 16px 20px;
-      margin-top: 12px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+      column-gap: 20px;
     }
-    .illustrated-description > .research-description-content,
+    .illustrated-description > p { grid-column: 1; }
+    .illustrated-description > p:nth-of-type(1) { grid-row: 1; }
+    .illustrated-description > p:nth-of-type(3) { grid-row: 3; }
+    #git-coarse-paragraph { grid-row: 2; }
+    #git-toric-paragraph { grid-row: 4; }
+    #git-coarse-diagram { grid-column: 2; grid-row: 2 / 4; transform: translateY(-24px); }
+    #git-toric-diagram { grid-column: 2; grid-row: 3 / 5; align-self: end; }
     .illustrated-description > .diagram-panel { margin: 0; }
   }
 
