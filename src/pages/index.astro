@@ -1,5 +1,4 @@
 ---
-import "../styles/site-design.css";
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
 import OdiaName from "../components/OdiaName.astro";
@@ -190,9 +189,9 @@ const socialImageURL = Astro.site
     margin: 0;
     min-height: 100vh;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: var(--site-body-size);
+    font-size: 19.8px;
     font-weight: 400;
-    line-height: var(--site-body-leading);
+    line-height: 1.58;
     color: var(--text);
     background:
       radial-gradient(circle at top right, var(--body-glow), transparent 34rem),
@@ -202,7 +201,7 @@ const socialImageURL = Astro.site
 
   :global(p) {
     color: var(--text);
-    line-height: var(--site-body-leading);
+    line-height: 1.58;
   }
 
   :global(a) {
@@ -276,7 +275,7 @@ const socialImageURL = Astro.site
 
   .content-shell {
     position: relative;
-    width: min(var(--site-content-width), calc(100% - 2 * var(--site-gutter)));
+    width: min(1020px, calc(100% - 48px));
     margin: 0 auto;
     padding-bottom: 112px;
   }
@@ -325,7 +324,7 @@ const socialImageURL = Astro.site
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
-    width: min(var(--site-content-width), calc(100% - 2 * var(--site-gutter)));
+    width: min(1020px, calc(100% - 48px));
     margin-bottom: 28px;
     padding: 12px 0 18px;
     border-bottom: 0;
@@ -441,7 +440,7 @@ const socialImageURL = Astro.site
 
   .profile-copy {
     display: grid;
-    gap: var(--site-heading-gap);
+    gap: 16px;
   }
 
   .about-copy {
@@ -459,10 +458,14 @@ const socialImageURL = Astro.site
   }
 
   @media (min-width: 821px) {
-    .profile-aside {
-      margin-top: var(--site-panel-padding);
-    }
+  .profile-aside {
+    margin-top: 13px;
   }
+
+  :global(html[data-theme="dark"]) .profile-aside {
+    margin-top: 0;
+  }
+}
 
   h1 {
     margin: 0;
@@ -488,7 +491,7 @@ const socialImageURL = Astro.site
 
   .contact-card,
   .info-card {
-    border-radius: var(--site-panel-radius);
+    border-radius: 18px;
     background: var(--card-surface);
     box-shadow: 0 18px 48px var(--shadow);
   }
@@ -499,11 +502,13 @@ const socialImageURL = Astro.site
   }
 
   .info-card {
-    padding: var(--site-panel-padding);
+    padding: 22px 24px 24px;
     box-shadow: 0 10px 28px var(--soft-card-shadow);
   }
 
   :global(html[data-theme="light"]) .info-card {
+    padding: 0;
+    border-radius: 0;
     background: transparent;
     box-shadow: none;
   }
@@ -526,7 +531,6 @@ const socialImageURL = Astro.site
     overflow: hidden;
     border: 1px solid var(--line);
     background: var(--surface-2);
-    border-radius: var(--site-panel-radius);
   }
 
   .portrait {
@@ -557,9 +561,9 @@ const socialImageURL = Astro.site
 
   .introduction {
     margin: 0;
-    font-size: var(--site-body-size);
+    font-size: 1.21rem;
     font-style: normal;
-    line-height: var(--site-body-leading);
+    line-height: 1.58;
     color: var(--text);
   }
 
@@ -589,12 +593,9 @@ const socialImageURL = Astro.site
 
   .profile-copy .about-heading,
   .research-text h2 {
-    font-size: var(--site-heading-size);
-    font-weight: var(--site-heading-weight);
+    font-size: clamp(1.485rem, 2.64vw, 1.98rem);
+    font-weight: 500;
     color: var(--heading);
-    font-family: var(--site-heading-font);
-    line-height: var(--site-heading-leading);
-    letter-spacing: var(--site-heading-tracking);
   }
 
   .about-heading {
@@ -602,19 +603,19 @@ const socialImageURL = Astro.site
   }
 
   .research-text h2 {
-    margin: 0 0 var(--site-heading-gap);
+    margin: 0 0 16px;
   }
 
   .research-text > p {
     margin: 0;
-    font-size: var(--site-body-size);
-    line-height: var(--site-body-leading);
+    font-size: 1.21rem;
+    line-height: 1.58;
     color: var(--text);
   }
 
   .research-text {
     max-width: 680px;
-    margin-top: var(--site-section-gap);
+    margin-top: 1.75rem;
   }
 
   .research-text > p + p {
@@ -700,7 +701,7 @@ const socialImageURL = Astro.site
   @media (max-width: 680px), (max-width: 1024px) and (max-height: 500px) {
     .site-header {
       top: 20px;
-      width: min(var(--site-content-width), calc(100% - 2 * var(--site-gutter)));
+      width: min(100% - 32px, 1020px);
       flex-direction: row;
       align-items: center;
       gap: 0;
@@ -722,11 +723,11 @@ const socialImageURL = Astro.site
   @media (max-width: 680px) {
     .content-shell,
     .site-header {
-      width: min(var(--site-content-width), calc(100% - 2 * var(--site-gutter)));
+      width: min(100% - 32px, 1020px);
     }
 
     .info-card {
-      padding: var(--site-panel-padding);
+      padding: 20px 19px 22px;
     }
 
   }

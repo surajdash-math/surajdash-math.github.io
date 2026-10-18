@@ -1,5 +1,4 @@
 ---
-import "../styles/site-design.css";
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteVersion from "../components/SiteVersion.astro";
@@ -244,9 +243,9 @@ const drpEntries: DrpEntry[] = [
     margin: 0;
     min-height: 100vh;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: var(--site-body-size);
+    font-size: 19.8px;
     font-weight: 400;
-    line-height: var(--site-body-leading);
+    line-height: 1.6;
     color: var(--text);
     background: var(--bg);
     transition: color 180ms ease, background-color 180ms ease;
@@ -254,7 +253,7 @@ const drpEntries: DrpEntry[] = [
 
   :global(p) {
     color: var(--text);
-    line-height: var(--site-body-leading);
+    line-height: 1.6;
   }
 
   :global(a) {
@@ -284,24 +283,24 @@ const drpEntries: DrpEntry[] = [
   .page-shell {
     position: relative;
     z-index: 1;
-    width: min(var(--site-shell-width), calc(100% - 2 * var(--site-gutter)));
+    width: min(1100px, calc(100% - 48px));
     margin: 0 auto;
     padding: 32px 0 112px;
   }
 
   .teaching-sections {
     display: grid;
-    gap: var(--site-section-gap);
-    width: min(100%, var(--site-content-width));
+    gap: 20px;
+    width: min(100%, 980px);
     margin: 0 auto;
   }
 
   .publication-card {
     min-width: 0;
     position: relative;
-    padding: var(--site-panel-padding);
+    padding: 24px 26px;
     border: 1px solid var(--line);
-    border-radius: var(--site-panel-radius);
+    border-radius: 14px;
     background: var(--card-bg);
     box-shadow: 0 10px 28px var(--shadow);
   }
@@ -320,13 +319,9 @@ const drpEntries: DrpEntry[] = [
   }
 
   .publication-card h2 {
-    margin: 0 0 var(--site-heading-gap);
-    font-size: var(--site-heading-size);
+    margin: 0 0 9px;
+    font-size: 1.32rem;
     color: var(--heading);
-    font-family: var(--site-heading-font);
-    font-weight: var(--site-heading-weight);
-    line-height: var(--site-heading-leading);
-    letter-spacing: var(--site-heading-tracking);
   }
 
   .card-header {
@@ -334,7 +329,7 @@ const drpEntries: DrpEntry[] = [
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
-    padding-bottom: var(--site-heading-gap);
+    padding-bottom: 13px;
     margin-bottom: 2px;
     border-bottom: 1px solid var(--divider);
   }
@@ -404,8 +399,6 @@ const drpEntries: DrpEntry[] = [
     font-size: 18px;
     padding-top: 2px;
     color: var(--date-accent, var(--accent));
-    font-weight: 600;
-    letter-spacing: 0.025em;
   }
 
   .entry-details {
@@ -417,7 +410,7 @@ const drpEntries: DrpEntry[] = [
 
   .mentee {
     color: var(--text);
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .topic {
@@ -470,12 +463,12 @@ const drpEntries: DrpEntry[] = [
 
   @media (max-width: 680px) {
     .page-shell {
-      width: min(var(--site-shell-width), calc(100% - 2 * var(--site-gutter)));
+      width: min(100% - 32px, 1100px);
     }
 
     .publication-card {
       min-width: 0;
-      padding: var(--site-panel-padding);
+      padding: 20px;
     }
 
     .card-header {
@@ -531,6 +524,8 @@ const drpEntries: DrpEntry[] = [
   }
 
   :global(html[data-theme="light"]) .publication-card {
+    min-width: 0;
+    border-radius: 14px;
     box-shadow: 6px 6px 0 rgba(31, 57, 69, 0.15);
   }
 
@@ -538,14 +533,26 @@ const drpEntries: DrpEntry[] = [
     box-shadow: none;
   }
 
+  :global(html[data-theme="light"]) .publication-card h2 {
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    font-size: 1.474rem;
+    font-weight: 700;
+    letter-spacing: -0.012em;
+  }
+
   :global(html[data-theme="light"]) .card-header {
+    padding-bottom: 15px;
     border-bottom-color: rgba(41, 73, 88, 0.42);
   }
 
-
+  :global(html[data-theme="light"]) .term {
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
 
   :global(html[data-theme="light"]) .mentee {
     color: #283c46;
+    font-weight: 500;
   }
 
   :global(html[data-theme="light"]) .topic {
