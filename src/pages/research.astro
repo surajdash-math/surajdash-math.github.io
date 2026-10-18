@@ -200,6 +200,7 @@ import SiteFooter from "../components/SiteFooter.astro";
     researchCard?.querySelectorAll<HTMLButtonElement>(".research-description-toggle") ?? []
   );
   let descriptionOpener: HTMLButtonElement | null = null;
+  let descriptionSwitch = 0;
   const diagramToggles = Array.from(
     researchCard?.querySelectorAll<HTMLButtonElement>(".diagram-toggle") ?? []
   );
@@ -301,8 +302,28 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   function toggleDescription(toggle: HTMLButtonElement, trigger: HTMLButtonElement) {
     const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
+    const switchingDescriptions = shouldOpen && researchToggles.some((other) =>
+      other !== toggle && other.getAttribute("aria-expanded") === "true"
+    );
+    const currentSwitch = ++descriptionSwitch;
     researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
     descriptionOpener = shouldOpen ? trigger : null;
+
+    if (switchingDescriptions) {
+      requestAnimationFrame(async () => {
+        // Wait for the previous description to collapse, including reduced-motion layouts.
+        const animations = Array.from(researchCard?.querySelectorAll(".research-description") ?? [])
+          .flatMap((description) => description.getAnimations());
+        await Promise.allSettled(animations.map((animation) => animation.finished));
+        if (currentSwitch !== descriptionSwitch || toggle.getAttribute("aria-expanded") !== "true") return;
+        const heading = toggle.getBoundingClientRect();
+        const description = toggle.closest(".research-article")?.querySelector(".research-description");
+        const descriptionTop = description?.getBoundingClientRect().top ?? heading.bottom;
+        if (heading.top < 0 || descriptionTop >= window.innerHeight) {
+          toggle.scrollIntoView({ block: "start", behavior: "instant" });
+        }
+      });
+    }
   }
 
   researchToggles.forEach((toggle) => {
