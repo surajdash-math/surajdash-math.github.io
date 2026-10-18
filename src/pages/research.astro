@@ -1,4 +1,5 @@
 ---
+import "../styles/site-design.css";
 // The research page collects preprints, theses, and other writings.
 import ThemeInit from "../components/ThemeInit.astro";
 import SiteNav from "../components/SiteNav.astro";
@@ -365,21 +366,21 @@ import SiteFooter from "../components/SiteFooter.astro";
     margin: 0;
     min-height: 100vh;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 19.8px;
+    font-size: var(--site-body-size);
     font-weight: 400;
-    line-height: 1.6;
+    line-height: var(--site-body-leading);
     color: var(--text);
     background: radial-gradient(circle at top right, var(--body-glow), transparent 34rem), var(--bg);
     transition: color 180ms ease, background-color 180ms ease;
   }
   :global(.page-watermark) { z-index: -1; }
-  :global(p) { color: var(--text); line-height: 1.6; }
+  :global(p) { color: var(--text); line-height: var(--site-body-leading); }
   :global(a) { color: var(--link); text-decoration-thickness: .08em; text-underline-offset: .16em; }
   .research-layout :global(a) { font-weight: 600; text-decoration: none; }
   .research-layout :global(a:hover), .research-layout :global(a:focus-visible) { text-decoration: underline; text-decoration-thickness: .1em; text-underline-offset: .18em; }
   :global(strong) { font-weight: 650; }
   h2 { font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 600; color: var(--heading); }
-  .page-shell { position: relative; z-index: 1; width: min(1100px, calc(100% - 48px)); min-height: 100vh; margin: 0 auto; padding: 32px 0 112px; }
+  .page-shell { position: relative; z-index: 1; width: min(var(--site-shell-width), calc(100% - 2 * var(--site-gutter))); min-height: 100vh; margin: 0 auto; padding: 32px 0 112px; }
 
   .research-layout {
     display: grid;
@@ -388,15 +389,20 @@ import SiteFooter from "../components/SiteFooter.astro";
     align-items: start;
   }
 
-  .publications { display: grid; gap: 18px; max-width: 820px; }
+  .publications { display: grid; gap: var(--site-section-gap); max-width: none;
+    width: 100%;
+  }
 
   .publication-card {
     position: relative;
-    padding: 22px 24px;
+    padding: var(--site-panel-padding);
     border: 1px solid var(--line);
-    border-radius: 20px;
+    border-radius: var(--site-panel-radius);
     background: var(--card-bg);
     box-shadow: 0 14px 36px var(--shadow);
+    width: min(100%, var(--site-content-width));
+    justify-self: center;
+    min-width: 0;
   }
 
   .publication-card::before {
@@ -413,18 +419,22 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   .publication-card h2 {
-    margin: 0 0 12px;
-    font-size: 1.32rem;
+    margin: 0 0 var(--site-heading-gap);
+    font-size: var(--site-heading-size);
     color: var(--heading);
+    font-family: var(--site-heading-font);
+    font-weight: var(--site-heading-weight);
+    line-height: var(--site-heading-leading);
+    letter-spacing: var(--site-heading-tracking);
   }
 
   .publication-card ul {
     margin: 0;
-    padding-left: 1.1rem;
+    padding-left: 1.25rem;
     display: grid;
     gap: 10px;
     color: var(--text);
-    line-height: 1.6;
+    line-height: var(--site-body-leading);
   }
 
   .publication-card li { padding-left: 4px; }
@@ -457,7 +467,6 @@ import SiteFooter from "../components/SiteFooter.astro";
   :global(html[data-theme="dark"]) .publication-status {
     color: #d6a387;
   }
-
 
   .research-articles {
     --description-accent: #925c45;
@@ -598,7 +607,10 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
   .diagram-panel[hidden] { display: none; }
   .diagram-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-  .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .88rem; font-weight: 600; }
+  .diagram-panel h3 { margin: 0; color: var(--heading); font-size: .88rem; font-weight: 600;
+    font-family: var(--site-heading-font);
+    line-height: var(--site-heading-leading);
+  }
   .diagram-close {
     display: grid;
     place-items: center;
@@ -621,7 +633,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   .diagram-caption { margin: 10px 0 0; color: var(--muted); font-size: .682rem; line-height: 1.5; opacity: .72; }
 
   @media (min-width: 1100px) {
-    .research-articles[data-diagram-open="true"] { width: min(1100px, calc(100vw - 48px)); }
+    .research-articles[data-diagram-open="true"] { width: 100%; }
     .research-articles[data-diagram-open="true"] .research-description-layout { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; }
     .diagram-panels { margin-top: 12px; }
   }
@@ -664,10 +676,10 @@ import SiteFooter from "../components/SiteFooter.astro";
 
   .writing-disclaimer {
     margin: 0 0 24px;
-    font-size: .66rem;
+    font-size: .77rem;
     font-weight: 400;
     font-style: italic;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--muted);
     opacity: .78;
   }
@@ -691,7 +703,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   .caption-math { white-space: nowrap; }
   .caption-math sup { font-size: .72em; line-height: 0; }
 
-  /* Light mode: a sharper technical-atlas treatment. Dark mode remains unchanged. */
+  /* Light-mode colours and surface treatment. */
   :global(html[data-theme="light"]) {
     --bg: #d8e4e9;
     --surface: #f7fafb;
@@ -725,20 +737,11 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   :global(html[data-theme="light"]) .publication-card {
-    border-radius: 14px;
     box-shadow: 6px 6px 0 rgba(31, 57, 69, 0.15);
   }
 
   :global(html[data-theme="light"]) .publication-card::before {
     box-shadow: none;
-  }
-
-  :global(html[data-theme="light"]) .publication-card h2 {
-    margin-bottom: 14px;
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
-    font-size: 1.474rem;
-    font-weight: 700;
-    letter-spacing: -0.012em;
   }
 
   :global(html[data-theme="light"]) .publication-card ul {
@@ -750,8 +753,6 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   :global(html[data-theme="light"]) .writing-disclaimer {
-    font-size: 0.77rem;
-    line-height: 1.55;
     opacity: 0.9;
   }
 
