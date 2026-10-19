@@ -179,118 +179,139 @@ import SiteFooter from "../components/SiteFooter.astro";
 </html>
 
 <script>
-  const researchCard = document.querySelector<HTMLElement>(".research-articles");
-  const researchToggles = Array.from(
-    researchCard?.querySelectorAll<HTMLButtonElement>(".research-article-toggle") ?? []
-  );
-  const descriptionToggles = Array.from(
-    researchCard?.querySelectorAll<HTMLButtonElement>(".research-description-toggle") ?? []
-  );
-  let descriptionOpener: HTMLButtonElement | null = null;
-  let cancelDescriptionScroll = () => {};
+  let cleanupResearchDescriptions = () => {};
+  let initializedResearchCard: HTMLElement | null = null;
 
-  // User input takes priority over an in-progress description transition.
-  window.addEventListener("wheel", () => cancelDescriptionScroll(), { passive: true });
-  window.addEventListener("touchstart", () => cancelDescriptionScroll(), { passive: true });
-  window.addEventListener("pointerdown", () => cancelDescriptionScroll(), { passive: true });
-  window.addEventListener("resize", () => cancelDescriptionScroll());
-  window.addEventListener("pagehide", () => cancelDescriptionScroll());
-  document.addEventListener("keydown", (event) => {
-    if (["Escape", "Tab", "ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
-      cancelDescriptionScroll();
-    }
-  });
-
-  function setDescriptionOpen(toggle: HTMLButtonElement, open: boolean) {
-    const article = toggle.closest<HTMLElement>(".research-article");
-    const description = article?.querySelector<HTMLElement>(".research-description");
-    if (!article || !description) return;
-
-    toggle.setAttribute("aria-expanded", String(open));
-    article.dataset.expanded = String(open);
-    description.setAttribute("aria-hidden", String(!open));
-    description.inert = !open;
-    article.querySelectorAll<HTMLButtonElement>(".research-description-toggle").forEach((cue) => {
-      cue.setAttribute("aria-expanded", String(open));
-      const label = cue.querySelector<HTMLElement>(".description-toggle-label");
-      if (label) label.textContent = open ? "Hide description" : "Show description";
-    });
-  }
-
-  function toggleDescription(toggle: HTMLButtonElement, trigger: HTMLButtonElement) {
-    cancelDescriptionScroll();
-    const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
-    const switchingDescriptions = shouldOpen && researchToggles.some((other) =>
-      other !== toggle && other.getAttribute("aria-expanded") === "true"
+  function setupResearchDescriptions() {
+    const researchCard = document.querySelector<HTMLElement>(".research-articles");
+    if (researchCard && initializedResearchCard === researchCard) return;
+    cleanupResearchDescriptions();
+    if (!researchCard) return;
+    initializedResearchCard = researchCard;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const researchToggles = Array.from(
+      researchCard?.querySelectorAll<HTMLButtonElement>(".research-article-toggle") ?? []
     );
-    const initialTop = toggle.getBoundingClientRect().top;
-    const root = document.documentElement;
-    if (switchingDescriptions) root.dataset.descriptionSwitching = "true";
+    const descriptionToggles = Array.from(
+      researchCard?.querySelectorAll<HTMLButtonElement>(".research-description-toggle") ?? []
+    );
+    let descriptionOpener: HTMLButtonElement | null = null;
+    let cancelDescriptionScroll = () => {};
 
-    researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
-    descriptionOpener = shouldOpen ? trigger : null;
-    if (!switchingDescriptions) return;
+    // User input takes priority over an in-progress description transition.
+    window.addEventListener("wheel", () => cancelDescriptionScroll(), { passive: true, signal });
+    window.addEventListener("touchstart", () => cancelDescriptionScroll(), { passive: true, signal });
+    window.addEventListener("pointerdown", () => cancelDescriptionScroll(), { passive: true, signal });
+    window.addEventListener("resize", () => cancelDescriptionScroll(), { signal });
+    window.addEventListener("pagehide", () => cancelDescriptionScroll(), { signal });
+    document.addEventListener("keydown", (event) => {
+      if (["Escape", "Tab", "ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
+        cancelDescriptionScroll();
+      }
+    }, { signal });
 
-    let frame = 0;
-    let cancelled = false;
-    cancelDescriptionScroll = () => {
-      cancelled = true;
-      cancelAnimationFrame(frame);
-      delete root.dataset.descriptionSwitching;
-      cancelDescriptionScroll = () => {};
-    };
+    function setDescriptionOpen(toggle: HTMLButtonElement, open: boolean) {
+      const article = toggle.closest<HTMLElement>(".research-article");
+      const description = article?.querySelector<HTMLElement>(".research-description");
+      if (!article || !description) return;
 
-    const positionHeading = (top: number) => {
-      const currentTop = toggle.getBoundingClientRect().top;
-      window.scrollTo({
-        top: window.scrollY + currentTop - top,
-        behavior: "instant",
+      toggle.setAttribute("aria-expanded", String(open));
+      article.dataset.expanded = String(open);
+      description.setAttribute("aria-hidden", String(!open));
+      description.inert = !open;
+      article.querySelectorAll<HTMLButtonElement>(".research-description-toggle").forEach((cue) => {
+        cue.setAttribute("aria-expanded", String(open));
+        const label = cue.querySelector<HTMLElement>(".description-toggle-label");
+        if (label) label.textContent = open ? "Hide description" : "Show description";
       });
-    };
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      positionHeading(24);
-      cancelDescriptionScroll();
-      return;
     }
 
-    const animations = Array.from(researchCard?.querySelectorAll(".research-description") ?? [])
-      .flatMap((description) => description.getAnimations());
-    let settled = false;
-    Promise.allSettled(animations.map((animation) => animation.finished)).then(() => { settled = true; });
-    const started = performance.now();
-    const animate = (now: number) => {
-      if (cancelled) return;
-      const progress = Math.min(1, (now - started) / 320);
-      const eased = progress * progress * (3 - 2 * progress);
-      // Follow the selected heading during the collapse, before each frame is painted.
-      positionHeading(initialTop + (24 - initialTop) * eased);
-      if (progress < 1 || !settled) frame = requestAnimationFrame(animate);
-      else cancelDescriptionScroll();
+    function toggleDescription(toggle: HTMLButtonElement, trigger: HTMLButtonElement) {
+      cancelDescriptionScroll();
+      const shouldOpen = toggle.getAttribute("aria-expanded") !== "true";
+      const switchingDescriptions = shouldOpen && researchToggles.some((other) =>
+        other !== toggle && other.getAttribute("aria-expanded") === "true"
+      );
+      const initialTop = toggle.getBoundingClientRect().top;
+      const root = document.documentElement;
+      if (switchingDescriptions) root.dataset.descriptionSwitching = "true";
+
+      researchToggles.forEach((other) => setDescriptionOpen(other, other === toggle && shouldOpen));
+      descriptionOpener = shouldOpen ? trigger : null;
+      if (!switchingDescriptions) return;
+
+      let frame = 0;
+      let cancelled = false;
+      cancelDescriptionScroll = () => {
+        cancelled = true;
+        cancelAnimationFrame(frame);
+        delete root.dataset.descriptionSwitching;
+        cancelDescriptionScroll = () => {};
+      };
+
+      const positionHeading = (top: number) => {
+        const currentTop = toggle.getBoundingClientRect().top;
+        window.scrollTo({
+          top: window.scrollY + currentTop - top,
+          behavior: "instant",
+        });
+      };
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        positionHeading(24);
+        cancelDescriptionScroll();
+        return;
+      }
+
+      const animations = Array.from(researchCard?.querySelectorAll(".research-description") ?? [])
+        .flatMap((description) => description.getAnimations());
+      let settled = false;
+      Promise.allSettled(animations.map((animation) => animation.finished)).then(() => { settled = true; });
+      const started = performance.now();
+      const animate = (now: number) => {
+        if (cancelled) return;
+        const progress = Math.min(1, (now - started) / 320);
+        const eased = progress * progress * (3 - 2 * progress);
+        // Follow the selected heading during the collapse, before each frame is painted.
+        positionHeading(initialTop + (24 - initialTop) * eased);
+        if (progress < 1 || !settled) frame = requestAnimationFrame(animate);
+        else cancelDescriptionScroll();
+      };
+      frame = requestAnimationFrame(animate);
+    }
+
+    researchToggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => toggleDescription(toggle, toggle), { signal });
+    });
+
+    descriptionToggles.forEach((cue) => {
+      const toggle = researchToggles.find((other) => other.getAttribute("aria-controls") === cue.getAttribute("aria-controls"));
+      if (!toggle) return;
+      cue.addEventListener("click", () => toggleDescription(toggle, cue), { signal });
+    });
+
+    researchCard?.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      cancelDescriptionScroll();
+      const openToggle = researchToggles.find((toggle) => toggle.getAttribute("aria-expanded") === "true");
+      if (!openToggle) return;
+      const focusTarget = descriptionOpener ?? openToggle;
+      setDescriptionOpen(openToggle, false);
+      descriptionOpener = null;
+      focusTarget.focus({ preventScroll: true });
+      event.preventDefault();
+    }, { signal });
+    cleanupResearchDescriptions = () => {
+      controller.abort();
+      cancelDescriptionScroll();
+      initializedResearchCard = null;
+      cleanupResearchDescriptions = () => {};
     };
-    frame = requestAnimationFrame(animate);
   }
 
-  researchToggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => toggleDescription(toggle, toggle));
-  });
-
-  descriptionToggles.forEach((cue) => {
-    const toggle = researchToggles.find((other) => other.getAttribute("aria-controls") === cue.getAttribute("aria-controls"));
-    if (!toggle) return;
-    cue.addEventListener("click", () => toggleDescription(toggle, cue));
-  });
-
-  researchCard?.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    cancelDescriptionScroll();
-    const openToggle = researchToggles.find((toggle) => toggle.getAttribute("aria-expanded") === "true");
-    if (!openToggle) return;
-    const focusTarget = descriptionOpener ?? openToggle;
-    setDescriptionOpen(openToggle, false);
-    descriptionOpener = null;
-    focusTarget.focus({ preventScroll: true });
-    event.preventDefault();
-  });
+  setupResearchDescriptions();
+  document.addEventListener("astro:page-load", setupResearchDescriptions);
+  document.addEventListener("astro:before-swap", () => cleanupResearchDescriptions());
 </script>
 
 <style>
