@@ -1,0 +1,105 @@
+---
+import { ClientRouter } from "astro:transitions";
+---
+
+<ClientRouter fallback="swap" />
+{Astro.url.pathname === "/" && <>
+  <meta name="page-watermark-light" content="/watermark.jpg" />
+  <meta name="page-watermark-dark" content="/Watermark%20dark.jpg" />
+</>}
+
+<script>
+  import type { TransitionBeforePreparationEvent, TransitionBeforeSwapEvent } from "astro:transitions/client";
+
+  // Retain decoded images across page changes, rather than rebuilding a document
+  // that can paint its text before its CSS background is ready.
+  const images = new Map<string, HTMLImageElement>();
+
+  function prepareImage(src: string, srcset = "", sizes = "") {
+    const key = `${src}|${srcset}|${sizes}`;
+    let image = images.get(key);
+    if (!image) {
+      image = new Image();
+      image.fetchPriority = "high";
+      if (sizes) image.sizes = sizes;
+      if (srcset) image.srcset = srcset;
+      image.src = src;
+      images.set(key, image);
+    }
+    return image.decode().catch(() => {
+      // An unavailable image must not prevent access to the destination page.
+      images.delete(key);
+    });
+  }
+
+  document.addEventListener("astro:before-preparation", (event) => {
+    const preparation = event as TransitionBeforePreparationEvent;
+    const loadPage = preparation.loader;
+    preparation.loader = async () => {
+      await loadPage();
+      if (preparation.signal.aborted || preparation.defaultPrevented) return;
+
+      const next = preparation.newDocument;
+      const version = document.querySelector<HTMLMetaElement>('meta[name="site-build-version"]')?.content;
+      const nextVersion = next.querySelector<HTMLMetaElement>('meta[name="site-build-version"]')?.content;
+      if (version !== nextVersion) {
+        // A newly published build must start with its own scripts, not mix two
+        // versions of event handlers within one document.
+        preparation.preventDefault();
+        return;
+      }
+      // Match SiteVersion's clean URL before the router records history, so a
+      // same-page anchor remains a scroll rather than becoming another swap.
+      if (preparation.to.searchParams.get("v") === nextVersion) preparation.to.searchParams.delete("v");
+      const watermark = next.querySelector<HTMLElement>("[data-watermark-src]")?.dataset.watermarkSrc;
+      const pending: Promise<void>[] = [];
+      if (watermark) pending.push(prepareImage(new URL(watermark, preparation.to).href));
+      // Home uses different images for each appearance. Prepare both so a theme
+      // change during navigation cannot reveal an unprepared background.
+      next.querySelectorAll<HTMLMetaElement>('meta[name="page-watermark-light"], meta[name="page-watermark-dark"]')
+        .forEach((meta) => pending.push(prepareImage(new URL(meta.content, preparation.to).href)));
+
+      // Prepare the exact responsive source used by Home's first photograph.
+      const picture = next.querySelector("[data-gallery-page] picture");
+      const photograph = picture?.querySelector("img");
+      const source = Array.from(picture?.querySelectorAll("source") ?? [])
+        .find((candidate) => !candidate.media || window.matchMedia(candidate.media).matches);
+      const photographSrc = photograph?.getAttribute("src");
+      if (photographSrc) {
+        pending.push(prepareImage(new URL(photographSrc, preparation.to).href,
+          source?.srcset ?? photograph?.srcset ?? "", source?.sizes ?? photograph?.sizes ?? ""));
+      }
+
+      await new Promise<void>((resolve) => {
+        const finish = () => {
+          window.clearTimeout(timer);
+          preparation.signal.removeEventListener("abort", finish);
+          resolve();
+        };
+        // Keep navigation usable if a connection stalls indefinitely.
+        const timer = window.setTimeout(finish, 5000);
+        preparation.signal.addEventListener("abort", finish, { once: true });
+        void Promise.all(pending).then(finish);
+      });
+    };
+  });
+
+  document.addEventListener("astro:before-swap", (event) => {
+    const next = (event as TransitionBeforeSwapEvent).newDocument;
+    // Apply the current appearance before the new document is displayed.
+    next.documentElement.dataset.theme = document.documentElement.dataset.theme ?? "light";
+  });
+</script>
+
+<style is:global>
+  /* Readiness controls the swap; no fade or other visual effect is added. */
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition {
+    pointer-events: none;
+  }
+</style>

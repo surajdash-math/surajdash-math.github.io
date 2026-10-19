@@ -41,12 +41,23 @@
     }
   }
 
+  let cleanupToggle = () => {};
+  let initializedToggle: HTMLButtonElement | null = null;
+
   function setupToggle() {
-    const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
     const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    if (toggle && initializedToggle === toggle) return;
+    cleanupToggle();
+    const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
     updateToggle(currentTheme);
 
     if (toggle) {
+      initializedToggle = toggle;
+      cleanupToggle = () => {
+        toggle.onclick = null;
+        initializedToggle = null;
+        cleanupToggle = () => {};
+      };
       toggle.onclick = () => {
         const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
         setTheme(nextTheme, true);
@@ -55,6 +66,8 @@
   }
 
   setupToggle();
+  document.addEventListener("astro:page-load", setupToggle);
+  document.addEventListener("astro:before-swap", () => cleanupToggle());
 
 </script>
 

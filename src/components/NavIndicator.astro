@@ -1,126 +1,166 @@
 <span class="nav-indicator" aria-hidden="true"></span>
 
 <script>
-  function getNavLink(target: EventTarget | null) {
-    return target instanceof Element
-      ? target.closest<HTMLAnchorElement>(".top-nav a")
-      : null;
-  }
+  let cleanupNavIndicators = () => {};
+  let initializedNav: HTMLElement | null = null;
 
-  function moveIndicator(
-    nav: HTMLElement,
-    link: HTMLAnchorElement,
-    animate = true,
-  ) {
-    const indicator = nav.querySelector<HTMLElement>(".nav-indicator");
-    if (!indicator) return;
+  function initializeNavIndicators() {
+    const nav = document.querySelector<HTMLElement>(".top-nav");
+    if (nav && initializedNav === nav) return;
+    cleanupNavIndicators();
+    if (!nav) return;
+    initializedNav = nav;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const transitionFrames = new Set<number>();
 
-    const navRect = nav.getBoundingClientRect();
-    const linkRect = link.getBoundingClientRect();
-
-    if (!animate) indicator.classList.add("nav-indicator-no-transition");
-
-    indicator.style.setProperty("--nav-indicator-x", `${linkRect.left - navRect.left}px`);
-    indicator.style.setProperty("--nav-indicator-y", `${linkRect.bottom - navRect.top + 2}px`);
-    indicator.style.setProperty("--nav-indicator-width", `${linkRect.width}px`);
-    nav.classList.add("nav-indicator-ready");
-
-    if (!animate) {
-      requestAnimationFrame(() => indicator.classList.remove("nav-indicator-no-transition"));
+    function getNavLink(target: EventTarget | null) {
+      return target instanceof Element
+        ? target.closest<HTMLAnchorElement>(".top-nav a")
+        : null;
     }
+
+    function moveIndicator(
+      nav: HTMLElement,
+      link: HTMLAnchorElement,
+      animate = true,
+    ) {
+      const indicator = nav.querySelector<HTMLElement>(".nav-indicator");
+      if (!indicator) return;
+
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+
+      if (!animate) indicator.classList.add("nav-indicator-no-transition");
+
+      indicator.style.setProperty("--nav-indicator-x", `${linkRect.left - navRect.left}px`);
+      indicator.style.setProperty("--nav-indicator-y", `${linkRect.bottom - navRect.top + 2}px`);
+      indicator.style.setProperty("--nav-indicator-width", `${linkRect.width}px`);
+      nav.classList.add("nav-indicator-ready");
+
+      if (!animate) {
+        const frame = requestAnimationFrame(() => {
+          transitionFrames.delete(frame);
+          indicator.classList.remove("nav-indicator-no-transition");
+        });
+        transitionFrames.add(frame);
+      }
+    }
+
+    function restoreActiveIndicator(nav: HTMLElement, animate = true) {
+      const active = nav.querySelector<HTMLAnchorElement>('a[aria-current="page"]');
+      if (active) moveIndicator(nav, active, animate);
+    }
+
+    function normalizePath(pathname: string) {
+      const normalized = pathname.replace(/\/+$/, "");
+      return normalized || "/";
+    }
+
+    function syncActiveLink(nav: HTMLElement) {
+      const currentPath = normalizePath(window.location.pathname);
+
+      nav.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+        const isCurrent = normalizePath(new URL(link.href).pathname) === currentPath;
+        if (isCurrent) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    }
+
+    function setActiveLink(nav: HTMLElement, active: HTMLAnchorElement) {
+      nav.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+        if (link === active) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    }
+
+    function setupNavIndicators(animate = false) {
+      document.querySelectorAll<HTMLElement>(".top-nav").forEach((nav) => {
+        const canAnimate = animate && nav.classList.contains("nav-indicator-ready");
+        syncActiveLink(nav);
+        restoreActiveIndicator(nav, canAnimate);
+      });
+    }
+
+    // Keep the indicator on a tapped link while the browser follows it, and
+    // restore the current-page indicator if that navigation is cancelled.
+    let pendingNavigation: AbortSignal | null = null;
+    let navigationLockTimer = 0;
+
+    function lockNavigationTarget(nav: HTMLElement, link: HTMLAnchorElement) {
+      window.clearTimeout(navigationLockTimer);
+      setActiveLink(nav, link);
+      moveIndicator(nav, link);
+
+      // Recover if a touch starts on a link but is cancelled before navigation.
+      navigationLockTimer = window.setTimeout(() => {
+        if (!pendingNavigation || pendingNavigation.aborted) setupNavIndicators(false);
+      }, 1200);
+    }
+
+    document.addEventListener("astro:before-preparation", (event) => {
+      pendingNavigation = event.signal;
+      window.clearTimeout(navigationLockTimer);
+      event.signal.addEventListener("abort", () => {
+        if (pendingNavigation !== event.signal) return;
+        pendingNavigation = null;
+        setupNavIndicators(false);
+      }, { once: true, signal });
+    }, { signal });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey
+      ) return;
+
+      const link = getNavLink(event.target);
+      const nav = link?.closest<HTMLElement>(".top-nav");
+      if (link && nav) lockNavigationTarget(nav, link);
+    }, { capture: true, signal });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !(event instanceof MouseEvent) ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.shiftKey
+      ) return;
+
+      const link = getNavLink(event.target);
+      const nav = link?.closest<HTMLElement>(".top-nav");
+      if (!link || !nav) return;
+
+      lockNavigationTarget(nav, link);
+    }, { capture: true, signal });
+
+    let resizeFrame = 0;
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => setupNavIndicators(false));
+    }, { signal });
+
+    setupNavIndicators(false);
+    cleanupNavIndicators = () => {
+      controller.abort();
+      window.clearTimeout(navigationLockTimer);
+      cancelAnimationFrame(resizeFrame);
+      transitionFrames.forEach((frame) => cancelAnimationFrame(frame));
+      transitionFrames.clear();
+      pendingNavigation = null;
+      initializedNav = null;
+      cleanupNavIndicators = () => {};
+    };
   }
 
-  function restoreActiveIndicator(nav: HTMLElement, animate = true) {
-    const active = nav.querySelector<HTMLAnchorElement>('a[aria-current="page"]');
-    if (active) moveIndicator(nav, active, animate);
-  }
-
-  function normalizePath(pathname: string) {
-    const normalized = pathname.replace(/\/+$/, "");
-    return normalized || "/";
-  }
-
-  function syncActiveLink(nav: HTMLElement) {
-    const currentPath = normalizePath(window.location.pathname);
-
-    nav.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-      const isCurrent = normalizePath(new URL(link.href).pathname) === currentPath;
-      if (isCurrent) link.setAttribute("aria-current", "page");
-      else link.removeAttribute("aria-current");
-    });
-  }
-
-  function setActiveLink(nav: HTMLElement, active: HTMLAnchorElement) {
-    nav.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-      if (link === active) link.setAttribute("aria-current", "page");
-      else link.removeAttribute("aria-current");
-    });
-  }
-
-  function setupNavIndicators(animate = false) {
-    document.querySelectorAll<HTMLElement>(".top-nav").forEach((nav) => {
-      const canAnimate = animate && nav.classList.contains("nav-indicator-ready");
-      syncActiveLink(nav);
-      restoreActiveIndicator(nav, canAnimate);
-    });
-  }
-
-  // Keep the indicator on a tapped link while the browser follows it, and
-  // restore the current-page indicator if that navigation is cancelled.
-  let isNavigating = false;
-  let navigationLockTimer = 0;
-
-  function lockNavigationTarget(nav: HTMLElement, link: HTMLAnchorElement) {
-    isNavigating = true;
-    window.clearTimeout(navigationLockTimer);
-    setActiveLink(nav, link);
-    moveIndicator(nav, link);
-
-    // Recover if a touch starts on a link but is cancelled before navigation.
-    navigationLockTimer = window.setTimeout(() => {
-      setupNavIndicators(false);
-      isNavigating = false;
-    }, 1200);
-  }
-
-  document.addEventListener("pointerdown", (event) => {
-    if (
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.altKey ||
-      event.shiftKey
-    ) return;
-
-    const link = getNavLink(event.target);
-    const nav = link?.closest<HTMLElement>(".top-nav");
-    if (link && nav) lockNavigationTarget(nav, link);
-  }, true);
-
-  document.addEventListener("click", (event) => {
-    if (
-      !(event instanceof MouseEvent) ||
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.altKey ||
-      event.shiftKey
-    ) return;
-
-    const link = getNavLink(event.target);
-    const nav = link?.closest<HTMLElement>(".top-nav");
-    if (!link || !nav) return;
-
-    lockNavigationTarget(nav, link);
-  }, true);
-
-  let resizeFrame = 0;
-  window.addEventListener("resize", () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(() => setupNavIndicators(false));
-  });
-
-  setupNavIndicators(false);
+  initializeNavIndicators();
+  document.addEventListener("astro:page-load", initializeNavIndicators);
+  document.addEventListener("astro:before-swap", () => cleanupNavIndicators());
 </script>
 
 <style is:global>
