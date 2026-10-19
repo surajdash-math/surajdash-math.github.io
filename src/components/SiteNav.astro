@@ -55,49 +55,71 @@ const links = [
 </div>
 
 <script>
-  document.querySelectorAll<HTMLElement>("[data-mobile-navigation]").forEach((wrapper) => {
-    const toggle = wrapper.querySelector<HTMLButtonElement>(".mobile-menu-toggle");
-    const navigation = wrapper.querySelector<HTMLElement>(".site-navigation");
-    if (!toggle || !navigation) return;
+  let cleanupMobileNavigation = () => {};
+  let initializedNavigation: HTMLElement | null = null;
 
-    const phoneWidth = window.matchMedia("(max-width: 680px), (max-width: 1024px) and (max-height: 500px)");
+  function setupMobileNavigation() {
+    const navigationRoot = document.querySelector<HTMLElement>("[data-mobile-navigation]");
+    if (navigationRoot && initializedNavigation === navigationRoot) return;
+    cleanupMobileNavigation();
+    if (!navigationRoot) return;
+    initializedNavigation = navigationRoot;
+    const controller = new AbortController();
+    const { signal } = controller;
+    cleanupMobileNavigation = () => {
+      controller.abort();
+      initializedNavigation = null;
+      cleanupMobileNavigation = () => {};
+    };
 
-    function setOpen(open: boolean, restoreFocus = false) {
-      const expanded = open && phoneWidth.matches;
-      wrapper.dataset.menuOpen = String(expanded);
-      toggle!.setAttribute("aria-expanded", String(expanded));
-      toggle!.setAttribute("aria-label", expanded ? "Close menu" : "Open menu");
-      navigation!.hidden = phoneWidth.matches && !expanded;
-      navigation!.inert = phoneWidth.matches && !expanded;
-      if (restoreFocus) toggle!.focus();
-    }
+    document.querySelectorAll<HTMLElement>("[data-mobile-navigation]").forEach((wrapper) => {
+      const toggle = wrapper.querySelector<HTMLButtonElement>(".mobile-menu-toggle");
+      const navigation = wrapper.querySelector<HTMLElement>(".site-navigation");
+      if (!toggle || !navigation) return;
 
-    wrapper.dataset.menuReady = "true";
-    setOpen(false);
+      const phoneWidth = window.matchMedia("(max-width: 680px), (max-width: 1024px) and (max-height: 500px)");
 
-    toggle.addEventListener("click", () => {
-      setOpen(toggle.getAttribute("aria-expanded") !== "true");
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-        setOpen(false, true);
+      function setOpen(open: boolean, restoreFocus = false) {
+        const expanded = open && phoneWidth.matches;
+        wrapper.dataset.menuOpen = String(expanded);
+        toggle!.setAttribute("aria-expanded", String(expanded));
+        toggle!.setAttribute("aria-label", expanded ? "Close menu" : "Open menu");
+        navigation!.hidden = phoneWidth.matches && !expanded;
+        navigation!.inert = phoneWidth.matches && !expanded;
+        if (restoreFocus) toggle!.focus();
       }
-    });
 
-    document.addEventListener("click", (event) => {
-      if (event.target instanceof Node && !wrapper.contains(event.target)) setOpen(false);
-    });
+      wrapper.dataset.menuReady = "true";
+      setOpen(false);
 
-    navigation.addEventListener("click", (event) => {
-      if (event.target instanceof Element && event.target.closest("a[href]")) setOpen(false);
-    });
+      toggle.addEventListener("click", () => {
+        setOpen(toggle.getAttribute("aria-expanded") !== "true");
+      }, { signal });
 
-    phoneWidth.addEventListener("change", () => setOpen(false));
-    window.addEventListener("pageshow", (event) => {
-      if (event.persisted) setOpen(false);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+          setOpen(false, true);
+        }
+      }, { signal });
+
+      document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !wrapper.contains(event.target)) setOpen(false);
+      }, { signal });
+
+      navigation.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a[href]")) setOpen(false);
+      }, { signal });
+
+      phoneWidth.addEventListener("change", () => setOpen(false), { signal });
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) setOpen(false);
+      }, { signal });
     });
-  });
+  }
+
+  setupMobileNavigation();
+  document.addEventListener("astro:page-load", setupMobileNavigation);
+  document.addEventListener("astro:before-swap", () => cleanupMobileNavigation());
 </script>
 
 <style>

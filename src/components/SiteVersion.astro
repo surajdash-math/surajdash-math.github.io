@@ -1,5 +1,6 @@
 ---
 import { siteBuildVersion } from "../lib/site-build-version";
+import PageNavigation from "./PageNavigation.astro";
 
 interface Props {
   canonical?: boolean;
@@ -10,8 +11,9 @@ const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : unde
 ---
 
 <meta name="site-build-version" content={siteBuildVersion} />
+<PageNavigation />
 {canonical && canonicalURL && <link rel="canonical" href={canonicalURL} />}
-<script is:inline>
+<script is:inline data-astro-rerun>
   (() => {
     const buildVersion = document.querySelector('meta[name="site-build-version"]')?.getAttribute("content");
     const url = new URL(window.location.href);
