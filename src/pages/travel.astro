@@ -19,6 +19,7 @@ interface ConferenceEntry {
   place: string;
   date: string;
   datetime?: string;
+  posterHref?: string;
 }
 
 const today = new Date().toISOString().slice(0, 10);
@@ -47,6 +48,14 @@ const conferenceEntries: ConferenceEntry[] = [
     place: "Brown University, Rhode Island",
     date: "Nov 20–22, 2026",
     datetime: "2026-11-20",
+  },
+  {
+    name: "Moduli of K3 surfaces",
+    href: "https://icerm.brown.edu/program/semester_program_workshop/sp-f26-w3",
+    place: "ICERM, Brown University, Providence, Rhode Island",
+    date: "Nov 9–13, 2026",
+    datetime: "2026-11-09",
+    posterHref: "https://drive.google.com/file/d/1cTvd953P2YYJWqXX5jUIdV23PI96yWxC/view?usp=sharing",
   },
   {
     name: "25th anniversary of the Gross-Siebert program",
@@ -181,7 +190,7 @@ const conferenceEntries: ConferenceEntry[] = [
           <ul class="event-list">
             {conferenceEntries.map((conference) => (
               <li>
-                <a href={conference.href} target="_blank" rel="noreferrer">{conference.name}</a><span class="event-date">{conference.place ? `, ${conference.place}` : ""} · {conference.date}</span>
+                <a href={conference.href} target="_blank" rel="noreferrer">{conference.name}</a>{conference.posterHref && <span class="event-poster">(<a href={conference.posterHref} target="_blank" rel="noreferrer">Poster</a>)</span>}<span class="event-date">{conference.place ? `, ${conference.place}` : ""} · {conference.date}</span>
                 {conference.datetime && conference.datetime > today && <span class="event-status">(Upcoming)</span>}
               </li>
             ))}
@@ -380,6 +389,12 @@ const conferenceEntries: ConferenceEntry[] = [
 
   .event-list li::marker {
     color: var(--conference-bullet, var(--accent));
+  }
+
+  .event-poster {
+    margin-left: 0.35rem;
+    font-style: italic;
+    white-space: nowrap;
   }
 
   .event-date {
