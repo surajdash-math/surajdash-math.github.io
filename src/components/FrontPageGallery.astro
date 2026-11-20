@@ -101,7 +101,7 @@ const photos = [
       </svg>
     </button>
 
-    <a class="scroll-cue" href="#profile" aria-label="Continue to the introduction">
+    <a class="scroll-cue" href="#profile" aria-label="Continue to the introduction" title="About me">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="m5 9 7 7 7-7"></path>
       </svg>
@@ -493,17 +493,20 @@ const photos = [
   .scroll-cue {
     position: absolute;
     left: 50%;
-    bottom: max(10px, env(safe-area-inset-bottom));
+    bottom: max(24px, env(safe-area-inset-bottom));
     z-index: 8;
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    color: rgba(255, 255, 255, 0.72);
-    opacity: 0.58;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(23, 63, 80, 0.18);
+    border-radius: 50%;
+    color: #173f50;
+    background: #fff;
+    box-shadow: 0 3px 16px rgba(10, 18, 22, 0.28);
+    text-decoration: none;
     transform: translateX(-50%);
-    filter: drop-shadow(0 2px 5px rgba(10, 18, 22, 0.5));
-    transition: color 160ms ease, opacity 160ms ease, transform 160ms ease;
+    transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
   }
 
   .scroll-cue svg {
@@ -513,19 +516,23 @@ const photos = [
     stroke: currentColor;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-width: 2;
+    stroke-width: 3;
+  }
+
+  .scroll-cue:hover,
+  .scroll-cue:focus-visible {
+    color: #fff;
+    background: #286784;
   }
 
   .scroll-cue:hover {
-    color: #fff;
-    opacity: 0.9;
     transform: translate(-50%, 2px);
   }
 
   .scroll-cue:focus-visible {
-    border-radius: 999px;
     outline: 3px solid #fff;
-    outline-offset: 2px;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px #286784;
   }
 
   .gallery-status {
