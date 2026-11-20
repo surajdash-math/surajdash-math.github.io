@@ -144,7 +144,7 @@ const photos = [
     if (pages.length < 2 || !nextButton || !playbackButton) return;
 
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const autoplayDelay = 8000;
+    const autoplayDelay = 5000;
 
     const controller = new AbortController();
     const { signal } = controller;
@@ -601,8 +601,8 @@ const photos = [
     z-index: 8;
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border: 1px solid rgba(23, 63, 80, 0.18);
     border-radius: 50%;
     color: #173f50;
@@ -613,9 +613,16 @@ const photos = [
     transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
   }
 
+  .scroll-cue::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+  }
+
   .scroll-cue svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     fill: none;
     stroke: currentColor;
     stroke-linecap: round;
