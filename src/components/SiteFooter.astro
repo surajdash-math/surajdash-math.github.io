@@ -11,7 +11,7 @@ import { siteBuildVersion } from "../lib/site-build-version";
     <div class="footer-navigation">
       <nav class="footer-links" aria-label="Footer">
         <a href={`/copyright/?v=${siteBuildVersion}`} target="_blank" rel="noopener noreferrer">Copyright<span class="visually-hidden"> and privacy statement (opens in a new tab)</span></a>
-        <span class="footer-placeholder">Miscellaneous</span>
+        <a href={`/misc/?v=${siteBuildVersion}`} target="_blank" rel="noopener noreferrer">Miscellaneous<span class="visually-hidden"> (opens in a new tab)</span></a>
       </nav>
       <a class="footer-back-top" href="#" data-astro-reload>Back to top <span aria-hidden="true">↑</span></a>
     </div>
@@ -83,7 +83,6 @@ import { siteBuildVersion } from "../lib/site-build-version";
     text-decoration-thickness: 1px;
   }
   .site-footer .footer-links a:focus-visible { outline: 2px solid #c6e1f1; outline-offset: 5px; border-radius: 2px; }
-  .site-footer .footer-placeholder { color: #bdcbd8; }
   .site-footer .visually-hidden {
     position: absolute;
     width: 1px;
