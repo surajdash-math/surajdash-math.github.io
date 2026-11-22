@@ -35,7 +35,7 @@ const wallpaper = await getImage({
           <h1 id="misc-title">Miscellaneous</h1>
         </article>
       </div>
-      <p class="background-caption">Watermark: A childhood painting</p>
+      <p class="background-caption">Watermark: UT Austin garden</p>
       <SiteFooter />
     </main>
   </body>
@@ -169,7 +169,7 @@ const wallpaper = await getImage({
   :global(a) { color: var(--link); }
   :global(body.misc-page .page-watermark) {
     background-position: center;
-    background-size: auto, contain, auto;
+    background-size: auto, cover, auto;
     background-repeat: no-repeat;
   }
   .page-shell {
