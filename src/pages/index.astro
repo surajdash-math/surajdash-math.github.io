@@ -5,6 +5,7 @@ import OdiaName from "../components/OdiaName.astro";
 import SiteVersion from "../components/SiteVersion.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import FrontPageGallery from "../components/FrontPageGallery.astro";
+import HomeQuotes from "../components/HomeQuotes.astro";
 
 const pageTitle = "Suraj Dash | Mathematics";
 const pageDescription =
@@ -149,6 +150,7 @@ const socialImageURL = Astro.site
         <p class="background-caption">
           Watermark: Length two expansion of <span class="caption-math">(ℙ<sup>1</sup>, ∞).</span>
         </p>
+        <HomeQuotes />
         <SiteFooter />
       </div>
     </main>
@@ -281,10 +283,7 @@ const socialImageURL = Astro.site
   }
 
   .background-caption {
-    position: absolute;
-    left: 0;
-    bottom: 58px;
-    margin: 0;
+    margin: 32px 0 24px;
     font-size: 0.77rem;
     font-weight: 500;
     font-style: italic;
