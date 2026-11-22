@@ -2,17 +2,15 @@
 const quotations = [
   {
     text: "Lack of originality, everywhere, all over the world, from time immemorial, has always been considered the foremost quality and the best recommendation of the active, efficient and practical man…",
-    work: "The Idiot",
     theme: "light",
-    translation: "Translated by Richard Pevear and Larissa Volokhonsky · 2002",
+    translation: "Translated by Richard Pevear and Larissa Volokhonsky",
     editionUrl: "https://penguinrandomhousehighereducation.com/book/?isbn=9780375413926",
     originalUrl: "https://rvb.ru/dostoevski/01text/vol6/28-29.htm",
   },
   {
     text: "You sensed that you should be following a different path, a more ambitious one, you felt that you were destined for other things but you had no idea how to achieve them and in your misery you began to hate everything around you.",
-    work: "Netochka Nezvanova",
     theme: "dark",
-    translation: "Translated by Jane Kentish · Penguin Classics, 1985",
+    translation: "Translated by Jane Kentish",
     editionUrl: "https://ci.nii.ac.jp/ncid/BA24896503",
     originalUrl: "https://rvb.ru/dostoevski/01text/vol2/14-01.htm",
   },
@@ -31,7 +29,7 @@ const quotations = [
           <p>“{quote.text}”</p>
         </blockquote>
         <figcaption class="quote-credit">
-          <p class="quote-author"><span aria-hidden="true">— </span>Fyodor Dostoevsky, <cite>{quote.work}</cite></p>
+          <p class="quote-author"><span aria-hidden="true">— </span>Fyodor Dostoevsky</p>
           <p class="quote-edition">
             {quote.editionUrl ? <a href={quote.editionUrl} target="_blank" rel="noopener noreferrer">{quote.translation}</a> : <span>{quote.translation}</span>}
             <span class="quote-source-separator" aria-hidden="true"> · </span>
@@ -103,7 +101,6 @@ const quotations = [
     font-style: italic;
     font-weight: 400;
   }
-  .quote-card .quote-author cite { font: inherit; }
   .quote-card .quote-edition {
     margin: 0;
     color: #405e6a;
