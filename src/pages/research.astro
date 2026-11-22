@@ -63,6 +63,15 @@ import SiteFooter from "../components/SiteFooter.astro";
                       </a>
                       <p class="diagram-caption">Select the diagram to view full size.</p>
                     </aside>
+                    <aside class="diagram-panel" id="git-walls-diagram" aria-labelledby="git-walls-diagram-title">
+                      <div class="diagram-panel-heading">
+                        <h3 id="git-walls-diagram-title">Wall types</h3>
+                      </div>
+                      <a class="diagram-image-link" href="/diagrams/wall-types.svg?v=dc894abe47d7" target="_blank" rel="noopener noreferrer" aria-label="Open the wall types diagram at full size in a new tab">
+                        <img src="/diagrams/wall-types.svg?v=dc894abe47d7" width="1205" height="528" alt="Two wall types from the poster: on the left, a bubbling wall with expanded components Y₀, Y₁ and Y₂ and punctual lengths a and b at the nodes; on the right, a discriminant wall with a nodal configuration mapping to a chain of projective lines, with the adjacent ideals and the intermediate family labelled." loading="lazy" decoding="async" />
+                      </a>
+                      <p class="diagram-caption">Select the diagram to view full size.</p>
+                    </aside>
                       <p>
                         For general SNC pairs, we construct finite Hilbert–Mumford criteria for GIT semistability of associated zero-cycles, determined by their support types. For smooth pointed curves, we classify the GIT walls—bubbling and discriminant—and their birational transformations, including walls sensitive to infinitesimal scheme structure. We construct a discriminant-only VGIT path, followed by a semiample contraction to <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="Hilbert scheme of n points on X"><mrow><msup><mi mathvariant="normal">Hilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>)</mo></mrow></math>. This yields an explicit presentation of the integral Chow ring of <math class="inline-math" xmlns="http://www.w3.org/1998/Math/MathML" aria-label="logarithmic Hilbert stack of n points on X relative to D"><mrow><msup><mi mathvariant="normal">LogHilb</mi><mi>n</mi></msup><mo>(</mo><mi>X</mi><mo>,</mo><mi>D</mi><mo>)</mo></mrow></math>.
                       </p>
@@ -557,14 +566,16 @@ import SiteFooter from "../components/SiteFooter.astro";
     .illustrated-description {
       grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
       column-gap: 20px;
+      row-gap: 20px;
     }
     .illustrated-description > p { grid-column: 1; }
     .illustrated-description > p:nth-of-type(1) { grid-row: 1; }
     .illustrated-description > p:nth-of-type(3) { grid-row: 3; }
     #git-coarse-paragraph { grid-row: 2; }
     #git-toric-paragraph { grid-row: 4; }
-    #git-coarse-diagram { grid-column: 2; grid-row: 2 / 4; transform: translateY(-48px); }
-    #git-toric-diagram { grid-column: 2; grid-row: 3 / 5; align-self: end; transform: translateY(-0.5em); }
+    #git-coarse-diagram { grid-column: 2; grid-row: 1; }
+    #git-walls-diagram { grid-column: 2; grid-row: 2 / 4; align-self: center; }
+    #git-toric-diagram { grid-column: 2; grid-row: 4; align-self: end; }
     .illustrated-description > .diagram-panel { margin: 0; }
   }
 

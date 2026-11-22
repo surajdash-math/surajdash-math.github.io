@@ -1,0 +1,110 @@
+% Wall types: exact native diagrams from the user-supplied poster.
+% Source: LogHilb_poster_ICERM_56x42.zip/main.tex
+% FigBubbling: lines 305-327. FigDiscr: lines 690-726.
+% The diagram commands below are copied verbatim. The poster's active
+% ColColor for the curve section is Accent. Only the outer composition,
+% two panel headings, and the FitWidth wrapper are adapted for the web.
+\RequirePackage{fix-cm}
+\documentclass{article}
+\usepackage[paperwidth=1210pt,paperheight=530pt,margin=0pt]{geometry}
+\pagestyle{empty}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.95]{helvet}
+\usepackage{amsmath,amssymb,graphicx,tikz}
+\usetikzlibrary{arrows,arrows.meta,calc,decorations.pathreplacing,decorations.pathmorphing,shapes.misc}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{Ink}{HTML}{1B2B3A}
+\definecolor{Accent}{HTML}{1F7A72}
+\definecolor{PlusC}{HTML}{D2711A}
+\definecolor{MinusC}{HTML}{6A4CA6}
+\definecolor{StrataBlue}{HTML}{2D5FC4}
+\definecolor{StrataRed}{HTML}{CF4A2E}
+\definecolor{ChainBlue}{HTML}{3B3B9A}
+\definecolor{DiscrP}{HTML}{A0503F}
+\definecolor{DiscrGreen}{HTML}{2E8B3A}
+\definecolor{CircleBlue}{HTML}{7EC8E3}
+\colorlet{ColColor}{Accent}
+\color{Ink}
+\newcommand{\FitWidth}[1]{#1}
+\tikzset{
+  pt/.style={circle,fill=Ink,inner sep=0pt,minimum size=12pt},
+  fat/.style={circle,fill=#1,inner sep=0pt,minimum size=22pt},
+  lab/.style={font=\fontsize{22}{26}\selectfont},
+  slab/.style={font=\fontsize{20}{24}\selectfont},
+  curve/.style={line width=3pt,Ink,line cap=round},
+  bigarrow/.style={-{Computer Modern Rightarrow[length=+0pt 6.2]},line width=1.8pt},
+}
+
+\newcommand{\FigBubbling}{\FitWidth{%
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \draw[curve] (0,10) -- (260,107.5);
+  \draw[curve,ColColor] (200,100) -- (520,100);
+  \draw[curve] (460,107.5) -- (720,10);
+  \node[lab,anchor=north west] at (6,4) {$Y_0$};
+  \node[lab,ColColor,anchor=south] at (360,104) {$Y_1$};
+  \node[lab,anchor=north east] at (716,4) {$Y_2$};
+  \foreach \x in {45,100,155} \node[pt] at (\x,{10+0.375*\x}) {};
+  \foreach \x in {565,645} \node[pt] at (\x,{100-0.375*(\x-480)}) {};
+  \node[fat=PlusC] at (240,100) {}; \node[fat=MinusC] at (480,100) {};
+  \node[slab,PlusC,anchor=north] at (246,86) {length $a$};
+  \node[slab,MinusC,anchor=north] at (474,86) {length $b$};
+  \node[slab,anchor=south] at (240,114) {$q_i$}; \node[slab,anchor=south] at (480,114) {$q_j$};
+  \draw[decorate,decoration={brace,amplitude=8pt},line width=1.6pt] (30,30) -- (170,82);
+  \node[slab,anchor=south east] at (92,66) {$n-s-a$};
+  \draw[decorate,decoration={brace,amplitude=8pt},line width=1.6pt] (550,79) -- (660,38);
+  \node[slab,anchor=south west] at (612,66) {$s-b$};
+  \draw[-{Computer Modern Rightarrow[length=+0pt 6.2]},line width=2.2pt,ColColor] (300,150) to[bend left=18] node[slab,midway,above]{$\lambda_{ij}$ scales $Y_1$} (420,150);
+\end{tikzpicture}}}
+
+\newcommand{\FigDiscr}{%
+\begin{tikzpicture}[x=1pt,y=1pt,lab/.style={font=\fontsize{20}{24}\selectfont,inner sep=1.5pt}]
+  \useasboundingbox (0,0) rectangle (364,442);
+  \draw[CircleBlue,line width=1.4pt,dash pattern=on 3.5pt off 3pt] (35,236) circle (33pt);
+  \draw[Ink,line width=1.6pt,line cap=round] (33,336) .. controls (37,300) and (35,266) .. (30,240);
+  \draw[StrataRed,line width=1.6pt,line cap=round] (17,252) .. controls (24,248) and (28,244) .. (30,240) .. controls (38,212) and (28,186) .. (38,164) -- (43.0,153.1);
+  \draw[StrataRed,line width=1.6pt,line cap=round] (43.0,174.9) -- (38,164) .. controls (28,142) and (34,105) .. (40,70);
+  \draw[Ink,line width=1.5pt,-{Straight Barb[length=7pt,width=10pt]}] (28,293) .. controls (58,284) and (60,240) .. (9,219);
+  \draw[StrataBlue,line width=1.6pt,-{Straight Barb[length=7pt,width=10pt]}] (30,240) -- (50,318);
+  \draw[StrataBlue,line width=1.6pt,-{Straight Barb[length=7pt,width=10pt]}] (30,240) -- (42,222);
+  \fill[StrataRed] (30,240) circle (5.5pt);
+  \draw[Ink,line width=1.6pt,-{Straight Barb[length=11pt,width=16pt]}] (80,238) -- (204,238);
+  \draw[ChainBlue,line width=1.9pt,line cap=round] (246.00,436.00) .. controls (231.00,408.64) and (231.00,387.36) .. (246.00,360.00) -- (251.77,349.48);
+  \draw[ChainBlue,line width=1.9pt,line cap=round] (251.14,370.85) -- (246.00,360.00) .. controls (231.00,328.32) and (231.00,303.68) .. (246.00,272.00);
+  \foreach \yy in {228,241,254} \fill[ChainBlue] (246.0,\yy) circle (2.3pt);
+  \draw[ChainBlue,line width=1.9pt,line cap=round] (246.00,214.00) .. controls (231.00,194.56) and (231.00,179.44) .. (246.00,160.00) -- (253.33,150.50);
+  \draw[ChainBlue,line width=1.9pt,line cap=round] (251.44,170.70) -- (246.00,160.00) .. controls (231.00,130.48) and (231.00,107.52) .. (246.00,78.00) -- (251.44,67.30);
+  \draw[ChainBlue,line width=1.9pt,line cap=round] (252.01,88.39) -- (246.00,78.00) .. controls (231.00,52.08) and (231.00,31.92) .. (246.00,6.00);
+  \node[lab,DiscrP,anchor=west] at (258.0,398) {$\mathbb P^1$};
+  \node[lab,DiscrP,anchor=west] at (258.0,312) {$\mathbb P^1$};
+  \node[lab,DiscrP,anchor=west] at (258.0,188) {$\mathbb P^1$};
+  \node[lab,DiscrP,anchor=west] at (258.0,100) {$\mathbb P^1$};
+  \node[lab,DiscrP,anchor=west] at (258.0,40) {$\mathbb P^1$};
+  \fill[Ink] (246.0,160.0) circle (3.6pt);
+  \fill[Ink] (246.0,78.0) circle (3.6pt);
+  \node[lab,anchor=east] at (192,160.0) {$(y^i,x^{n-i+1})$};
+  \draw[Ink,line width=1.3pt,-{Stealth[length=7pt,width=6pt]}] (194,160.0) -- (241.0,160.0);
+  \node[lab,anchor=east] at (192,78.0) {$(y^{i+1},x^{n-i})$};
+  \draw[Ink,line width=1.3pt,-{Stealth[length=7pt,width=6pt]}] (194,78.0) -- (241.0,78.0);
+  \node[lab,DiscrGreen,anchor=east] at (192,133) {$(\beta y^i+\alpha x^{n-i})$};
+  \node[lab,DiscrGreen,anchor=east] at (192,106) {$[\alpha:\beta]\in\mathbb P^1$};
+  \draw[DiscrGreen,line width=1.3pt,-{Stealth[length=7pt,width=6pt]}] (194,119) -- (232.9,119);
+  \fill[ChainBlue] (234.9,119) circle (2.4pt);
+  \draw[Ink,line width=1.6pt,-{Straight Barb[length=11pt,width=16pt]}] (300,160.0) -- (252.0,160.0);
+  \draw[Ink,line width=1.6pt,-{Straight Barb[length=11pt,width=16pt]}] (300,78.0) -- (252.0,78.0);
+  \draw[Ink,line width=1.3pt,-{Stealth[length=7pt,width=6pt]}] (298,128) -- (239.7,128);
+  \node[lab,anchor=west] at (300,128) {$i$\textrm{-th }$\mathbb P^1$};
+\end{tikzpicture}}
+
+\begin{document}
+\noindent\begin{tikzpicture}[remember picture,overlay]
+\node[inner sep=0pt] at (current page.center) {%
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \node[inner sep=0pt] (bubbling) at (0,0) {\FigBubbling};
+  \node[inner sep=0pt,anchor=west] (discriminant) at (410,0) {\FigDiscr};
+  \node[font=\fontsize{26}{31}\selectfont\bfseries,text=Ink,anchor=south]
+    at (bubbling.center |- 0,243) {Bubbling wall};
+  \node[font=\fontsize{26}{31}\selectfont\bfseries,text=Ink,anchor=south]
+    at (discriminant.center |- 0,243) {Discriminant wall};
+\end{tikzpicture}};
+\end{tikzpicture}\mbox{}
+\end{document}
