@@ -3,6 +3,7 @@ const quotations = [
   {
     text: "Lack of originality, everywhere, all over the world, from time immemorial, has always been considered the foremost quality and the best recommendation of the active, efficient and practical man…",
     work: "The Idiot",
+    theme: "light",
     translation: "Translated by Richard Pevear and Larissa Volokhonsky · Everyman’s Library, 2002",
     editionUrl: "https://penguinrandomhousehighereducation.com/book/?isbn=9780375413926",
     originalUrl: "https://rvb.ru/dostoevski/01text/vol6/28-29.htm",
@@ -10,6 +11,7 @@ const quotations = [
   {
     text: "You sensed that you should be following a different path, a more ambitious one, you felt that you were destined for other things but you had no idea how to achieve them and in your misery you began to hate everything around you.",
     work: "Netochka Nezvanova",
+    theme: "dark",
     translation: "Translated by Jane Kentish · Penguin Classics, 1985",
     editionUrl: "https://ci.nii.ac.jp/ncid/BA24896503",
     originalUrl: "https://rvb.ru/dostoevski/01text/vol2/14-01.htm",
@@ -17,17 +19,13 @@ const quotations = [
 ];
 ---
 
-<section id="home-quotes" class="quote-carousel" data-home-quotes aria-label="Literary quotations" aria-roledescription="carousel">
+<section id="home-quotes" class="quote-card" data-home-quotes aria-label="Literary quotations">
   <div class="quote-pages">
-    {quotations.map((quote, index) => (
+    {quotations.map((quote) => (
       <figure
-        class:list={["quote-page", { "is-active": index === 0 }]}
+        class="quote-page"
         data-quote-page
-        role="group"
-        aria-roledescription="slide"
-        aria-label={`Quotation ${index + 1} of ${quotations.length}`}
-        aria-hidden={index === 0 ? "false" : "true"}
-        inert={index !== 0}
+        data-quote-theme={quote.theme}
       >
         <blockquote class="quote-text" cite={quote.originalUrl}>
           <p>“{quote.text}”</p>
@@ -45,86 +43,8 @@ const quotations = [
   </div>
 </section>
 
-<script>
-  let initializedQuotes: HTMLElement | null = null;
-  let cleanupQuotes = () => {};
-
-  function initializeQuotes() {
-    const carousel = document.querySelector<HTMLElement>("[data-home-quotes]");
-    if (carousel && initializedQuotes === carousel) return;
-    cleanupQuotes();
-    if (!carousel) return;
-
-    const pages = Array.from(carousel.querySelectorAll<HTMLElement>("[data-quote-page]"));
-    if (pages.length < 2) return;
-
-    initializedQuotes = carousel;
-    const controller = new AbortController();
-    const { signal } = controller;
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let current = 0;
-    let hovering = false;
-    let focused = false;
-    let visible = false;
-    let disposed = false;
-    let timer = 0;
-
-    function schedule() {
-      window.clearTimeout(timer);
-      if (disposed || motion.matches || hovering || focused || !visible || document.hidden) return;
-      timer = window.setTimeout(() => show(current + 1), 15000);
-    }
-
-    function show(index: number) {
-      if (disposed) return;
-      current = (index + pages.length) % pages.length;
-      pages.forEach((page, item) => {
-        const active = item === current;
-        page.classList.toggle("is-active", active);
-        page.setAttribute("aria-hidden", String(!active));
-        page.inert = !active;
-      });
-      schedule();
-    }
-
-    carousel.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "mouse" || event.pointerType === "pen") hovering = true;
-      schedule();
-    }, { signal });
-    carousel.addEventListener("pointerleave", () => { hovering = false; schedule(); }, { signal });
-    carousel.addEventListener("focusin", () => { focused = true; schedule(); }, { signal });
-    carousel.addEventListener("focusout", () => queueMicrotask(() => {
-      if (disposed) return;
-      focused = carousel.contains(document.activeElement);
-      schedule();
-    }), { signal });
-    document.addEventListener("visibilitychange", schedule, { signal });
-    motion.addEventListener("change", schedule, { signal });
-
-    const observer = new IntersectionObserver((entries) => {
-      visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.25);
-      schedule();
-    }, { threshold: [0, 0.25] });
-    observer.observe(carousel);
-    show(0);
-
-    cleanupQuotes = () => {
-      disposed = true;
-      window.clearTimeout(timer);
-      controller.abort();
-      observer.disconnect();
-      initializedQuotes = null;
-      cleanupQuotes = () => {};
-    };
-  }
-
-  initializeQuotes();
-  document.addEventListener("astro:page-load", initializeQuotes);
-  document.addEventListener("astro:before-swap", () => cleanupQuotes());
-</script>
-
 <style>
-  .quote-carousel {
+  .quote-card {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -142,32 +62,26 @@ const quotations = [
     color: #35434a;
     isolation: isolate;
   }
-  :global(html[data-theme="dark"]) .quote-carousel {
+  :global(html[data-theme="dark"]) .quote-card {
     border-color: rgba(181, 180, 163, .22);
     background: linear-gradient(130deg, rgba(52, 53, 48, .98), rgba(39, 42, 39, .98));
     box-shadow: 0 18px 42px rgba(0, 0, 0, .25), 0 3px 9px rgba(0, 0, 0, .14);
     color: #eeece3;
   }
-  .quote-carousel .quote-pages { display: grid; max-width: 1110px; margin: 0 auto; min-width: 0; }
-  .quote-carousel .quote-page {
+  .quote-card .quote-pages { display: grid; max-width: 1110px; margin: 0 auto; min-width: 0; }
+  .quote-card .quote-page {
     grid-area: 1 / 1;
-    display: flex;
+    display: none;
     flex-direction: column;
     min-width: 0;
     margin: 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 600ms ease, visibility 0s 600ms;
   }
-  .quote-carousel .quote-page.is-active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity 600ms ease, visibility 0s;
+  :global(html:not([data-theme="dark"])) .quote-page[data-quote-theme="light"],
+  :global(html[data-theme="dark"]) .quote-page[data-quote-theme="dark"] {
+    display: flex;
   }
-  .quote-carousel .quote-text { margin: 0; padding: 0; border: 0; color: inherit; }
-  .quote-carousel .quote-text p {
+  .quote-card .quote-text { margin: 0; padding: 0; border: 0; color: inherit; }
+  .quote-card .quote-text p {
     margin: 0;
     color: inherit;
     font-family: "STIX Two Text", Georgia, serif;
@@ -179,8 +93,8 @@ const quotations = [
     text-wrap: pretty;
     overflow-wrap: break-word;
   }
-  .quote-carousel .quote-credit { padding-top: 12px; margin-top: auto; text-align: right; }
-  .quote-carousel .quote-author {
+  .quote-card .quote-credit { padding-top: 12px; margin-top: auto; text-align: right; }
+  .quote-card .quote-author {
     margin: 0 0 4px;
     color: inherit;
     font-family: "STIX Two Text", Georgia, serif;
@@ -189,8 +103,8 @@ const quotations = [
     font-style: italic;
     font-weight: 400;
   }
-  .quote-carousel .quote-author cite { font: inherit; }
-  .quote-carousel .quote-edition {
+  .quote-card .quote-author cite { font: inherit; }
+  .quote-card .quote-edition {
     margin: 0;
     color: #405e6a;
     font-family: "STIX Two Text", Georgia, serif;
@@ -200,19 +114,15 @@ const quotations = [
     font-style: normal;
     overflow-wrap: break-word;
   }
-  :global(html[data-theme="dark"]) .quote-carousel .quote-edition { color: #c7c5b9; }
-  .quote-carousel .quote-edition a { color: inherit; font: inherit; text-decoration: none; text-underline-offset: 3px; }
-  .quote-carousel .quote-edition a:hover,
-  .quote-carousel .quote-edition a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; }
-  .quote-carousel a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  :global(html[data-theme="dark"]) .quote-card .quote-edition { color: #c7c5b9; }
+  .quote-card .quote-edition a { color: inherit; font: inherit; text-decoration: none; text-underline-offset: 3px; }
+  .quote-card .quote-edition a:hover,
+  .quote-card .quote-edition a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; }
+  .quote-card a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
   @media (max-width: 680px) {
-    .quote-carousel { width: calc(100vw - 32px); padding: 20px; border-radius: 17px; }
-    .quote-carousel .quote-credit { padding-top: 12px; text-align: left; }
-    .quote-carousel .quote-source-separator { display: none; }
-    .quote-carousel .quote-edition > a:last-child { display: block; margin-top: 3px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .quote-carousel .quote-page,
-    .quote-carousel .quote-page.is-active { transition: none; }
+    .quote-card { width: calc(100vw - 32px); padding: 20px; border-radius: 17px; }
+    .quote-card .quote-credit { padding-top: 12px; text-align: left; }
+    .quote-card .quote-source-separator { display: none; }
+    .quote-card .quote-edition > a:last-child { display: block; margin-top: 3px; }
   }
 </style>
