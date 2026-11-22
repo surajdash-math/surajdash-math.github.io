@@ -65,6 +65,7 @@ const wallpaper = await getImage({
           <p>This statement and its update date will be revised if the website’s privacy practices change.</p>
         </section>
       </article>
+      <p class="background-caption">Watermark: Treviso, Italy · May 2026</p>
       <SiteFooter />
     </main>
   </body>
@@ -108,6 +109,17 @@ const wallpaper = await getImage({
   .privacy-section { margin-top: 32px; padding-top: 30px; border-top: 1px solid var(--line); }
   .email-address { white-space: normal; overflow-wrap: anywhere; }
   a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+  .background-caption {
+    margin: auto 0 0;
+    padding-top: 32px;
+    font-size: 0.77rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--caption);
+    text-align: right;
+    text-shadow: 0 1px 2px var(--caption-shadow);
+  }
+
   @media (max-width: 680px) {
     .page-shell { width: calc(100% - 32px); padding-top: 24px; }
     .notice-card { padding: 24px 20px 28px; }
