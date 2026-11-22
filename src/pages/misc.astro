@@ -27,7 +27,7 @@ const wallpaper = await getImage({
     <ThemeInit />
     <title>Miscellaneous | Suraj Dash</title>
   </head>
-  <body>
+  <body class="misc-page">
     <PageWatermark src={wallpaper.src} />
     <main class="page-shell">
       <div class="misc-content">
@@ -167,7 +167,11 @@ const wallpaper = await getImage({
     background: var(--bg);
   }
   :global(a) { color: var(--link); }
-  :global(.page-watermark) { background-position: center 62%; }
+  :global(body.misc-page .page-watermark) {
+    background-position: center;
+    background-size: auto, contain, auto;
+    background-repeat: no-repeat;
+  }
   .page-shell {
     position: relative;
     z-index: 1;
