@@ -35,10 +35,93 @@ const wallpaper = await getImage({
           <h1 id="misc-title">Miscellaneous</h1>
         </article>
       </div>
+      <p class="background-caption">Watermark: A childhood painting</p>
       <SiteFooter />
     </main>
   </body>
 </html>
+
+<script>
+  let cleanupCardReference = () => {};
+
+  async function matchCopyrightCard() {
+    cleanupCardReference();
+    const card = document.querySelector<HTMLElement>(".misc-card");
+    if (!card) return;
+
+    const controller = new AbortController();
+    const { signal } = controller;
+    let frame: HTMLIFrameElement | undefined;
+    let observer: ResizeObserver | undefined;
+    cleanupCardReference = () => {
+      controller.abort();
+      observer?.disconnect();
+      frame?.remove();
+    };
+
+    try {
+      const version = document.querySelector('meta[name="site-build-version"]')?.getAttribute("content");
+      const response = await fetch(`/copyright/?v=${encodeURIComponent(version ?? "")}`, { signal });
+      if (!response.ok) return;
+      const reference = new DOMParser().parseFromString(await response.text(), "text/html");
+      const notice = reference.querySelector(".notice-card");
+      const shell = reference.querySelector(".page-shell");
+      if (!notice || !shell || signal.aborted) return;
+
+      // Measure the current Copyright card without running its scripts or
+      // loading its navigation, wallpaper, or footer. The reference is hidden
+      // from both visitors and assistive technology.
+      reference.querySelectorAll('script, link[rel="preload"], link[rel="modulepreload"]').forEach(el => el.remove());
+      const referenceShell = shell.cloneNode(false) as HTMLElement;
+      referenceShell.append(notice);
+      reference.body.replaceChildren(referenceShell);
+      reference.documentElement.dataset.theme = document.documentElement.dataset.theme;
+      const base = reference.createElement("base");
+      base.href = new URL("/copyright/", window.location.href).href;
+      reference.head.prepend(base);
+
+      frame = document.createElement("iframe");
+      frame.title = "Card sizing reference";
+      frame.setAttribute("aria-hidden", "true");
+      frame.inert = true;
+      frame.tabIndex = -1;
+      frame.sandbox.add("allow-same-origin");
+      frame.style.cssText = "position:fixed;left:0;top:0;transform:translateX(-200%);visibility:hidden;pointer-events:none;border:0;";
+      const resizeReference = () => {
+        if (!frame) return;
+        frame.style.width = `${window.innerWidth}px`;
+        frame.style.height = `${window.innerHeight}px`;
+      };
+      resizeReference();
+      window.addEventListener("resize", resizeReference, { signal });
+      frame.addEventListener("load", async () => {
+        const doc = frame?.contentDocument;
+        const referenceCard = doc?.querySelector<HTMLElement>(".notice-card");
+        if (!doc || !referenceCard || signal.aborted) return;
+        await doc.fonts.ready;
+        if (signal.aborted) return;
+        const syncHeight = () => {
+          const height = referenceCard.getBoundingClientRect().height;
+          if (height > 0 && card.isConnected) {
+            card.style.setProperty("--copyright-card-height", `${height}px`);
+            card.dataset.dimensionsMatched = "true";
+          }
+        };
+        observer = new ResizeObserver(syncHeight);
+        observer.observe(referenceCard);
+        syncHeight();
+      }, { once: true, signal });
+      frame.srcdoc = `<!doctype html>${reference.documentElement.outerHTML}`;
+      document.body.append(frame);
+    } catch {
+      // Keep the normal card layout if the reference page cannot be retrieved.
+    }
+  }
+
+  matchCopyrightCard();
+  document.addEventListener("astro:page-load", matchCopyrightCard);
+  document.addEventListener("astro:before-swap", () => cleanupCardReference());
+</script>
 
 <style>
   :global(:root) {
@@ -47,9 +130,12 @@ const wallpaper = await getImage({
     --text: #293c47;
     --heading: #284959;
     --link: #28657e;
-    --line: rgba(55, 88, 76, .20);
+    --line: rgba(41, 73, 88, .46);
+    --card-edge: #547684;
+    --caption: #2d4652;
+    --caption-shadow: rgba(252, 250, 246, .96);
     --shadow: rgba(34, 62, 51, .12);
-    --card-bg: rgba(250, 252, 248, .93);
+    --card-bg: rgba(248, 251, 252, .95);
     --background-overlay-start: rgba(224, 235, 228, .46);
     --background-overlay-end: rgba(224, 235, 228, .58);
   }
@@ -59,9 +145,12 @@ const wallpaper = await getImage({
     --text: #d7e0e4;
     --heading: #edf2f4;
     --link: #8abfd2;
-    --line: rgba(177, 204, 193, .22);
+    --line: rgba(195, 215, 224, .20);
+    --card-edge: rgba(143, 196, 220, .36);
+    --caption: #b7c5ca;
+    --caption-shadow: rgba(0, 0, 0, .8);
     --shadow: rgba(0, 0, 0, .22);
-    --card-bg: rgba(29, 43, 40, .92);
+    --card-bg: rgba(31, 46, 54, .92);
     --background-overlay-start: rgba(10, 20, 18, .68);
     --background-overlay-end: rgba(10, 20, 18, .78);
   }
@@ -91,15 +180,47 @@ const wallpaper = await getImage({
   }
   .misc-content { flex: none; }
   .misc-card {
+    position: relative;
     width: min(100%, 980px);
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: var(--copyright-card-height, 100svh);
     margin: 0 auto;
     padding: 32px clamp(24px, 4vw, 48px) 38px;
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 14px;
     background: var(--card-bg);
-    box-shadow: 0 12px 30px var(--shadow);
+    box-shadow: 6px 6px 0 rgba(31, 57, 69, .15);
+  }
+  .misc-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: var(--card-edge);
+    pointer-events: none;
+  }
+  :global(html[data-theme="dark"]) .misc-card {
+    border-radius: 20px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .24);
+  }
+  :global(html[data-theme="dark"]) .misc-card::before {
+    box-shadow: 1px 0 8px var(--card-edge);
+  }
+  .background-caption {
+    margin: auto 0 0;
+    padding-top: 32px;
+    font-size: .77rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--caption);
+    text-align: right;
+    text-shadow: 0 1px 2px var(--caption-shadow);
+  }
+  :global(html[data-theme="dark"]) .background-caption {
+    font-weight: 400;
+    opacity: .45;
   }
   h1 {
     margin: 0;

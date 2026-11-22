@@ -84,11 +84,12 @@ const wallpaper = await getImage({
     --heading: #284959;
     --muted: #647783;
     --link: #28657e;
-    --line: rgba(55, 88, 106, .16);
+    --line: rgba(41, 73, 88, .46);
+    --card-edge: #547684;
     --shadow: rgba(36, 49, 58, .08);
     --background-overlay-start: rgba(223, 234, 240, .58);
     --background-overlay-end: rgba(223, 234, 240, .68);
-    --card-bg: rgba(250, 252, 253, .95);
+    --card-bg: rgba(248, 251, 252, .95);
   }
   :global(*) { box-sizing: border-box; }
   :global(body) {
@@ -104,7 +105,25 @@ const wallpaper = await getImage({
   }
   :global(a) { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
   .page-shell { position: relative; z-index: 1; display: flex; flex-direction: column; width: min(1100px, calc(100% - 48px)); min-height: 100vh; margin: 0 auto; padding-top: 32px; }
-  .notice-card { width: min(100%, 980px); margin: 0 auto; padding: 32px clamp(24px, 4vw, 48px) 38px; border: 1px solid var(--line); border-radius: 16px; background: var(--card-bg); box-shadow: 0 12px 30px var(--shadow); }
+  .notice-card { position: relative; width: min(100%, 980px); margin: 0 auto; padding: 32px clamp(24px, 4vw, 48px) 38px; border: 1px solid var(--line); border-radius: 14px; background: var(--card-bg); box-shadow: 6px 6px 0 rgba(31, 57, 69, .15); }
+  .notice-card::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: var(--card-edge);
+    pointer-events: none;
+  }
+  :global(html[data-theme="dark"]) .notice-card {
+    border-radius: 20px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .24);
+  }
+  :global(html[data-theme="dark"]) .notice-card::before {
+    box-shadow: 1px 0 8px var(--card-edge);
+  }
   h1 { margin: 0; color: var(--heading); font-family: "STIX Two Text", Georgia, serif; font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.2; }
   .notice-updated { margin: 10px 0 30px; color: var(--muted); font-size: 14px; }
   h2 { margin: 0 0 16px; color: var(--heading); font-size: 23px; line-height: 1.3; font-weight: 600; }
