@@ -277,7 +277,7 @@ const conferenceEntries: ConferenceEntry[] = [
     width: min(1100px, calc(100% - 48px));
     min-height: 100vh;
     margin: 0 auto;
-    padding: 32px 0 112px;
+    padding: 32px 0 0; display: flex; flex-direction: column;
   }
 
   .travel-sections {
@@ -421,10 +421,8 @@ const conferenceEntries: ConferenceEntry[] = [
   }
 
   .background-caption {
-    position: absolute;
-    right: 0;
-    bottom: 58px;
-    margin: 0;
+    margin: auto 0 0;
+    padding-top: 32px;
     font-size: 0.77rem;
     font-weight: 500;
     font-style: italic;

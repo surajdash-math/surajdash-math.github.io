@@ -284,8 +284,9 @@ const drpEntries: DrpEntry[] = [
     position: relative;
     z-index: 1;
     width: min(1100px, calc(100% - 48px));
+    min-height: 100vh;
     margin: 0 auto;
-    padding: 32px 0 112px;
+    padding: 32px 0 0; display: flex; flex-direction: column;
   }
 
   .teaching-sections {
@@ -373,10 +374,8 @@ const drpEntries: DrpEntry[] = [
     border-top: 1px solid var(--divider);
   }
   .background-caption {
-    position: absolute;
-    right: 0;
-    bottom: 58px;
-    margin: 0;
+    margin: auto 0 0;
+    padding-top: 32px;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 0.77rem;
     font-weight: 500;

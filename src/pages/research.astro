@@ -364,7 +364,7 @@ import SiteFooter from "../components/SiteFooter.astro";
   .research-layout :global(a:hover), .research-layout :global(a:focus-visible) { text-decoration: underline; text-decoration-thickness: .1em; text-underline-offset: .18em; }
   :global(strong) { font-weight: 650; }
   h2 { font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 600; color: var(--heading); }
-  .page-shell { position: relative; z-index: 1; width: min(1100px, calc(100% - 48px)); min-height: 100vh; margin: 0 auto; padding: 32px 0 112px; }
+  .page-shell { position: relative; z-index: 1; width: min(1100px, calc(100% - 48px)); min-height: 100vh; margin: 0 auto; padding: 32px 0 0; display: flex; flex-direction: column; }
 
   .research-layout {
     display: grid;
@@ -627,10 +627,8 @@ import SiteFooter from "../components/SiteFooter.astro";
   }
 
   .background-caption {
-    position: absolute;
-    right: 0;
-    bottom: 58px;
-    margin: 0;
+    margin: auto 0 0;
+    padding-top: 32px;
     font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: .77rem;
     font-weight: 500;

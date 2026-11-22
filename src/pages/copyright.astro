@@ -1,0 +1,100 @@
+---
+import ThemeInit from "../components/ThemeInit.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteVersion from "../components/SiteVersion.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Copyright notice and privacy statement for Suraj Dash’s academic website." />
+    <SiteVersion />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" />
+    <ThemeInit />
+    <title>Copyright and privacy | Suraj Dash</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <SiteNav current="/copyright" />
+      <article class="notice-card">
+        <h1>Copyright and privacy</h1>
+        <p class="notice-updated">Last updated: <time datetime="2026-11-22">November 22, 2026</time>.</p>
+
+        <section aria-labelledby="copyright-heading">
+          <h2 id="copyright-heading">Copyright notice</h2>
+          <p>© 2026 Suraj Dash. All rights reserved.</p>
+          <p>Original material authored by me on this website is protected by copyright where applicable. This notice covers my writing, notes, diagrams, photographs, and other original contributions, including the selection and arrangement of material. It does not claim exclusive rights over mathematical facts, ideas, or methods.</p>
+          <p>Except as permitted by law or an accompanying licence, reproduction, republication, distribution, or adaptation of material whose copyright I hold requires my prior written permission. Acknowledging the source does not itself grant permission to reuse it.</p>
+          <h3>Sources and third-party material</h3>
+          <p>Material by other authors, including quotations, excerpts, translations, and linked publications, remains subject to its own rights and permissions. Joint work is subject to the rights of its coauthors and any applicable publication agreements. Links to papers, notes, or books do not grant rights to reproduce them. Fonts, software, and other components retain their respective licences.</p>
+          <h3>Citation and enquiries</h3>
+          <p>When citing material from this website, include the author or authors, the title of the work or page, its URL, and your access date. For permission requests or concerns about material on this website, contact <span class="email-address">suraj dot dash at utexas dot edu</span>.</p>
+        </section>
+
+        <section class="privacy-section" aria-labelledby="privacy-heading">
+          <h2 id="privacy-heading">Privacy statement</h2>
+          <h3>Browsing this website</h3>
+          <p>I have not added analytics, advertising trackers, visitor accounts, or contact forms to this website. The website’s own code does not set cookies or use automated profiling.</p>
+          <h3>Hosting</h3>
+          <p>This website is hosted on GitHub Pages. GitHub records visitors’ IP addresses for security purposes, including when visitors are not signed in. See <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener noreferrer">GitHub’s explanation of Pages data collection</a> and its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Privacy Statement</a>.</p>
+          <h3>Theme preference</h3>
+          <p>The website saves your light or dark theme preference in your browser’s local storage so that it can be remembered on later visits. This setting is not sent to me. You can remove it by clearing this website’s stored data in your browser.</p>
+          <h3>Fonts and external links</h3>
+          <p>The DM Sans and STIX Two Text fonts load from Google Fonts. Your browser contacts Google to retrieve them, transmitting your IP address and information about the request. See the <a href="https://fonts.google.com/faq" target="_blank" rel="noopener noreferrer">Google Fonts FAQ</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google’s Privacy Policy</a>.</p>
+          <p>Some links open other websites or documents hosted on services such as Google Drive. Those services have their own privacy practices.</p>
+          <h3>Correspondence and requests</h3>
+          <p>If you email me, I receive your email address and whatever information you include. Correspondence may remain in my email account for replies and relevant academic or administrative records.</p>
+          <p>For questions about this statement, or requests concerning personal information you have sent me, contact <span class="email-address">suraj dot dash at utexas dot edu</span>. Requests for access, correction, or deletion will be considered in light of applicable requirements and any recordkeeping obligations.</p>
+          <h3>Changes</h3>
+          <p>This statement and its update date will be revised if the website’s privacy practices change.</p>
+        </section>
+      </article>
+      <SiteFooter />
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    --bg: #eef2f5;
+    --surface: #fafcfd;
+    --text: #293c47;
+    --heading: #284959;
+    --muted: #647783;
+    --link: #28657e;
+    --line: rgba(55, 88, 106, .16);
+    --shadow: rgba(36, 49, 58, .08);
+  }
+  :global(*) { box-sizing: border-box; }
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 19.8px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+  }
+  :global(a) { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+  .page-shell { position: relative; display: flex; flex-direction: column; width: min(1100px, calc(100% - 48px)); min-height: 100vh; margin: 0 auto; padding-top: 32px; }
+  .notice-card { width: min(100%, 980px); margin: 0 auto; padding: 32px clamp(24px, 4vw, 48px) 38px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 12px 30px var(--shadow); }
+  h1 { margin: 0; color: var(--heading); font-family: "STIX Two Text", Georgia, serif; font-size: clamp(28px, 3vw, 36px); font-weight: 500; line-height: 1.2; }
+  .notice-updated { margin: 10px 0 30px; color: var(--muted); font-size: 14px; }
+  h2 { margin: 0 0 16px; color: var(--heading); font-size: 23px; line-height: 1.3; font-weight: 600; }
+  h3 { margin: 25px 0 8px; color: var(--heading); font-size: 18px; line-height: 1.4; font-weight: 600; }
+  section p { margin: 0 0 15px; color: var(--text); font-size: 17px; line-height: 1.7; }
+  section p:last-child { margin-bottom: 0; }
+  .privacy-section { margin-top: 32px; padding-top: 30px; border-top: 1px solid var(--line); }
+  .email-address { white-space: normal; overflow-wrap: anywhere; }
+  a:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+  @media (max-width: 680px) {
+    .page-shell { width: calc(100% - 32px); padding-top: 24px; }
+    .notice-card { padding: 24px 20px 28px; }
+    h2 { font-size: 21px; }
+    section p { font-size: 16px; }
+  }
+</style>
