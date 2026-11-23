@@ -40,19 +40,19 @@ export const miscCollections: MiscCollection[] = [
   },
   {
     slug: "interesting-mathematics",
-    title: "Interesting Mathematics",
+    title: "Interesting webpages (Mathematical)",
     icon: "geometry",
+    entries: [],
+  },
+  {
+    slug: "interesting-non-mathematical-pages",
+    title: "Interesting webpages (Non-mathematical)",
+    icon: "globe",
     entries: [
       {
         title: "Some interesting projects by Isaac Martin",
         href: "https://web.ma.utexas.edu/users/ikmartin/projects/",
       },
     ],
-  },
-  {
-    slug: "interesting-non-mathematical-pages",
-    title: "Interesting non-mathematical pages",
-    icon: "globe",
-    entries: [],
   },
 ];
