@@ -1,0 +1,2083 @@
+{
+  "categories": [
+    {
+      "id": "topic-1",
+      "title": "Fano varieties, birational geometry, and classification"
+    },
+    {
+      "id": "topic-2",
+      "title": "Algebraic surfaces, K3 surfaces, and hyperkähler varieties"
+    },
+    {
+      "id": "topic-3",
+      "title": "Toric geometry, lattice polytopes, and toric ideals"
+    },
+    {
+      "id": "topic-4",
+      "title": "Calabi–Yau varieties and mirror symmetry"
+    },
+    {
+      "id": "topic-5",
+      "title": "Additional Fano and toric research datasets"
+    },
+    {
+      "id": "topic-6",
+      "title": "Moduli spaces and cohomological invariants"
+    },
+    {
+      "id": "topic-7",
+      "title": "Arithmetic geometry: curves, abelian varieties, and modular varieties"
+    },
+    {
+      "id": "topic-8",
+      "title": "Specialized datasets of arithmetic surfaces and higher-genus curves"
+    },
+    {
+      "id": "topic-9",
+      "title": "Syzygies, commutative algebra, and noncommutative algebraic geometry"
+    },
+    {
+      "id": "topic-10",
+      "title": "Master directories"
+    }
+  ],
+  "entries": [
+    {
+      "id": "database-1",
+      "sourceNumber": 1,
+      "categoryId": "topic-1",
+      "title": "Graded Ring Database",
+      "url": "https://www.grdb.co.uk/Index?utm_source=chatgpt.com",
+      "credits": "Gavin Brown and Alexander Kasprzyk (GRDB); individual collections credit their data authors",
+      "keywords": [
+        "graded rings",
+        "Hilbert series",
+        "weighted projective spaces",
+        "Fano threefolds",
+        "Fano fourfolds",
+        "K3 surfaces",
+        "toric varieties",
+        "Calabi–Yau varieties"
+      ],
+      "aliases": [
+        "GRDB",
+        "Calabi Yau",
+        "polarized K3"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/About",
+          "title": "GRDB: About"
+        }
+      ]
+    },
+    {
+      "id": "database-2",
+      "sourceNumber": 2,
+      "categoryId": "topic-1",
+      "title": "Fanography",
+      "url": "https://fanography.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans",
+      "keywords": [
+        "Fano threefolds",
+        "Mori–Mukai classification",
+        "anticanonical degree",
+        "Picard number",
+        "Hodge numbers",
+        "extremal contractions",
+        "birational geometry",
+        "rationality"
+      ],
+      "aliases": [
+        "Fano 3-folds",
+        "Mori Mukai",
+        "Iskovskikh"
+      ],
+      "creditSources": [
+        {
+          "url": "https://fanography.info/about/",
+          "title": "Fanography: About and citation"
+        }
+      ]
+    },
+    {
+      "id": "database-3",
+      "sourceNumber": 3,
+      "categoryId": "topic-1",
+      "title": "Grassmannian.info",
+      "url": "https://www.grassmannian.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans",
+      "keywords": [
+        "Grassmannians",
+        "rational homogeneous varieties",
+        "flag varieties",
+        "Fano index",
+        "quantum cohomology",
+        "exceptional collections",
+        "minuscule varieties",
+        "cominuscule varieties"
+      ],
+      "aliases": [
+        "generalised Grassmannians",
+        "generalized Grassmannians",
+        "G/P",
+        "G P"
+      ],
+      "creditSources": [
+        {
+          "url": "https://grassmannian.info/about/",
+          "title": "Grassmannian.info: How to cite"
+        }
+      ]
+    },
+    {
+      "id": "database-4",
+      "sourceNumber": 4,
+      "categoryId": "topic-1",
+      "title": "Rationality of Hypersurfaces",
+      "url": "https://rationality.fanography.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans",
+      "keywords": [
+        "hypersurfaces",
+        "rationality",
+        "stable rationality",
+        "irrationality",
+        "stable irrationality",
+        "birational geometry",
+        "smooth projective varieties"
+      ],
+      "aliases": [
+        "stably rational",
+        "stably irrational",
+        "rational hypersurfaces"
+      ],
+      "creditSources": [
+        {
+          "url": "https://pbelmans.ncag.info/blog/2026/09/11/rationality-hypersurfaces/",
+          "title": "Pieter Belmans: Rationality of hypersurfaces, a new website"
+        },
+        {
+          "url": "https://pbelmans.ncag.info/activities/",
+          "title": "Pieter Belmans: Interactive classifications"
+        }
+      ]
+    },
+    {
+      "id": "database-5",
+      "sourceNumber": 5,
+      "categoryId": "topic-1",
+      "title": "Cubic Fourfolds",
+      "url": "https://cubics.fanography.info/?utm_source=chatgpt.com",
+      "credits": "Nicolas Addington and Pieter Belmans",
+      "keywords": [
+        "cubic fourfolds",
+        "special cubic fourfolds",
+        "K3 surfaces",
+        "discriminants",
+        "Hodge lattices",
+        "twisted K3 surfaces",
+        "Fourier–Mukai partners",
+        "Fano varieties of lines",
+        "rationality"
+      ],
+      "aliases": [
+        "Fourier Mukai",
+        "associated K3"
+      ],
+      "creditSources": [
+        {
+          "url": "https://cubics.fanography.info/",
+          "title": "Cubic fourfolds and their associated K3 surfaces: About"
+        }
+      ]
+    },
+    {
+      "id": "database-6",
+      "sourceNumber": 6,
+      "categoryId": "topic-1",
+      "title": "Smooth Toric Fano Varieties",
+      "url": "https://www.grdb.co.uk/forms/toricsmooth?utm_source=chatgpt.com",
+      "credits": "Mikkel Øbro (classification data)",
+      "keywords": [
+        "smooth toric Fano varieties",
+        "smooth Fano polytopes",
+        "anticanonical degree",
+        "lattice volume",
+        "vertices",
+        "faces",
+        "barycentres",
+        "central symmetry"
+      ],
+      "aliases": [
+        "Mikkel Obro",
+        "barycenters",
+        "toric Fano n-folds"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/forms/toricsmooth",
+          "title": "GRDB: Smooth toric Fano varieties, authors and references"
+        },
+        {
+          "url": "https://arxiv.org/abs/0704.0049",
+          "title": "An algorithm for the classification of smooth Fano polytopes"
+        }
+      ]
+    },
+    {
+      "id": "database-7",
+      "sourceNumber": 7,
+      "categoryId": "topic-2",
+      "title": "Le Superficie Algebriche",
+      "url": "https://superficie.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans and Johan Commelin",
+      "keywords": [
+        "algebraic surfaces",
+        "Enriques–Kodaira classification",
+        "Kodaira dimension",
+        "Chern numbers",
+        "Hodge diamonds",
+        "minimal surfaces",
+        "geometric genus",
+        "irregularity"
+      ],
+      "aliases": [
+        "Enriques Kodaira",
+        "complex surfaces",
+        "surface geography"
+      ],
+      "creditSources": [
+        {
+          "url": "https://superficie.info/",
+          "title": "Le superficie algebriche: About"
+        }
+      ]
+    },
+    {
+      "id": "database-8",
+      "sourceNumber": 8,
+      "categoryId": "topic-2",
+      "title": "Hyperkaehler.info",
+      "url": "https://hyperkaehler.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans",
+      "keywords": [
+        "hyperkähler varieties",
+        "irreducible holomorphic symplectic varieties",
+        "K3 surfaces",
+        "Hilbert schemes",
+        "generalised Kummer varieties",
+        "O’Grady varieties",
+        "Beauville–Bogomolov forms",
+        "Betti numbers",
+        "Chern classes",
+        "monodromy"
+      ],
+      "aliases": [
+        "hyperkahler",
+        "hyperkaehler",
+        "generalized Kummer",
+        "BBF form",
+        "K3^[n]",
+        "OG6",
+        "OG10"
+      ],
+      "creditSources": [
+        {
+          "url": "https://hyperkaehler.info/about/",
+          "title": "Hyperkaehler.info: About and citation"
+        }
+      ]
+    },
+    {
+      "id": "database-9",
+      "sourceNumber": 9,
+      "categoryId": "topic-2",
+      "title": "GRDB — Polarised K3 Surfaces",
+      "url": "https://www.grdb.co.uk/Index?utm_source=chatgpt.com",
+      "credits": "Selma Altınok, Gavin Brown, Anthony Iano-Fletcher and Miles Reid",
+      "keywords": [
+        "polarised K3 surfaces",
+        "Hilbert series",
+        "weighted projective embeddings",
+        "graded rings",
+        "baskets of singularities",
+        "genus",
+        "unprojection",
+        "polarisation degree"
+      ],
+      "aliases": [
+        "polarized K3 surfaces",
+        "polarization",
+        "Selma Altinok"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/forms/k3",
+          "title": "GRDB: K3 surfaces, authors and references"
+        }
+      ]
+    },
+    {
+      "id": "database-10",
+      "sourceNumber": 10,
+      "categoryId": "topic-2",
+      "title": "Magma — Geometric Databases",
+      "url": "https://magma.maths.usyd.edu.au/magma/info/topic_alg_geo_toric?utm_source=chatgpt.com",
+      "credits": "Computational Algebra Group, University of Sydney (Magma); collection-specific data authors",
+      "keywords": [
+        "K3 surfaces",
+        "toric Fano varieties",
+        "lattice polytopes",
+        "weighted projective spaces",
+        "Hilbert series",
+        "toric geometry",
+        "fans",
+        "Cox rings",
+        "Mori cones",
+        "nef cones"
+      ],
+      "aliases": [
+        "Magma",
+        "computational algebraic geometry"
+      ],
+      "creditSources": [
+        {
+          "url": "https://magma.maths.usyd.edu.au/magma/info/topic_alg_geo_toric",
+          "title": "Magma: Toric geometry and geometric databases"
+        },
+        {
+          "url": "https://magma-maths.org/contact/",
+          "title": "Magma: Contact and institutional attribution"
+        }
+      ]
+    },
+    {
+      "id": "database-11",
+      "sourceNumber": 11,
+      "categoryId": "topic-3",
+      "title": "PolyDB",
+      "url": "https://polydb.org/?utm_source=chatgpt.com",
+      "credits": "Andreas Paffenholz and the polymake team (platform); data authors are credited by collection",
+      "keywords": [
+        "lattice polytopes",
+        "reflexive polytopes",
+        "smooth reflexive polytopes",
+        "combinatorial polytopes",
+        "matroids",
+        "tropical geometry",
+        "discrete geometry"
+      ],
+      "aliases": [
+        "PolyDB",
+        "polymake"
+      ],
+      "creditSources": [
+        {
+          "url": "https://polydb.org/",
+          "title": "polyDB: Platform and data-maintainer attribution"
+        }
+      ]
+    },
+    {
+      "id": "database-12",
+      "sourceNumber": 12,
+      "categoryId": "topic-3",
+      "title": "Kreuzer–Skarke Database",
+      "url": "https://hep.itp.tuwien.ac.at/~kreuzer/CY/?utm_source=chatgpt.com",
+      "credits": "Maximilian Kreuzer and Harald Skarke",
+      "keywords": [
+        "reflexive lattice polytopes",
+        "Calabi–Yau threefolds",
+        "toric hypersurfaces",
+        "Hodge numbers",
+        "K3 fibrations",
+        "weight systems",
+        "reflexive Gorenstein cones",
+        "mirror symmetry"
+      ],
+      "aliases": [
+        "Kreuzer Skarke",
+        "KS database",
+        "PALP",
+        "Calabi Yau"
+      ],
+      "creditSources": [
+        {
+          "url": "https://hep.itp.tuwien.ac.at/~kreuzer/CY/",
+          "title": "Calabi–Yau data: Site authors and collections"
+        }
+      ]
+    },
+    {
+      "id": "database-13",
+      "sourceNumber": 13,
+      "categoryId": "topic-3",
+      "title": "GRDB — Toric Log Del Pezzo Surfaces",
+      "url": "https://www.grdb.co.uk/Index?utm_source=chatgpt.com",
+      "credits": "Alexander Kasprzyk, Maximilian Kreuzer and Benjamin Nill",
+      "keywords": [
+        "toric log del Pezzo surfaces",
+        "Fano polygons",
+        "Gorenstein index",
+        "Hilbert series",
+        "Ehrhart series",
+        "lattice points",
+        "singularities",
+        "smoothability"
+      ],
+      "aliases": [
+        "LDP polygons",
+        "log del Pezzo",
+        "del Pezzo surfaces"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/forms/toricldp",
+          "title": "GRDB: Toric log del Pezzo surfaces, authors and references"
+        }
+      ]
+    },
+    {
+      "id": "database-14",
+      "sourceNumber": 14,
+      "categoryId": "topic-3",
+      "title": "GRDB — Terminal and Canonical Toric Fano Threefolds",
+      "url": "https://www.grdb.co.uk/Index?utm_source=chatgpt.com",
+      "credits": "Alexander Kasprzyk",
+      "keywords": [
+        "toric Fano threefolds",
+        "Fano polytopes",
+        "terminal singularities",
+        "canonical singularities",
+        "Gorenstein index",
+        "anticanonical degree",
+        "Ehrhart series",
+        "Picard rank",
+        "reflexive polytopes"
+      ],
+      "aliases": [
+        "toric Fano 3-folds",
+        "terminal Fano",
+        "canonical Fano"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/forms/toricf3t",
+          "title": "GRDB: Toric terminal Fano threefolds, authors and references"
+        },
+        {
+          "url": "https://www.grdb.co.uk/forms/toricf3c",
+          "title": "GRDB: Toric canonical Fano threefolds, authors and references"
+        }
+      ]
+    },
+    {
+      "id": "database-15",
+      "sourceNumber": 15,
+      "categoryId": "topic-3",
+      "title": "GRDB — l-Reflexive Polygons",
+      "url": "https://www.grdb.co.uk/Index?utm_source=chatgpt.com",
+      "credits": "Alexander Kasprzyk and Benjamin Nill",
+      "keywords": [
+        "l-reflexive polygons",
+        "reflexive polygons",
+        "toric log del Pezzo surfaces",
+        "lattice polygons",
+        "Gorenstein index",
+        "dual polygons",
+        "lattice geometry"
+      ],
+      "aliases": [
+        "ell-reflexive",
+        "l reflexive"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/Updates",
+          "title": "GRDB: 25 July 2011 attribution of l-reflexive polygon data"
+        },
+        {
+          "url": "https://www.grdb.co.uk/Downloads",
+          "title": "GRDB: l-reflexive polygon classification download"
+        }
+      ]
+    },
+    {
+      "id": "database-16",
+      "sourceNumber": 16,
+      "categoryId": "topic-3",
+      "title": "Markov Bases Database",
+      "url": "https://markov-bases.de/?utm_source=chatgpt.com",
+      "credits": "Thomas Kahle and Johannes Rauh (database contacts and maintainers)",
+      "keywords": [
+        "Markov bases",
+        "toric ideals",
+        "algebraic statistics",
+        "binomial ideals",
+        "contingency tables",
+        "statistical models",
+        "semigroup normality",
+        "integer kernels"
+      ],
+      "aliases": [
+        "Markov basis",
+        "4ti2",
+        "Normaliz"
+      ],
+      "creditSources": [
+        {
+          "url": "https://markov-bases.de/",
+          "title": "Markov Bases Database: Description and contact credits"
+        }
+      ]
+    },
+    {
+      "id": "database-17",
+      "sourceNumber": 17,
+      "categoryId": "topic-4",
+      "title": "CICY Threefold Database — Oxford",
+      "url": "https://www-thphys.physics.ox.ac.uk/projects/CalabiYau/cicylist/?utm_source=chatgpt.com",
+      "credits": "P. Candelas, A. M. Dale, C. A. Lütken and R. Schimmrigk (classification); P. S. Green, T. Hübsch and C. A. Lütken (Hodge numbers); Volker Braun (symmetries)",
+      "keywords": [
+        "complete intersections",
+        "Calabi–Yau threefolds",
+        "configuration matrices",
+        "products of projective spaces",
+        "Hodge numbers",
+        "free group actions",
+        "discrete symmetries",
+        "quotient varieties"
+      ],
+      "aliases": [
+        "CICY",
+        "CICY3",
+        "Calabi Yau",
+        "complete-intersection Calabi-Yau"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www-thphys.physics.ox.ac.uk/projects/CalabiYau/cicylist/",
+          "title": "Oxford CICY threefold list: Original classification and data credits"
+        },
+        {
+          "url": "https://arxiv.org/abs/1003.3235",
+          "title": "On Free Quotients of Complete Intersection Calabi–Yau Manifolds"
+        }
+      ]
+    },
+    {
+      "id": "database-18",
+      "sourceNumber": 18,
+      "categoryId": "topic-4",
+      "title": "CICY Fourfold Database — Oxford",
+      "url": "https://www-thphys.physics.ox.ac.uk/projects/CalabiYau/Cicy4folds/index.html?utm_source=chatgpt.com",
+      "credits": "Alexander Haupt, James Gray and Andre Lukas",
+      "keywords": [
+        "complete intersections",
+        "Calabi–Yau fourfolds",
+        "configuration matrices",
+        "Euler characteristic",
+        "Hodge numbers",
+        "Chern classes",
+        "elliptic fibrations",
+        "products of projective spaces"
+      ],
+      "aliases": [
+        "CICY4",
+        "CICY four-folds",
+        "Calabi Yau"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www-thphys.physics.ox.ac.uk/projects/CalabiYau/Cicy4folds/index.html",
+          "title": "Oxford CICY fourfold list: Authors and associated publications"
+        }
+      ]
+    },
+    {
+      "id": "database-19",
+      "sourceNumber": 19,
+      "categoryId": "topic-4",
+      "title": "Toric Calabi–Yau Database",
+      "url": "https://www.rossealtman.com/toriccy?utm_source=chatgpt.com",
+      "credits": "Ross Altman, James Gray, Yang-Hui He, Vishnu Jejjala and Brent D. Nelson (base database); Jonathan Carifio and Xin Gao (additional orientifold data with Altman and Nelson)",
+      "keywords": [
+        "toric Calabi–Yau threefolds",
+        "Kreuzer–Skarke polytopes",
+        "triangulations",
+        "intersection numbers",
+        "Chern classes",
+        "Stanley–Reisner ideals",
+        "Mori cones",
+        "Kähler cones",
+        "divisor involutions"
+      ],
+      "aliases": [
+        "ToricCY",
+        "Calabi Yau",
+        "Kahler cones",
+        "Kaehler cones",
+        "SR ideals"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.rossealtman.com/toriccy",
+          "title": "ToricCY database: Project citation instructions"
+        },
+        {
+          "url": "https://arxiv.org/abs/1411.1418",
+          "title": "A Calabi–Yau Database: Threefolds Constructed from the Kreuzer–Skarke List"
+        },
+        {
+          "url": "https://arxiv.org/abs/2111.03078",
+          "title": "Orientifold Calabi–Yau Threefolds with Divisor Involutions and String Landscape"
+        }
+      ]
+    },
+    {
+      "id": "database-20",
+      "sourceNumber": 20,
+      "categoryId": "topic-4",
+      "title": "CY Database — Schachner",
+      "url": "https://huggingface.co/datasets/aschachner/cy-database?utm_source=chatgpt.com",
+      "credits": "Andreas Schachner (curator and maintainer); construction-specific sources credited in the dataset cards",
+      "keywords": [
+        "Calabi–Yau threefolds",
+        "complete intersections",
+        "toric hypersurfaces",
+        "intersection numbers",
+        "Gopakumar–Vafa invariants",
+        "Kähler cones",
+        "Hodge numbers",
+        "conifold loci",
+        "mirror symmetry"
+      ],
+      "aliases": [
+        "CICY",
+        "Calabi Yau",
+        "GV invariants",
+        "TDF",
+        "Kahler cones",
+        "Kaehler cones"
+      ],
+      "creditSources": [
+        {
+          "url": "https://andreasschachner.github.io/software/",
+          "title": "Andreas Schachner: Software and Hugging Face datasets"
+        },
+        {
+          "url": "https://huggingface.co/datasets/aschachner/cy-database",
+          "title": "CY database: Dataset card, scope and references"
+        },
+        {
+          "url": "https://huggingface.co/aschachner",
+          "title": "Andreas Schachner: Hugging Face profile"
+        }
+      ]
+    },
+    {
+      "id": "database-21",
+      "sourceNumber": 21,
+      "categoryId": "topic-4",
+      "title": "Calabi–Yau Orientifold Database",
+      "url": "https://github.com/AndreasSchachner/CY_Orientifold_database?utm_source=chatgpt.com",
+      "credits": "Chiara Crinò, Fernando Quevedo, Andreas Schachner and Roberto Valandro",
+      "keywords": [
+        "Calabi–Yau orientifolds",
+        "reflection involutions",
+        "reflexive polytopes",
+        "star triangulations",
+        "fixed loci",
+        "divisor topology",
+        "triple intersections",
+        "genus-one fibrations",
+        "Hodge numbers"
+      ],
+      "aliases": [
+        "CQSV",
+        "Calabi Yau",
+        "Chiara Crino",
+        "FRST",
+        "orientifold planes"
+      ],
+      "creditSources": [
+        {
+          "url": "https://github.com/AndreasSchachner/CY_Orientifold_database",
+          "title": "CQSV Calabi–Yau reflection orientifold database: README author list"
+        }
+      ]
+    },
+    {
+      "id": "database-22",
+      "sourceNumber": 22,
+      "categoryId": "topic-4",
+      "title": "CICY Orientifold Database",
+      "url": "https://www.desy.de/~westphal/orientifold_webpage/cicy_orientifolds.html?utm_source=chatgpt.com",
+      "credits": "Federico Carta, Jakob Moritz and Alexander Westphal",
+      "keywords": [
+        "complete-intersection Calabi–Yau threefolds",
+        "orientifolds",
+        "involutions",
+        "fixed divisors",
+        "fixed loci",
+        "conifold transitions",
+        "configuration matrices",
+        "ambient-space symmetries"
+      ],
+      "aliases": [
+        "CICY orientifolds",
+        "Calabi Yau",
+        "Z2 involutions",
+        "O3 planes",
+        "O7 planes"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.desy.de/~westphal/orientifold_webpage/cicy_orientifolds.html",
+          "title": "CICY orientifolds: Database authors and scope"
+        },
+        {
+          "url": "https://arxiv.org/abs/2003.04902",
+          "title": "A landscape of orientifold vacua"
+        }
+      ]
+    },
+    {
+      "id": "database-23",
+      "sourceNumber": 23,
+      "categoryId": "topic-4",
+      "title": "Calabi–Yau Differential Operator Database",
+      "url": "https://cydb.mathematik.uni-mainz.de/?utm_source=chatgpt.com",
+      "credits": "Gert Almkvist, Christian van Enckevort, Duco van Straten, and Wadim Zudilin (AESZ data); Pavel Metelitsyn and Duco van Straten (online database)",
+      "keywords": [
+        "Calabi–Yau operators",
+        "Picard–Fuchs equations",
+        "differential equations",
+        "local exponents",
+        "monodromy",
+        "instanton numbers",
+        "Yukawa couplings",
+        "mirror symmetry"
+      ],
+      "aliases": [
+        "AESZ",
+        "CYDB",
+        "Calabi Yau",
+        "Picard Fuchs"
+      ],
+      "creditSources": [
+        {
+          "url": "https://cydb.mathematik.uni-mainz.de/",
+          "title": "Calabi–Yau Differential Operator Database — homepage and credits"
+        },
+        {
+          "url": "https://cycluster.mpim-bonn.mpg.de/contributors.html",
+          "title": "CYCluster — contributors and original AESZ database credits"
+        }
+      ]
+    },
+    {
+      "id": "database-24",
+      "sourceNumber": 24,
+      "categoryId": "topic-4",
+      "title": "CYCluster — AESZ Database",
+      "url": "https://cycluster.mpim-bonn.mpg.de/?utm_source=chatgpt.com",
+      "credits": "CYCluster: Paul Blesse, Janis Duecker, Nutsa Gegelia, Abhiram Kidambi, Albrecht Klemm, Pyry Kuusela, Eric Pichon-Pharabod, Duco van Straten, John Voight, and Alex Weisse; original AESZ data by Gert Almkvist, Christian van Enckevort, Duco van Straten, and Wadim Zudilin",
+      "keywords": [
+        "Calabi–Yau operators",
+        "Picard–Fuchs equations",
+        "Hasse–Weil zeta functions",
+        "Euler factors",
+        "monodromy",
+        "instanton numbers",
+        "mirror symmetry",
+        "arithmetic geometry"
+      ],
+      "aliases": [
+        "AESZ",
+        "Calabi Yau",
+        "Picard Fuchs"
+      ],
+      "creditSources": [
+        {
+          "url": "https://cycluster.mpim-bonn.mpg.de/contributors.html",
+          "title": "CYCluster — contributors"
+        },
+        {
+          "url": "https://cycluster.mpim-bonn.mpg.de/",
+          "title": "CYCluster — AESZ database"
+        }
+      ]
+    },
+    {
+      "id": "database-25",
+      "sourceNumber": 25,
+      "categoryId": "topic-4",
+      "title": "F-theory and Calabi–Yau Geometry Data",
+      "url": "https://ctp.lns.mit.edu/wati/data.html?utm_source=chatgpt.com",
+      "credits": "Washington (Wati) Taylor, with Lara B. Anderson, Yu-Chien Huang, David R. Morrison, and Yi-Nan Wang (authors of the linked datasets and papers)",
+      "keywords": [
+        "F-theory",
+        "Calabi–Yau threefolds",
+        "Calabi–Yau fourfolds",
+        "elliptic fibrations",
+        "genus-one fibrations",
+        "toric bases",
+        "reflexive polytopes",
+        "Hodge numbers",
+        "heterotic duality"
+      ],
+      "aliases": [
+        "Calabi Yau",
+        "genus one",
+        "Washington Taylor",
+        "Wati Taylor"
+      ],
+      "creditSources": [
+        {
+          "url": "https://ctp.lns.mit.edu/wati/data.html",
+          "title": "Wati Taylor — data files related to physics and mathematics"
+        },
+        {
+          "url": "https://arxiv.org/abs/1204.0283",
+          "title": "Toric bases for 6D F-theory models — Morrison and Taylor"
+        },
+        {
+          "url": "https://arxiv.org/abs/1504.07689",
+          "title": "Non-toric bases for elliptic Calabi–Yau threefolds — Taylor and Wang"
+        },
+        {
+          "url": "https://arxiv.org/abs/1907.09482",
+          "title": "Fibration structure in toric hypersurface Calabi–Yau threefolds — Huang and Taylor"
+        },
+        {
+          "url": "https://arxiv.org/abs/1405.2074",
+          "title": "Geometric constraints in dual F-theory and heterotic string compactifications — Anderson and Taylor"
+        }
+      ]
+    },
+    {
+      "id": "database-26",
+      "sourceNumber": 26,
+      "categoryId": "topic-5",
+      "title": "Quantum Periods of Fano Manifolds",
+      "url": "https://www.grdb.co.uk/forms/smoothfano4?utm_source=chatgpt.com",
+      "credits": "Tom Coates and Alexander Kasprzyk",
+      "keywords": [
+        "Fano manifolds",
+        "Fano fourfolds",
+        "quantum periods",
+        "regularized quantum periods",
+        "Gromov–Witten invariants",
+        "mirror symmetry",
+        "Laurent polynomials",
+        "Picard–Fuchs equations"
+      ],
+      "aliases": [
+        "Fano 4-folds",
+        "Fano 4 folds",
+        "Gromov Witten",
+        "regularised quantum periods"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.grdb.co.uk/forms/smoothfano4",
+          "title": "GRDB — Quantum periods for Fano 4-folds"
+        },
+        {
+          "url": "https://arxiv.org/abs/2112.00632",
+          "title": "Databases of Quantum Periods for Fano Manifolds"
+        }
+      ]
+    },
+    {
+      "id": "database-27",
+      "sourceNumber": 27,
+      "categoryId": "topic-5",
+      "title": "Terminal Weighted Projective Spaces Dataset",
+      "url": "https://zenodo.org/records/5790079?utm_source=chatgpt.com",
+      "credits": "Tom Coates, Alexander Kasprzyk, and Sara Veneziale",
+      "keywords": [
+        "weighted projective spaces",
+        "terminal singularities",
+        "toric Fano varieties",
+        "Picard rank one",
+        "weight vectors",
+        "Fano dimension",
+        "random samples",
+        "machine learning"
+      ],
+      "aliases": [
+        "WPS",
+        "Picard rank 1"
+      ],
+      "creditSources": [
+        {
+          "url": "https://zenodo.org/records/5790079",
+          "title": "Zenodo — Terminal Weighted Projective Spaces"
+        }
+      ]
+    },
+    {
+      "id": "database-28",
+      "sourceNumber": 28,
+      "categoryId": "topic-5",
+      "title": "Terminal Toric Varieties of Picard Rank Two",
+      "url": "https://zenodo.org/records/5790096?utm_source=chatgpt.com",
+      "credits": "Tom Coates, Alexander Kasprzyk, and Sara Veneziale",
+      "keywords": [
+        "toric Fano varieties",
+        "Picard rank two",
+        "terminal singularities",
+        "Q-factorial varieties",
+        "weight matrices",
+        "Fano dimension",
+        "random samples",
+        "machine learning"
+      ],
+      "aliases": [
+        "Picard rank 2",
+        "Q factorial"
+      ],
+      "creditSources": [
+        {
+          "url": "https://zenodo.org/records/5790096",
+          "title": "Zenodo — Terminal Toric Fano Varieties of Picard Rank Two"
+        }
+      ]
+    },
+    {
+      "id": "database-29",
+      "sourceNumber": 29,
+      "categoryId": "topic-5",
+      "title": "Rigid Maximally Mutable Laurent Polynomials",
+      "url": "https://zenodo.org/records/6636221?utm_source=chatgpt.com",
+      "credits": "Tom Coates, Alexander Kasprzyk, and Giuseppe Pitton",
+      "keywords": [
+        "Laurent polynomials",
+        "maximal mutability",
+        "rigidity",
+        "Newton polytopes",
+        "canonical Fano polytopes",
+        "mutations",
+        "period sequences",
+        "Fano threefolds",
+        "mirror symmetry"
+      ],
+      "aliases": [
+        "MMLP",
+        "rigid MMLP",
+        "maximally mutable Laurent polynomials"
+      ],
+      "creditSources": [
+        {
+          "url": "https://zenodo.org/records/6636221",
+          "title": "Zenodo — Rigid Maximally Mutable Laurent Polynomials"
+        }
+      ]
+    },
+    {
+      "id": "database-30",
+      "sourceNumber": 30,
+      "categoryId": "topic-5",
+      "title": "Canonical Toric Fano Threefold Classification Data",
+      "url": "https://zenodo.org/records/5866330?utm_source=chatgpt.com",
+      "credits": "Alexander Kasprzyk",
+      "keywords": [
+        "toric Fano threefolds",
+        "canonical singularities",
+        "Fano lattice polytopes",
+        "classification",
+        "Ehrhart polynomials",
+        "Hilbert series",
+        "Gorenstein index",
+        "lattice volume",
+        "Picard rank"
+      ],
+      "aliases": [
+        "Fano 3-folds",
+        "Fano 3 folds",
+        "canonical Fano polytopes"
+      ],
+      "creditSources": [
+        {
+          "url": "https://zenodo.org/records/5866330",
+          "title": "Zenodo — Canonical Toric Fano Threefolds"
+        }
+      ]
+    },
+    {
+      "id": "database-31",
+      "sourceNumber": 31,
+      "categoryId": "topic-5",
+      "title": "Kasprzyk's Research Datasets",
+      "url": "https://kasprzyk.work/research/?utm_source=chatgpt.com",
+      "credits": "Alexander M. Kasprzyk (collection curator); collaborators are credited with the individual datasets",
+      "keywords": [
+        "toric geometry",
+        "Fano varieties",
+        "lattice polytopes",
+        "rational polytopes",
+        "Ehrhart theory",
+        "mirror symmetry",
+        "quantum periods",
+        "Laurent polynomials"
+      ],
+      "aliases": [
+        "Ehrhart coefficients",
+        "Fano classification"
+      ],
+      "creditSources": [
+        {
+          "url": "https://kasprzyk.work/research/",
+          "title": "Alexander M. Kasprzyk — Research"
+        }
+      ]
+    },
+    {
+      "id": "database-32",
+      "sourceNumber": 32,
+      "categoryId": "topic-6",
+      "title": "Geometry of the Moduli Space of Curves",
+      "url": "https://mgnbar.info/?utm_source=chatgpt.com",
+      "credits": "Ignacio Barros and Pieter Belmans",
+      "keywords": [
+        "moduli of curves",
+        "stable pointed curves",
+        "Kodaira dimension",
+        "rationality",
+        "unirationality",
+        "uniruledness",
+        "tautological rings",
+        "Chow rings",
+        "polynomial point counts"
+      ],
+      "aliases": [
+        "Mgnbar",
+        "M_g,n",
+        "Mbar_g,n",
+        "Deligne–Mumford compactification"
+      ],
+      "creditSources": [
+        {
+          "url": "https://pbelmans.ncag.info/blog/2023/02/01/mgnbar-info/",
+          "title": "Pieter Belmans — Mgnbar.info: the geometry of the moduli space of marked curves"
+        },
+        {
+          "url": "https://pbelmans.ncag.info/blog/2026/07/09/mgnbar-update/",
+          "title": "Pieter Belmans — Mgnbar.info: two new layers"
+        }
+      ]
+    },
+    {
+      "id": "database-33",
+      "sourceNumber": 33,
+      "categoryId": "topic-6",
+      "title": "Cohomology of Moduli Spaces of Curves",
+      "url": "https://github.com/jonasbergstroem/Cohomology-of-moduli-spaces-of-curves?utm_source=chatgpt.com",
+      "credits": "Jonas Bergström (compiler), with original research credited in the collection",
+      "keywords": [
+        "moduli of curves",
+        "smooth pointed curves",
+        "stable pointed curves",
+        "cohomology",
+        "equivariant Euler characteristics",
+        "symmetric-group representations",
+        "Galois representations",
+        "l-adic cohomology",
+        "point counts"
+      ],
+      "aliases": [
+        "Jonas Bergstrom",
+        "ell-adic cohomology",
+        "ℓ-adic cohomology",
+        "S_n-equivariant",
+        "Sn equivariant",
+        "M_g,n"
+      ],
+      "creditSources": [
+        {
+          "url": "https://github.com/jonasbergstroem/Cohomology-of-moduli-spaces-of-curves",
+          "title": "Cohomology of moduli spaces of curves — repository and README"
+        },
+        {
+          "url": "https://www.dpmms.cam.ac.uk/~ds2016/PP.pdf",
+          "title": "Kannan and Song — Graph enumeration for moduli spaces of curves and maps, bibliography entry for Bergström's collection"
+        }
+      ]
+    },
+    {
+      "id": "database-34",
+      "sourceNumber": 34,
+      "categoryId": "topic-6",
+      "title": "Classification of Hyperelliptic Varieties",
+      "url": "https://hyperelliptic.ncag.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans (website); based on classification results by Uchida–Yoshihara, Lange, Catanese–Demleitner, and Demleitner",
+      "keywords": [
+        "hyperelliptic varieties",
+        "complex tori",
+        "free finite-group actions",
+        "bielliptic surfaces",
+        "Hodge numbers",
+        "canonical bundles",
+        "deformations",
+        "tangent representations",
+        "Hochschild cohomology"
+      ],
+      "aliases": [
+        "generalized hyperelliptic varieties",
+        "generalised hyperelliptic varieties",
+        "complex torus quotients"
+      ],
+      "creditSources": [
+        {
+          "url": "https://pbelmans.ncag.info/blog/2026/07/21/hyperelliptic/",
+          "title": "Pieter Belmans — Hyperelliptic varieties: quotients of complex tori by finite groups"
+        },
+        {
+          "url": "https://hyperelliptic.ncag.info/",
+          "title": "Classification of hyperelliptic varieties"
+        }
+      ]
+    },
+    {
+      "id": "database-35",
+      "sourceNumber": 35,
+      "categoryId": "topic-6",
+      "title": "Adjectives Project",
+      "url": "https://adjectivesproject.org/?page=data&utm_source=chatgpt.com",
+      "credits": "Jesse Vogel and David Holmes",
+      "keywords": [
+        "schemes",
+        "morphisms of schemes",
+        "geometric properties",
+        "examples",
+        "counterexamples",
+        "logical implications",
+        "commutative algebra",
+        "algebraic geometry"
+      ],
+      "aliases": [
+        "Adjectives",
+        "scheme properties",
+        "morphism properties"
+      ],
+      "creditSources": [
+        {
+          "url": "https://adjectivesproject.org/?page=data",
+          "title": "Adjectives Project — database and footer credits"
+        }
+      ]
+    },
+    {
+      "id": "database-0",
+      "sourceNumber": 0,
+      "categoryId": "topic-7",
+      "title": "Polynomials and their Galois groups",
+      "url": "https://khaihoanmath.github.io/polynomial-arithmetic-atlas/",
+      "credits": "Nguyen Dang Khai Hoan",
+      "keywords": [
+        "polynomials",
+        "Galois groups"
+      ],
+      "aliases": [],
+      "creditSources": [
+        {
+          "url": "https://surajdash-math.github.io/misc/mathematical-databases/",
+          "title": "Existing entry on Suraj Dash's website, retained from src/data/misc-collections.ts"
+        }
+      ]
+    },
+    {
+      "id": "database-36",
+      "sourceNumber": 36,
+      "categoryId": "topic-7",
+      "title": "LMFDB",
+      "url": "https://www.lmfdb.org/?utm_source=chatgpt.com",
+      "credits": "The LMFDB Collaboration",
+      "keywords": [
+        "L-functions",
+        "modular forms",
+        "elliptic curves",
+        "genus-two curves",
+        "abelian varieties",
+        "number fields",
+        "Galois representations",
+        "Belyi maps",
+        "arithmetic geometry",
+        "finite groups"
+      ],
+      "aliases": [
+        "L functions",
+        "L-functions and modular forms database",
+        "genus 2",
+        "genus two"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.lmfdb.org/citation",
+          "title": "LMFDB — Citing the LMFDB"
+        },
+        {
+          "url": "https://www.lmfdb.org/",
+          "title": "The L-functions and modular forms database"
+        }
+      ]
+    },
+    {
+      "id": "database-37",
+      "sourceNumber": 37,
+      "categoryId": "topic-7",
+      "title": "LMFDB — Higher-Genus Curves with Automorphisms",
+      "url": "https://www.lmfdb.org/HigherGenus/C/Aut/?utm_source=chatgpt.com",
+      "credits": "Jennifer Paulhus, using group-action data originally computed by Thomas Breuer; LMFDB Collaboration and additional contributors",
+      "keywords": [
+        "Riemann surfaces",
+        "algebraic curves",
+        "automorphism groups",
+        "finite-group actions",
+        "generating vectors",
+        "signatures",
+        "refined passports",
+        "Jacobian decompositions",
+        "hyperelliptic curves",
+        "cyclic trigonal curves"
+      ],
+      "aliases": [
+        "higher genus curves",
+        "Jen Paulhus",
+        "curve automorphisms"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.lmfdb.org/HigherGenus/C/Aut/Source",
+          "title": "LMFDB — Source of higher genus curve with automorphisms data"
+        }
+      ]
+    },
+    {
+      "id": "database-38",
+      "sourceNumber": 38,
+      "categoryId": "topic-7",
+      "title": "LMFDB — Abelian Varieties over Finite Fields",
+      "url": "https://www.lmfdb.org/Variety/Abelian/Fq/?utm_source=chatgpt.com",
+      "credits": "Taylor Dupuy, Kiran Kedlaya, David Roe, and Christelle Vincent; LMFDB Collaboration and additional data contributors",
+      "keywords": [
+        "abelian varieties",
+        "finite fields",
+        "isogeny classes",
+        "Weil polynomials",
+        "Frobenius polynomials",
+        "Newton polygons",
+        "p-rank",
+        "geometric simplicity",
+        "principal polarizations",
+        "Jacobians",
+        "endomorphism algebras"
+      ],
+      "aliases": [
+        "Fq",
+        "F_q",
+        "Honda–Tate",
+        "Honda Tate",
+        "p rank"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.lmfdb.org/Variety/Abelian/Fq/Source",
+          "title": "LMFDB — Source and acknowledgments for Weil polynomial data"
+        },
+        {
+          "url": "https://arxiv.org/abs/2003.05380",
+          "title": "Isogeny Classes of Abelian Varieties over Finite Fields in the LMFDB"
+        }
+      ]
+    },
+    {
+      "id": "database-39",
+      "sourceNumber": 39,
+      "categoryId": "topic-7",
+      "title": "LMFDB — Belyi Maps",
+      "url": "https://www.lmfdb.org/Belyi/?utm_source=chatgpt.com",
+      "credits": "Michael Musty, Sam Schiavone, Jeroen Sijsling, and John Voight; hosted by the LMFDB Collaboration",
+      "keywords": [
+        "Belyi maps",
+        "dessins d’enfants",
+        "monodromy groups",
+        "permutation triples",
+        "ramification",
+        "passports",
+        "fields of definition",
+        "branched covers",
+        "algebraic curves"
+      ],
+      "aliases": [
+        "dessins d'enfants",
+        "dessins",
+        "three-point covers",
+        "Belyi database"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.lmfdb.org/Belyi/Source",
+          "title": "LMFDB — Source and acknowledgments for Belyi map data"
+        }
+      ]
+    },
+    {
+      "id": "database-40",
+      "sourceNumber": 40,
+      "categoryId": "topic-7",
+      "title": "LMFDB — Modular Curves",
+      "url": "https://beta.lmfdb.org/ModularCurve/Q/?utm_source=chatgpt.com",
+      "credits": "The LMFDB Collaboration; database contributors include Barinder Banwait, Jean Kieffer, David Lowry-Duda, David Roe, and Andrew Sutherland",
+      "keywords": [
+        "modular curves",
+        "congruence subgroups",
+        "adelic Galois representations",
+        "rational points",
+        "cusps",
+        "gonality",
+        "genus",
+        "j-maps",
+        "modular Jacobians",
+        "canonical models",
+        "modular forms"
+      ],
+      "aliases": [
+        "GL2",
+        "GL_2",
+        "X0(N)",
+        "X_0(N)",
+        "X1(N)",
+        "X_1(N)"
+      ],
+      "creditSources": [
+        {
+          "url": "https://math.mit.edu/~roed/writings/talks/2023_09_21.pdf",
+          "title": "David Roe — Modular Curves in the LMFDB, contributor slide"
+        },
+        {
+          "url": "https://math.mit.edu/~roed/interests/",
+          "title": "David Roe — research interests and LMFDB contributions"
+        },
+        {
+          "url": "https://www.lmfdb.org/citation",
+          "title": "LMFDB — Citing the LMFDB"
+        }
+      ]
+    },
+    {
+      "id": "database-41",
+      "sourceNumber": 41,
+      "categoryId": "topic-7",
+      "title": "Cremona's Elliptic Curve Database",
+      "url": "https://johncremona.github.io/ecdata/?utm_source=chatgpt.com",
+      "credits": "John E. Cremona",
+      "keywords": [
+        "elliptic curves over Q",
+        "Weierstrass equations",
+        "conductors",
+        "Mordell–Weil ranks",
+        "torsion subgroups",
+        "isogeny classes",
+        "integral points",
+        "Galois representations",
+        "modular degrees"
+      ],
+      "aliases": [
+        "Cremona tables",
+        "ecdata",
+        "Mordell Weil",
+        "rational elliptic curves"
+      ],
+      "creditSources": [
+        {
+          "url": "https://johncremona.github.io/ecdata/",
+          "title": "Elliptic Curve Data by J. E. Cremona"
+        }
+      ]
+    },
+    {
+      "id": "database-42",
+      "sourceNumber": 42,
+      "categoryId": "topic-7",
+      "title": "manYPoints",
+      "url": "https://manypoints.org/?utm_source=chatgpt.com",
+      "credits": "Gerard van der Geer, Everett W. Howe, Kristin E. Lauter, and Christophe Ritzenthaler",
+      "keywords": [
+        "curves over finite fields",
+        "rational points",
+        "point-count bounds",
+        "genus",
+        "maximal curves",
+        "zeta functions",
+        "Frobenius polynomials",
+        "Jacobians"
+      ],
+      "aliases": [
+        "many points",
+        "Tables of Curves with Many Points",
+        "N_q(g)",
+        "Nqg"
+      ],
+      "creditSources": [
+        {
+          "url": "https://manypoints.org/Info.aspx",
+          "title": "manYPoints — About, moderators, and preferred citation"
+        }
+      ]
+    },
+    {
+      "id": "database-43",
+      "sourceNumber": 43,
+      "categoryId": "topic-7",
+      "title": "Isogeny Database",
+      "url": "https://isogenies.enricflorit.com/?utm_source=chatgpt.com",
+      "credits": "Enric Florit and Gerard Finol",
+      "keywords": [
+        "supersingular elliptic curves",
+        "isogeny graphs",
+        "isogeny degree",
+        "adjacency matrices",
+        "graph invariants",
+        "j-invariants",
+        "finite fields",
+        "characteristic"
+      ],
+      "aliases": [
+        "supersingular isogenies",
+        "ell-isogeny",
+        "l-isogeny",
+        "ℓ-isogeny",
+        "j invariant"
+      ],
+      "creditSources": [
+        {
+          "url": "https://isogenies.enricflorit.com/about.html",
+          "title": "Isogeny Database — About and project authors"
+        },
+        {
+          "url": "https://isogenies.enricflorit.com/",
+          "title": "Isogeny Database — database scope"
+        }
+      ]
+    },
+    {
+      "id": "database-44",
+      "sourceNumber": 44,
+      "categoryId": "topic-7",
+      "title": "Echidna Databases",
+      "url": "https://www.i2m.univ-amu.fr/perso/david.kohel/dbs/index.html?utm_source=chatgpt.com",
+      "credits": "David Kohel, with collaborators credited in Echidna's algorithms and individual datasets",
+      "keywords": [
+        "modular polynomials",
+        "Hilbert class polynomials",
+        "Weber class polynomials",
+        "complex multiplication",
+        "Igusa invariants",
+        "genus-two curves",
+        "abelian surfaces",
+        "quaternion algebras",
+        "Brandt modules",
+        "Hecke algebras"
+      ],
+      "aliases": [
+        "CM",
+        "genus 2",
+        "genus two",
+        "Echidna Algorithms"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.i2m.univ-amu.fr/perso/david.kohel/dbs/index.html",
+          "title": "Echidna Databases"
+        },
+        {
+          "url": "https://www.i2m.univ-amu.fr/perso/david.kohel/alg/index.html",
+          "title": "Echidna Algorithms — David Kohel and code collaboration credits"
+        }
+      ]
+    },
+    {
+      "id": "database-45",
+      "sourceNumber": 45,
+      "categoryId": "topic-8",
+      "title": "Hilbert Modular Surfaces Database",
+      "url": "https://github.com/edgarcosta/hilbertmodularsurfacesdata?utm_source=chatgpt.com",
+      "credits": "Eran Assaf, Angelica Babei, Ben Breen, Edgar Costa, Juanita Duque-Rosero, Aleksander Horawa, Jean Kieffer, Avinash Kulkarni, Grant Molnar, Sam Schiavone, and John Voight",
+      "keywords": [
+        "Hilbert modular surfaces",
+        "real quadratic fields",
+        "Hodge numbers",
+        "canonical self-intersection",
+        "Euler characteristics",
+        "Kodaira dimension",
+        "cusps",
+        "Hilbert series",
+        "Hirzebruch–Jung continued fractions"
+      ],
+      "aliases": [],
+      "creditSources": [
+        {
+          "url": "https://github.com/edgarcosta/hilbertmodularsurfacesdata",
+          "title": "Hilbert modular surfaces data — repository README and associated paper authors"
+        }
+      ]
+    },
+    {
+      "id": "database-46",
+      "sourceNumber": 46,
+      "categoryId": "topic-8",
+      "title": "Genus-Two Jacobian Isogenies",
+      "url": "https://github.com/edgarcosta/genus2isogenies?utm_source=chatgpt.com",
+      "credits": "Raymond van Bommel, Shiva Chidambaram, Edgar Costa, and Jean Kieffer",
+      "keywords": [
+        "genus-two curves",
+        "Jacobians",
+        "abelian surfaces",
+        "principal polarizations",
+        "isogeny classes",
+        "isogeny graphs",
+        "Igusa–Clebsch invariants",
+        "rational numbers"
+      ],
+      "aliases": [
+        "genus 2",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://github.com/edgarcosta/genus2isogenies",
+          "title": "Genus2isogenies — README credits for Computing isogeny classes of typical principally polarized abelian surfaces over the rationals"
+        },
+        {
+          "url": "https://arxiv.org/abs/2301.10118",
+          "title": "Computing isogeny classes of typical principally polarized abelian surfaces over the rationals"
+        }
+      ]
+    },
+    {
+      "id": "database-47",
+      "sourceNumber": 47,
+      "categoryId": "topic-8",
+      "title": "Genus-Three Hyperelliptic Curves over Q",
+      "url": "https://math.mit.edu/~drew/gce_genus3_hyperelliptic.txt?utm_source=chatgpt.com",
+      "credits": "Andrew V. Sutherland (dataset)",
+      "keywords": [
+        "genus-three curves",
+        "hyperelliptic curves",
+        "rational numbers",
+        "discriminants",
+        "curve equations",
+        "arithmetic geometry"
+      ],
+      "aliases": [
+        "genus 3",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://agntc.org/data/",
+          "title": "AGNTC data portal — genus-three hyperelliptic curve data attributed to Andrew Sutherland"
+        },
+        {
+          "url": "https://math.mit.edu/~drew/",
+          "title": "Andrew V. Sutherland — official research homepage"
+        }
+      ]
+    },
+    {
+      "id": "database-48",
+      "sourceNumber": 48,
+      "categoryId": "topic-8",
+      "title": "Genus-Three Non-Hyperelliptic Curves over Q",
+      "url": "https://math.mit.edu/~drew/gce_genus3_nonhyperelliptic.txt?utm_source=chatgpt.com",
+      "credits": "Andrew V. Sutherland (dataset)",
+      "keywords": [
+        "genus-three curves",
+        "non-hyperelliptic curves",
+        "plane quartics",
+        "rational numbers",
+        "discriminants",
+        "curve equations",
+        "arithmetic geometry"
+      ],
+      "aliases": [
+        "genus 3",
+        "nonhyperelliptic",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://agntc.org/data/",
+          "title": "AGNTC data portal — genus-three nonhyperelliptic curve data attributed to Andrew Sutherland"
+        },
+        {
+          "url": "https://math.mit.edu/~drew/",
+          "title": "Andrew V. Sutherland — official research homepage"
+        }
+      ]
+    },
+    {
+      "id": "database-49",
+      "sourceNumber": 49,
+      "categoryId": "topic-8",
+      "title": "Fermat and Klein Quartic Twists",
+      "url": "https://math.mit.edu/~drew/FKtwists/?utm_source=chatgpt.com",
+      "credits": "Andrew V. Sutherland (dataset)",
+      "keywords": [
+        "Fermat quartic",
+        "Klein quartic",
+        "twists",
+        "plane quartics",
+        "genus-three curves",
+        "Sato–Tate groups",
+        "curve equations",
+        "arithmetic geometry"
+      ],
+      "aliases": [
+        "genus 3",
+        "Sato Tate"
+      ],
+      "creditSources": [
+        {
+          "url": "https://agntc.org/data/",
+          "title": "AGNTC data portal — Fermat/Klein quartic twists attributed to Andrew Sutherland"
+        },
+        {
+          "url": "https://math.mit.edu/~drew/FKtwists/",
+          "title": "Fermat and Klein twists — official data directory"
+        }
+      ]
+    },
+    {
+      "id": "database-50",
+      "sourceNumber": 50,
+      "categoryId": "topic-8",
+      "title": "Genus-Two Curves Whose Jacobians Have Good Reduction Away from 2",
+      "url": "https://warwick.ac.uk/fac/sci/maths/people/staff/visser/genus2/?utm_source=chatgpt.com",
+      "credits": "Robin Visser; building on Nigel Smart’s tables",
+      "keywords": [
+        "genus-two curves",
+        "Jacobians",
+        "good reduction",
+        "bad reduction",
+        "conductors",
+        "discriminants",
+        "Sato–Tate groups",
+        "automorphism groups",
+        "abelian surfaces",
+        "rational numbers"
+      ],
+      "aliases": [
+        "genus 2",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://warwick.ac.uk/fac/sci/maths/people/staff/visser/genus2/",
+          "title": "Robin Visser — Genus 2 curves whose Jacobians have good reduction away from 2"
+        }
+      ],
+      "suppliedTitle": "Genus-Two Curves with Good Reduction Away from 2"
+    },
+    {
+      "id": "database-51",
+      "sourceNumber": 51,
+      "categoryId": "topic-8",
+      "title": "Genus-Two Curves with Modular Jacobians",
+      "url": "https://mathbases.org/d/genus-2-curves-modular-jacobian?utm_source=chatgpt.com",
+      "credits": "Enrique González-Jiménez (tables); with Josep González and Jordi Guàrdia (underlying research)",
+      "keywords": [
+        "genus-two curves",
+        "modular Jacobians",
+        "abelian surfaces",
+        "principal polarizations",
+        "newforms",
+        "modular forms",
+        "curve equations",
+        "rational numbers"
+      ],
+      "aliases": [
+        "genus 2",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://mathbases.org/d/genus-2-curves-modular-jacobian",
+          "title": "MathBases catalogue — author and original table link"
+        },
+        {
+          "url": "https://arxiv.org/abs/2602.11766",
+          "title": "Computations on Modular Jacobian Surfaces — author-posted paper"
+        }
+      ]
+    },
+    {
+      "id": "database-52",
+      "sourceNumber": 52,
+      "categoryId": "topic-8",
+      "title": "New Modular Hyperelliptic Curves",
+      "url": "https://mathbases.org/d/modular-hyperelliptic-curves?utm_source=chatgpt.com",
+      "credits": "Enrique González-Jiménez (tables); Matthew H. Baker, Enrique González-Jiménez, Josep González, and Bjorn Poonen (associated research)",
+      "keywords": [
+        "modular curves",
+        "hyperelliptic curves",
+        "genus two to six",
+        "new modular curves",
+        "Jacobian decompositions",
+        "isogenies",
+        "modular forms",
+        "rational numbers"
+      ],
+      "aliases": [
+        "genus 2",
+        "genus 3",
+        "genus 4",
+        "genus 5",
+        "genus 6",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://mathbases.org/d/modular-hyperelliptic-curves",
+          "title": "MathBases catalogue — modular hyperelliptic curve tables and author"
+        },
+        {
+          "url": "https://math.mit.edu/~poonen/papers/finiteness.pdf",
+          "title": "Finiteness results for modular curves of genus at least 2 — author-hosted paper"
+        }
+      ]
+    },
+    {
+      "id": "database-53",
+      "sourceNumber": 53,
+      "categoryId": "topic-8",
+      "title": "Modular Non-Hyperelliptic Genus-Three Curves",
+      "url": "https://mathbases.org/d/modular-plane-quartics?utm_source=chatgpt.com",
+      "credits": "Enrique González-Jiménez (tables); with Roger Oyono (underlying research)",
+      "keywords": [
+        "modular curves",
+        "plane quartics",
+        "non-hyperelliptic curves",
+        "genus-three curves",
+        "Jacobians",
+        "isogeny decompositions",
+        "newforms",
+        "rational numbers"
+      ],
+      "aliases": [
+        "genus 3",
+        "nonhyperelliptic",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://mathbases.org/d/modular-plane-quartics",
+          "title": "MathBases catalogue — modular plane quartic tables and author"
+        },
+        {
+          "url": "https://arxiv.org/abs/2602.17167",
+          "title": "Non-hyperelliptic modular curves of genus 3 — author-posted paper"
+        }
+      ]
+    },
+    {
+      "id": "database-54",
+      "sourceNumber": 54,
+      "categoryId": "topic-8",
+      "title": "Simons Collaboration Arithmetic Geometry Data Portal",
+      "url": "https://agntc.org/data/?utm_source=chatgpt.com",
+      "credits": "Simons Collaboration on Arithmetic Geometry, Number Theory, and Computation; individual datasets credit their contributors",
+      "keywords": [
+        "arithmetic geometry",
+        "number theory",
+        "modular curves",
+        "elliptic curves",
+        "Hilbert modular surfaces",
+        "Jacobian isogenies",
+        "higher-genus curves",
+        "modular forms"
+      ],
+      "aliases": [
+        "AGNTC",
+        "Simons collaboration"
+      ],
+      "creditSources": [
+        {
+          "url": "https://agntc.org/data/",
+          "title": "Simons Collaboration on Arithmetic Geometry, Number Theory, and Computation — Data"
+        }
+      ]
+    },
+    {
+      "id": "database-55",
+      "sourceNumber": 55,
+      "categoryId": "topic-9",
+      "title": "SyzygyData",
+      "url": "https://syzygydata.com/?utm_source=chatgpt.com",
+      "credits": "Juliette Bruce, Daniel Erman, Steve Goldstein, and Jay Yang",
+      "keywords": [
+        "syzygies",
+        "Veronese embeddings",
+        "Betti tables",
+        "multigraded Betti numbers",
+        "free resolutions",
+        "Schur functors",
+        "Koszul cohomology",
+        "projective space",
+        "commutative algebra"
+      ],
+      "aliases": [],
+      "creditSources": [
+        {
+          "url": "https://syzygydata.com/authors/",
+          "title": "SyzygyData — Authors"
+        },
+        {
+          "url": "https://syzygydata.com/",
+          "title": "SyzygyData — data description"
+        }
+      ]
+    },
+    {
+      "id": "database-56",
+      "sourceNumber": 56,
+      "categoryId": "topic-9",
+      "title": "Four-Dimensional Artin–Schelter Regular Algebras",
+      "url": "https://4d-as.ncag.info/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans (website); Vishal Bhatoy, Colin Ingalls, Félix LaRoche, and Ravali Nookala (source research data)",
+      "keywords": [
+        "Artin–Schelter regular algebras",
+        "noncommutative projective geometry",
+        "quadratic algebras",
+        "Koszul algebras",
+        "point schemes",
+        "line schemes",
+        "Hochschild cohomology",
+        "centres",
+        "normal elements",
+        "Kodaira–Spencer maps",
+        "Nakayama automorphisms"
+      ],
+      "aliases": [
+        "AS-regular",
+        "Artin Schelter",
+        "centers"
+      ],
+      "creditSources": [
+        {
+          "url": "https://pbelmans.ncag.info/activities/",
+          "title": "Pieter Belmans — Interactive mathematics, including 4d Artin–Schelter regular algebras"
+        },
+        {
+          "url": "https://4d-as.ncag.info/",
+          "title": "Four-dimensional quadratic Artin–Schelter regular algebras — source data citation"
+        },
+        {
+          "url": "https://arxiv.org/abs/2511.08390",
+          "title": "Some components of the moduli space of Koszul Artin-Schelter regular algebras of dimension four"
+        }
+      ]
+    },
+    {
+      "id": "database-57",
+      "sourceNumber": 57,
+      "categoryId": "topic-9",
+      "title": "SymbolicData Project",
+      "url": "https://symbolicdata.github.io/?utm_source=chatgpt.com",
+      "credits": "SymbolicData project contributors; Hans-Gert Gräbe (project maintainer)",
+      "keywords": [
+        "polynomial systems",
+        "polynomial ideals",
+        "Gröbner bases",
+        "symbolic computation",
+        "computer algebra",
+        "benchmark problems",
+        "Fano polytopes",
+        "geometry theorem proving",
+        "noncommutative algebras"
+      ],
+      "aliases": [
+        "Groebner bases",
+        "Grobner bases"
+      ],
+      "creditSources": [
+        {
+          "url": "https://symbolicdata.github.io/",
+          "title": "SymbolicData — closure notice signed by Hans-Gert Gräbe"
+        },
+        {
+          "url": "https://symbolicdata.github.io/About.html",
+          "title": "About the SymbolicData Project — community data and tool contributors"
+        },
+        {
+          "url": "https://symbolicdata.github.io/Publications.html",
+          "title": "SymbolicData publications — original project by O. Bachmann and H.-G. Gräbe"
+        }
+      ]
+    },
+    {
+      "id": "database-58",
+      "sourceNumber": 58,
+      "categoryId": "topic-9",
+      "title": "Magma Database Library",
+      "url": "https://magma-maths.org/databases/?utm_source=chatgpt.com",
+      "credits": "Computational Algebra Group, University of Sydney (Magma library); individual collections credit their own authors",
+      "keywords": [
+        "computational algebra",
+        "Fano polytopes",
+        "K3 surfaces",
+        "toric log del Pezzo surfaces",
+        "elliptic curves",
+        "modular polynomials",
+        "function fields",
+        "number fields",
+        "finite groups",
+        "lattices"
+      ],
+      "aliases": [
+        "Magma",
+        "log del Pezzo polygons"
+      ],
+      "creditSources": [
+        {
+          "url": "https://magma-maths.org/people/",
+          "title": "Magma — official maintainer and distributor"
+        },
+        {
+          "url": "https://magma-maths.org/databases/",
+          "title": "Magma — database library and individual collections"
+        }
+      ]
+    },
+    {
+      "id": "database-59",
+      "sourceNumber": 59,
+      "categoryId": "topic-9",
+      "title": "Stein–Watkins Elliptic Curve Database",
+      "url": "https://magma-maths.org/databases/?utm_source=chatgpt.com",
+      "credits": "William A. Stein and Mark Watkins",
+      "keywords": [
+        "elliptic curves",
+        "rational numbers",
+        "conductors",
+        "discriminants",
+        "arithmetic geometry",
+        "computational number theory"
+      ],
+      "aliases": [
+        "Stein Watkins",
+        "ECLarge",
+        "Q"
+      ],
+      "creditSources": [
+        {
+          "url": "https://wstein.org/papers/stein-watkins/",
+          "title": "William Stein and Mark Watkins — A Database of Elliptic Curves, First Report"
+        },
+        {
+          "url": "https://magma-maths.org/databases/",
+          "title": "Magma — ECLarge database containing 136,924,520 elliptic curves"
+        }
+      ]
+    },
+    {
+      "id": "database-60",
+      "sourceNumber": 60,
+      "categoryId": "topic-9",
+      "title": "Hausen–Keicher Cox Ring Database — Historical",
+      "url": "https://www.math.uni-tuebingen.de/de/forschung/algebra/personen/archiv/dr-simon-keicher?utm_source=chatgpt.com",
+      "credits": "Jürgen Hausen and Simon Keicher",
+      "keywords": [
+        "Cox rings",
+        "Mori dream spaces",
+        "geometric invariant theory",
+        "Mori chambers",
+        "divisor class groups",
+        "effective cones",
+        "movable cones",
+        "semiample cones",
+        "graded rings",
+        "birational geometry"
+      ],
+      "aliases": [
+        "GIT",
+        "MDS",
+        "total coordinate rings"
+      ],
+      "creditSources": [
+        {
+          "url": "https://www.math.uni-tuebingen.de/user/keicher/MDS/",
+          "title": "MDSpackage — Jürgen Hausen and Simon Keicher; linked Cox ring database"
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/lms-journal-of-computation-and-mathematics/article/software-package-for-mori-dream-spaces/6C10339D7E28406C937E0D6897C8D0FE",
+          "title": "A software package for Mori dream spaces — associated Cox ring database"
+        }
+      ]
+    },
+    {
+      "id": "database-61",
+      "sourceNumber": 61,
+      "categoryId": "topic-10",
+      "title": "MathBases — Index of Mathematical Databases",
+      "url": "https://mathbases.org/?utm_source=chatgpt.com",
+      "credits": "MathBases contributors; editorial board: Katja Berčič, Edgar Costa, Benjamin Hutz, David Lowry-Duda, David Roe, Ben Spitz, and Adam Towsley",
+      "keywords": [
+        "mathematical databases",
+        "algebraic geometry",
+        "arithmetic geometry",
+        "commutative algebra",
+        "combinatorics",
+        "number theory",
+        "mathematical data",
+        "database catalogues"
+      ],
+      "aliases": [
+        "MathDB",
+        "database index"
+      ],
+      "creditSources": [
+        {
+          "url": "https://mathbases.org/info",
+          "title": "MathBases — project information"
+        },
+        {
+          "url": "https://mathbases.org/board.html",
+          "title": "MathBases — current editorial board"
+        }
+      ]
+    },
+    {
+      "id": "database-62",
+      "sourceNumber": 62,
+      "categoryId": "topic-10",
+      "title": "Pieter Belmans — Interactive Mathematics",
+      "url": "https://pbelmans.ncag.info/activities/?utm_source=chatgpt.com",
+      "credits": "Pieter Belmans",
+      "keywords": [
+        "Fano varieties",
+        "homogeneous varieties",
+        "hyperkähler varieties",
+        "moduli of curves",
+        "algebraic surfaces",
+        "cubic fourfolds",
+        "rationality",
+        "noncommutative geometry",
+        "interactive classifications"
+      ],
+      "aliases": [
+        "hyperkahler",
+        "Fanography"
+      ],
+      "creditSources": [
+        {
+          "url": "https://pbelmans.ncag.info/activities/",
+          "title": "Pieter Belmans — Interactive mathematics"
+        }
+      ]
+    }
+  ]
+}

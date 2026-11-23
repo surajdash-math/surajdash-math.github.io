@@ -1,5 +1,6 @@
 ---
 import MiscLayout from "../../layouts/MiscLayout.astro";
+import DatabaseDirectory from "../../components/DatabaseDirectory.astro";
 import { miscCollections, type MiscCollection } from "../../data/misc-collections";
 
 export function getStaticPaths() {
@@ -17,7 +18,7 @@ const { collection } = Astro.props;
 ---
 
 <MiscLayout title={collection.title} watermark={collection.watermark}>
-  {collection.entries.length > 0 && <ul class:list={["misc-links", { "personal-links": collection.slug === "personal-collections" }]}>
+  {collection.slug === "mathematical-databases" ? <DatabaseDirectory /> : collection.entries.length > 0 && <ul class:list={["misc-links", { "personal-links": collection.slug === "personal-collections" }]}>
     {collection.entries.map((entry) => <li>
       <a href={entry.href} target="_blank" rel="noopener noreferrer">{entry.title}<span class="visually-hidden"> (opens in a new tab)</span></a>
       {entry.description && <span class="entry-description">{entry.description}</span>}
