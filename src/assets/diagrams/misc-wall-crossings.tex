@@ -1,0 +1,28 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{amsmath,amssymb,tikz-cd}
+\definecolor{Highlight}{HTML}{F4E6BA}
+\newcommand{\LogHilb}{\operatorname{LogHilb}}
+\newcommand{\Hilb}{\operatorname{Hilb}}
+\newcommand{\Bl}{\operatorname{Bl}}
+\newcommand{\cM}{\mathcal M}
+\begin{document}
+\begin{tikzcd}[
+ ampersand replacement=\&,
+ column sep=14pt,
+ row sep=1.8em,
+ every arrow/.append style={draw=black,line width=.95pt}]
+ \& \& \& \widetilde B
+    \arrow[dl,""'] \arrow[dr,""] \& \& \&[13pt] \\
+ \LogHilb^2(X,D)
+    \arrow[rr,""'] \arrow[dr]
+ \& \& \cM_{\mathrm{wt}}
+    \arrow[dl] \arrow[dr,""']
+ \& \& \Bl_{\Hilb^2(D)}\Hilb^2(X)
+    \arrow[dl,""] \arrow[dr] \arrow[drr,"",bend left=30]
+ \& \& \\
+ \& \mathfrak W_{\mathrm{bal}}
+ \& \& \colorbox{Highlight}{$W_{\mathrm{Francia}}$}
+ \& \& \mathfrak W_Q \arrow[r,""']
+ \& \Hilb^2(X)
+\end{tikzcd}
+\end{document}

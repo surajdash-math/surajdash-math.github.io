@@ -1,5 +1,6 @@
 ---
 import { getImage } from "astro:assets";
+import wallCrossings from "../assets/diagrams/misc-wall-crossings.svg";
 import franciaFlip from "../assets/misc-francia-flip.png";
 import nonmathPainting from "../assets/misc-nonmath-painting.jpg";
 import personalBooks from "../assets/misc-personal-books.png";
@@ -17,7 +18,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
   <div class="collection-grid">
     {miscCollections.map((collection) => (
       <a
-        class:list={["collection-card", { "collection-card--illustrated": collection.slug === "mathematical-databases" || collection.slug === "personal-collections" || collection.slug === "interesting-non-mathematical-pages" }]}
+        class:list={["collection-card", { "collection-card--illustrated": collection.slug === "mathematical-databases" || collection.slug === "personal-collections" || collection.slug === "interesting-non-mathematical-pages" || collection.slug === "interesting-mathematics" }]}
         href={`/misc/${collection.slug}/?v=${siteBuildVersion}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -27,6 +28,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
         {collection.slug === "mathematical-databases" && <img class="collection-art" src={cardIllustration.src} width={cardIllustration.attributes.width} height={cardIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
         {collection.slug === "personal-collections" && <img class="collection-art collection-art--books" src={personalIllustration.src} width={personalIllustration.attributes.width} height={personalIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
         {collection.slug === "interesting-non-mathematical-pages" && <img class="collection-art collection-art--painting" src={nonmathIllustration.src} width={nonmathIllustration.attributes.width} height={nonmathIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
+        {collection.slug === "interesting-mathematics" && <img class="collection-art collection-art--diagram" src={wallCrossings.src} width={wallCrossings.width} height={wallCrossings.height} alt="" aria-hidden="true" decoding="async" />}
         <span class="collection-icon"><MiscCollectionIcon name={collection.icon} /></span>
         <h2 id={`${collection.slug}-title`}>{collection.title}</h2>
       </a>
@@ -110,6 +112,8 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
     filter: none;
     mix-blend-mode: normal;
   }
+  .collection-art--diagram { object-position: center bottom; opacity: .32; mask-image: none; }
+  :global(html[data-theme="dark"]) .collection-art--diagram { opacity: .32; }
   .collection-card:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 5px; }
   @media (hover: hover) {
     .collection-card:hover { transform: translateY(-4px); border-color: var(--link); box-shadow: 8px 10px 0 rgba(31, 57, 69, .17); }
