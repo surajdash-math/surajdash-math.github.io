@@ -1,0 +1,52 @@
+---
+import MiscLayout from "../../layouts/MiscLayout.astro";
+import { miscCollections, type MiscCollection } from "../../data/misc-collections";
+
+export function getStaticPaths() {
+  return miscCollections.map((collection) => ({
+    params: { collection: collection.slug },
+    props: { collection },
+  }));
+}
+
+interface Props {
+  collection: MiscCollection;
+}
+
+const { collection } = Astro.props;
+---
+
+<MiscLayout title={collection.title} watermark={collection.watermark}>
+  {collection.entries.length > 0 && <ul class="misc-links">
+    {collection.entries.map((entry) => <li>
+      <a href={entry.href} target="_blank" rel="noopener noreferrer">{entry.title}<span class="visually-hidden"> (opens in a new tab)</span></a>
+      {entry.description && <span class="entry-description">{entry.description}</span>}
+    </li>)}
+  </ul>}
+</MiscLayout>
+
+<style>
+  .misc-links { margin: 28px 0 0; padding-left: 24px; list-style: disc; }
+  .misc-links li { padding: 12px 4px 14px 10px; }
+  .misc-links li + li { border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent); }
+  .misc-links li::marker { color: var(--link); font-size: 1.05em; }
+  .misc-links a {
+    color: var(--link);
+    font-family: "STIX Two Text", Georgia, serif;
+    font-size: clamp(18px, 1.6vw, 21px);
+    font-weight: 500;
+    line-height: 1.3;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
+    text-underline-offset: 6px;
+    overflow-wrap: anywhere;
+  }
+  .misc-links a:hover { text-decoration-color: currentColor; }
+  .misc-links a:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 6px; border-radius: 2px; }
+  .entry-description { display: block; margin-top: 10px; font-size: .95rem; line-height: 1.55; color: var(--muted); }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  @media (max-width: 680px) {
+    .misc-links { margin-top: 20px; padding-left: 20px; }
+    .misc-links li { padding-left: 5px; padding-block: 10px; }
+  }
+</style>

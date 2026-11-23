@@ -1,0 +1,197 @@
+---
+import { getImage } from "astro:assets";
+import miscWatermark from "../assets/misc-watermark.jpg";
+import franciaFlip from "../assets/misc-francia-flip.png";
+import cinema from "../assets/misc-cinema.jpg";
+import PageWatermark from "../components/PageWatermark.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteVersion from "../components/SiteVersion.astro";
+import ThemeInit from "../components/ThemeInit.astro";
+import { siteBuildVersion } from "../lib/site-build-version";
+
+interface Props {
+  title: string;
+  overview?: boolean;
+  watermark?: "francia-flip" | "cinema";
+}
+
+const { title, overview = false, watermark } = Astro.props;
+const sourceImage = watermark === "francia-flip" ? franciaFlip : watermark === "cinema" ? cinema : miscWatermark;
+const watermarkLabel = watermark === "francia-flip" ? "Francia flip" : watermark === "cinema" ? "The Guns of Navarone" : "UT Austin garden";
+const wallpaper = await getImage({
+  src: sourceImage,
+  width: Math.min(1600, sourceImage.width),
+  format: "webp",
+  quality: 85,
+});
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={`${title} — Suraj Dash.`} />
+    <SiteVersion />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" />
+    <link rel="preload" as="image" href={wallpaper.src} />
+    <ThemeInit />
+    <title>{title} | Suraj Dash</title>
+  </head>
+  <body class:list={["misc-page", { "misc-diagram-page": watermark === "francia-flip" }]}>
+    <PageWatermark src={wallpaper.src} />
+    <main class="page-shell">
+      <div class="misc-content">
+        {overview ? <>
+          <header class="page-heading"><h1>{title}</h1></header>
+          <slot />
+        </> : <>
+          <a class="collection-back" href={`/misc/?v=${siteBuildVersion}`}>Miscellaneous</a>
+          <article class="collection-panel" aria-labelledby="collection-title">
+            <h1 id="collection-title">{title}</h1>
+            <slot />
+          </article>
+        </>}
+      </div>
+      <p class="background-caption">Watermark: {watermarkLabel}</p>
+      <SiteFooter />
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    color-scheme: light;
+    --bg: #d9e5df;
+    --text: #293c47;
+    --heading: #284959;
+    --link: #28657e;
+    --muted: #596e78;
+    --line: rgba(41, 73, 88, .46);
+    --card-edge: #547684;
+    --caption: #2d4652;
+    --caption-shadow: rgba(252, 250, 246, .96);
+    --card-bg: rgba(248, 251, 252, .95);
+    --card-radius: 14px;
+    --card-shadow: 6px 6px 0 rgba(31, 57, 69, .15);
+    --focus-ring: #98403a;
+    --background-overlay-start: rgba(224, 235, 228, .46);
+    --background-overlay-end: rgba(224, 235, 228, .58);
+  }
+  :global(html[data-theme="dark"]) {
+    color-scheme: dark;
+    --bg: #111d1b;
+    --text: #d7e0e4;
+    --heading: #edf2f4;
+    --link: #8abfd2;
+    --muted: #acbdc4;
+    --line: rgba(195, 215, 224, .20);
+    --card-edge: rgba(143, 196, 220, .36);
+    --caption: #b7c5ca;
+    --caption-shadow: rgba(0, 0, 0, .8);
+    --card-bg: rgba(31, 46, 54, .92);
+    --card-radius: 20px;
+    --card-shadow: 0 14px 36px rgba(0, 0, 0, .24);
+    --focus-ring: #8fc4dc;
+    --background-overlay-start: rgba(10, 20, 18, .68);
+    --background-overlay-end: rgba(10, 20, 18, .78);
+  }
+  :global(*) { box-sizing: border-box; }
+  :global(body) {
+    position: relative;
+    isolation: isolate;
+    margin: 0;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 19.8px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+  }
+  :global(a) { color: var(--link); }
+  :global(body.misc-page .page-watermark) {
+    background-position: center;
+    background-size: auto, cover, auto;
+    background-repeat: no-repeat;
+  }
+  :global(body.misc-diagram-page) { --bg: #e4ebef; }
+  :global(html[data-theme="dark"] body.misc-diagram-page) { --bg: #111a20; }
+  :global(body.misc-diagram-page .page-watermark) { background-size: auto, contain, auto; }
+  .page-shell {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: min(1100px, calc(100% - 48px));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-top: 64px;
+  }
+  .misc-content { width: min(100%, 980px); flex: none; margin: 0 auto; }
+  .page-heading { margin-bottom: 28px; }
+  .page-heading h1 { text-shadow: 0 1px 12px rgba(248, 251, 252, .55); }
+  :global(html[data-theme="dark"]) .page-heading h1 { text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
+  h1 {
+    margin: 0;
+    color: var(--heading);
+    font-family: "STIX Two Text", Georgia, serif;
+    font-size: clamp(32px, 3.4vw, 42px);
+    font-weight: 500;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+  }
+  .collection-back {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: -6px 0 18px;
+    padding: 3px 0;
+    color: var(--heading);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+  }
+  .collection-back:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 5px; border-radius: 2px; }
+  .collection-panel {
+    position: relative;
+    min-height: 360px;
+    padding: 32px clamp(24px, 4vw, 48px) 38px;
+    border: 1px solid var(--line);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+  .collection-panel::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    border-radius: 0 999px 999px 0;
+    background: var(--card-edge);
+    pointer-events: none;
+  }
+  :global(html[data-theme="dark"]) .collection-panel::before { box-shadow: 1px 0 8px var(--card-edge); }
+  .background-caption {
+    margin: auto 0 0;
+    padding-top: 32px;
+    font-size: .77rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--caption);
+    text-align: right;
+    text-shadow: 0 1px 2px var(--caption-shadow);
+  }
+  :global(html[data-theme="dark"]) .background-caption { font-weight: 400; opacity: .45; }
+  @media (min-width: 1100px) {
+    .collection-panel { min-height: 365px; }
+  }
+  @media (max-width: 680px) {
+    .page-shell { width: calc(100% - 32px); padding-top: 32px; }
+    .page-heading { margin-bottom: 24px; }
+    .collection-panel { min-height: 341px; padding: 24px 20px 28px; }
+  }
+</style>

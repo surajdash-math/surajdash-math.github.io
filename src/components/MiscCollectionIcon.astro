@@ -1,0 +1,34 @@
+---
+import type { MiscCollection } from "../data/misc-collections";
+
+interface Props {
+  name: MiscCollection["icon"];
+}
+
+const { name } = Astro.props;
+---
+
+<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === "books" && <>
+    <path d="M20 10c-4-4-10-5-15-3v25c5-2 11-1 15 3 4-4 10-5 15-3V7c-5-2-11-1-15 3Z" />
+    <path d="M20 10v25M10 13c2-.3 4 .2 6 1.5M10 19c2-.3 4 .2 6 1.5M24 14.5c2-1.3 4-1.8 6-1.5M24 20.5c2-1.3 4-1.8 6-1.5" />
+  </>}
+  {name === "database" && <>
+    <ellipse cx="20" cy="9" rx="13" ry="5" />
+    <path d="M7 9v22c0 2.8 5.8 5 13 5s13-2.2 13-5V9M7 20c0 2.8 5.8 5 13 5s13-2.2 13-5" />
+  </>}
+  {name === "geometry" && <>
+    <path d="m20 4 16 26H4L20 4Z" />
+    <circle cx="20" cy="23" r="12" />
+    <path d="M20 4v31M4 30l26-17" />
+  </>}
+  {name === "globe" && <>
+    <circle cx="20" cy="20" r="15" />
+    <ellipse cx="20" cy="20" rx="7" ry="15" />
+    <path d="M5 20h30M8 11.5h24M8 28.5h24" />
+  </>}
+</svg>
+
+<style>
+  svg { display: block; width: 36px; height: 36px; }
+</style>
