@@ -31,7 +31,7 @@ export const miscCollections: MiscCollection[] = [
   },
   {
     slug: "mathematical-databases",
-    title: "Mathematical databases",
+    title: "Algebra, Geometry, Number theory database",
     icon: "database",
     watermark: "none",
     entries: [
