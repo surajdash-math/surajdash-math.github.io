@@ -29,7 +29,7 @@ const grouped = categories.map((category) => ({
   </div>
   <div class="directory-groups">
     {grouped.map((category) => <section class="database-topic" aria-labelledby={`topic-${category.id}`} data-topic-group={category.id}>
-      <h2 id={`topic-${category.id}`}>{category.title}<span class="topic-count" data-topic-count>{category.entries.length}</span></h2>
+      <h2 id={`topic-${category.id}`}>{category.title}</h2>
       <table role="table">
         <caption class="visually-hidden">{category.title}</caption>
         <colgroup><col class="database-column" /><col /></colgroup>
@@ -82,7 +82,6 @@ const grouped = categories.map((category) => ({
       for (const group of groups) {
         const number = perTopic.get(group.dataset.topicGroup!) || 0;
         group.hidden = number === 0;
-        group.querySelector<HTMLElement>("[data-topic-count]")!.textContent = String(number);
       }
       count.textContent = `${matches} ${matches === 1 ? "database" : "databases"}${terms.length || topic.value ? ` of ${rows.length}` : ""}`;
       empty.hidden = matches !== 0;
@@ -121,7 +120,6 @@ const grouped = categories.map((category) => ({
   .clear-filters:disabled { color: var(--muted); opacity: .55; cursor: default; text-decoration: none; }
   .database-topic + .database-topic { margin-top: 40px; }
   h2 { margin: 0 0 16px; font-family: "STIX Two Text", Georgia, serif; font-size: clamp(24px, 2.2vw, 28px); font-weight: 500; line-height: 1.25; color: var(--heading); }
-  .topic-count { display: inline-block; margin-left: 10px; color: var(--muted); font: 500 14px "DM Sans", sans-serif; vertical-align: middle; }
   table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 18px; }
   .database-column { width: 43%; }
   th { padding: 0 16px 10px 0; text-align: left; color: var(--muted); font-size: 14px; font-weight: 600; border-bottom: 1px solid var(--line); }
