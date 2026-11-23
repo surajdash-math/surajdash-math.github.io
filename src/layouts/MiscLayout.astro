@@ -116,7 +116,11 @@ const wallpaper = await getImage({
   /* The whole diagram sits on a continuous paper-colored canvas. */
   :global(body.misc-diagram-page .page-watermark) {
     background-size: auto, contain, auto;
+    background-position: center top;
     background-color: #fff;
+  }
+  :global(body.misc-diagram-page) .page-shell {
+    padding-top: calc(min(16.2vw, 28.8vh) + 24px);
   }
   :global(body.misc-diagram-page) { --bg: #e4ebef; }
   :global(html[data-theme="dark"] body.misc-diagram-page) { --bg: #111a20; }
