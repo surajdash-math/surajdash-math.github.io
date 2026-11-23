@@ -81,7 +81,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
     height: calc(100% - 20px);
     object-fit: contain;
     object-position: right center;
-    opacity: .22;
+    opacity: .32;
     mix-blend-mode: multiply;
     mask-image: linear-gradient(90deg, transparent 8%, #000 85%);
     pointer-events: none;
@@ -91,7 +91,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
   .collection-card--illustrated .collection-icon,
   .collection-card--illustrated h2 { position: relative; z-index: 1; }
   :global(html[data-theme="dark"]) .collection-art {
-    opacity: .18;
+    opacity: .28;
     filter: invert(1) hue-rotate(180deg);
     mix-blend-mode: screen;
   }
