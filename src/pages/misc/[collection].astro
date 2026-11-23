@@ -17,7 +17,7 @@ const { collection } = Astro.props;
 ---
 
 <MiscLayout title={collection.title} watermark={collection.watermark}>
-  {collection.entries.length > 0 && <ul class="misc-links">
+  {collection.entries.length > 0 && <ul class:list={["misc-links", { "personal-links": collection.slug === "personal-collections" }]}>
     {collection.entries.map((entry) => <li>
       <a href={entry.href} target="_blank" rel="noopener noreferrer">{entry.title}<span class="visually-hidden"> (opens in a new tab)</span></a>
       {entry.description && <span class="entry-description">{entry.description}</span>}
@@ -28,7 +28,7 @@ const { collection } = Astro.props;
 <style>
   .misc-links { margin: 28px 0 0; padding-left: 24px; list-style: disc; }
   .misc-links li { padding: 12px 4px 14px 10px; }
-  .misc-links li + li { border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent); }
+  .misc-links:not(.personal-links) li + li { border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent); }
   .misc-links li::marker { color: var(--link); font-size: 1.05em; }
   .misc-links a {
     color: var(--link);
