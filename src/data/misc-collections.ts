@@ -9,7 +9,7 @@ export interface MiscCollection {
   title: string;
   icon: "books" | "database" | "geometry" | "globe";
   entries: MiscEntry[];
-  watermark?: "francia-flip" | "cinema";
+  watermark?: "none" | "cinema";
 }
 
 export const miscCollections: MiscCollection[] = [
@@ -33,7 +33,7 @@ export const miscCollections: MiscCollection[] = [
     slug: "mathematical-databases",
     title: "Mathematical databases",
     icon: "database",
-    watermark: "francia-flip",
+    watermark: "none",
     entries: [
       {
         title: "Nguyen Dang Khai Hoan's webpage",

@@ -1,8 +1,6 @@
 ---
 import { getImage } from "astro:assets";
 import miscWatermark from "../assets/misc-watermark.jpg";
-import franciaFlip from "../assets/misc-francia-flip-landscape.png";
-import franciaDesktop from "../assets/misc-francia-flip-balanced.png";
 import cinema from "../assets/misc-cinema.jpg";
 import PageWatermark from "../components/PageWatermark.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -12,21 +10,16 @@ import ThemeInit from "../components/ThemeInit.astro";
 interface Props {
   title: string;
   overview?: boolean;
-  watermark?: "francia-flip" | "cinema";
+  watermark?: "none" | "cinema";
 }
 
 const { title, overview = false, watermark } = Astro.props;
-const sourceImage = watermark === "francia-flip" ? franciaFlip : watermark === "cinema" ? cinema : miscWatermark;
-const watermarkLabel = watermark === "francia-flip" ? "Francia flip" : watermark === "cinema" ? "The Guns of Navarone" : "UT Austin garden";
-const wallpaper = await getImage({
+const hasWatermark = watermark !== "none";
+const sourceImage = watermark === "cinema" ? cinema : miscWatermark;
+const watermarkLabel = watermark === "cinema" ? "The Guns of Navarone" : "UT Austin garden";
+const wallpaper = hasWatermark ? await getImage({
   src: sourceImage,
   width: Math.min(1600, sourceImage.width),
-  format: "webp",
-  quality: 85,
-});
-const desktopWallpaper = watermark === "francia-flip" ? await getImage({
-  src: franciaDesktop,
-  width: franciaDesktop.width,
   format: "webp",
   quality: 85,
 }) : undefined;
@@ -41,13 +34,12 @@ const desktopWallpaper = watermark === "francia-flip" ? await getImage({
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,650;0,700;1,400&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" />
-    <link rel="preload" as="image" href={wallpaper.src} media={desktopWallpaper ? "(max-width: 680px)" : undefined} />
-    {desktopWallpaper && <link rel="preload" as="image" href={desktopWallpaper.src} media="(min-width: 681px)" />}
+    {wallpaper && <link rel="preload" as="image" href={wallpaper.src} />}
     <ThemeInit />
     <title>{title} | Suraj Dash</title>
   </head>
-  <body class:list={["misc-page", { "misc-diagram-page": watermark === "francia-flip" }]} style={desktopWallpaper ? `--francia-desktop-image: url("${desktopWallpaper.src}")` : undefined}>
-    <PageWatermark src={wallpaper.src} />
+  <body class:list={["misc-page", { "misc-plain-page": !hasWatermark }]}>
+    {wallpaper && <PageWatermark src={wallpaper.src} />}
     <main class="page-shell">
       <div class="misc-content">
         {overview ? <>
@@ -60,7 +52,7 @@ const desktopWallpaper = watermark === "francia-flip" ? await getImage({
           </article>
         </>}
       </div>
-      <p class="background-caption">Watermark: {watermarkLabel}</p>
+      {wallpaper && <p class="background-caption">Watermark: {watermarkLabel}</p>}
       <SiteFooter />
     </main>
   </body>
@@ -121,17 +113,15 @@ const desktopWallpaper = watermark === "francia-flip" ? await getImage({
     background-size: auto, cover, auto;
     background-repeat: no-repeat;
   }
-  /* The whole diagram sits on a continuous paper-colored canvas. */
-  :global(body.misc-diagram-page .page-watermark) {
-    background-size: auto, contain, auto;
-    background-position: center top;
-    background-color: #fff;
+  :global(body.misc-plain-page) {
+    --bg: #d5d0c7;
+    --card-bg: #fffdf8;
   }
-  :global(body.misc-diagram-page) .page-shell {
-    padding-top: calc(min(16.2vw, 28.8vh) + 24px);
+  :global(html[data-theme="dark"] body.misc-plain-page) {
+    --bg: #1b1a19;
+    --card-bg: #34322f;
   }
-  :global(body.misc-diagram-page) { --bg: #e4ebef; }
-  :global(html[data-theme="dark"] body.misc-diagram-page) { --bg: #111a20; }
+  :global(body.misc-plain-page) .misc-content { width: 100%; margin-bottom: auto; }
   .page-shell {
     position: relative;
     z-index: 1;
@@ -187,18 +177,8 @@ const desktopWallpaper = watermark === "francia-flip" ? await getImage({
     text-shadow: 0 1px 2px var(--caption-shadow);
   }
   :global(html[data-theme="dark"]) .background-caption { font-weight: 400; opacity: .45; }
-  @media (min-width: 681px) {
-    :global(body.misc-diagram-page .page-watermark) {
-      position: absolute;
-      background-image: linear-gradient(var(--background-overlay-start), var(--background-overlay-end)), var(--francia-desktop-image), none;
-      background-size: auto, 100% auto, auto;
-    }
-    :global(body.misc-diagram-page) .page-shell {
-      padding-top: calc(11vw + 20px);
-      min-height: max(100vh, calc(75vw + 135px));
-    }
-  }
   @media (min-width: 1100px) {
+    :global(body.misc-plain-page) .page-shell { width: min(1320px, calc(100% - 64px)); }
     .collection-panel { min-height: 365px; }
   }
   @media (max-width: 680px) {
