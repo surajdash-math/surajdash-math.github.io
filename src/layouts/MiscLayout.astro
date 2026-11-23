@@ -11,10 +11,11 @@ import ThemeInit from "../components/ThemeInit.astro";
 interface Props {
   title: string;
   overview?: boolean;
+  showNavigation?: boolean;
   watermark?: "none" | "cinema";
 }
 
-const { title, overview = false, watermark } = Astro.props;
+const { title, overview = false, showNavigation = overview, watermark } = Astro.props;
 const hasWatermark = watermark !== "none";
 const sourceImage = watermark === "cinema" ? cinema : miscWatermark;
 const watermarkLabel = watermark === "cinema" ? "The Guns of Navarone" : "UT Austin garden";
@@ -41,8 +42,8 @@ const wallpaper = hasWatermark ? await getImage({
   </head>
   <body class:list={["misc-page", { "misc-plain-page": !hasWatermark }]}>
     {wallpaper && <PageWatermark src={wallpaper.src} />}
-    <main class:list={["page-shell", { "misc-overview": overview }]}>
-      {overview && <SiteNav current="/misc" />}
+    <main class:list={["page-shell", { "has-site-navigation": showNavigation }]}>
+      {showNavigation && <SiteNav current="/misc" />}
       <div class="misc-content">
         {overview ? <>
           <header class="page-heading"><h1>{title}</h1></header>
@@ -134,7 +135,7 @@ const wallpaper = hasWatermark ? await getImage({
     margin: 0 auto;
     padding-top: 64px;
   }
-  .page-shell.misc-overview { padding-top: 32px; }
+  .page-shell.has-site-navigation { padding-top: 32px; }
   .misc-content { width: min(100%, 980px); flex: none; margin: 0 auto; }
   .page-heading { margin-bottom: 28px; }
   .page-heading h1 { text-shadow: 0 1px 12px rgba(248, 251, 252, .55); }

@@ -17,7 +17,7 @@ interface Props {
 const { collection } = Astro.props;
 ---
 
-<MiscLayout title={collection.title} watermark={collection.watermark}>
+<MiscLayout title={collection.title} watermark={collection.watermark} showNavigation={collection.slug === "mathematical-databases"}>
   {collection.slug === "mathematical-databases" ? <DatabaseDirectory /> : collection.entries.length > 0 && <ul class:list={["misc-links", { "personal-links": collection.slug === "personal-collections" }]}>
     {collection.entries.map((entry) => <li>
       <a href={entry.href} target="_blank" rel="noopener noreferrer">{entry.title}<span class="visually-hidden"> (opens in a new tab)</span></a>
