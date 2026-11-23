@@ -1,6 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import franciaFlip from "../assets/misc-francia-flip.png";
+import nonmathPainting from "../assets/misc-nonmath-painting.jpg";
 import personalBooks from "../assets/misc-personal-books.png";
 import MiscLayout from "../layouts/MiscLayout.astro";
 import MiscCollectionIcon from "../components/MiscCollectionIcon.astro";
@@ -8,6 +9,7 @@ import { miscCollections } from "../data/misc-collections";
 import { siteBuildVersion } from "../lib/site-build-version";
 
 const cardIllustration = await getImage({ src: franciaFlip, width: 960, format: "webp", quality: 85 });
+const nonmathIllustration = await getImage({ src: nonmathPainting, width: 960, format: "webp", quality: 85 });
 const personalIllustration = await getImage({ src: personalBooks, width: 960, format: "webp", quality: 85 });
 ---
 
@@ -15,7 +17,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
   <div class="collection-grid">
     {miscCollections.map((collection) => (
       <a
-        class:list={["collection-card", { "collection-card--illustrated": collection.slug === "mathematical-databases" || collection.slug === "personal-collections" }]}
+        class:list={["collection-card", { "collection-card--illustrated": collection.slug === "mathematical-databases" || collection.slug === "personal-collections" || collection.slug === "interesting-non-mathematical-pages" }]}
         href={`/misc/${collection.slug}/?v=${siteBuildVersion}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -24,6 +26,7 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
       >
         {collection.slug === "mathematical-databases" && <img class="collection-art" src={cardIllustration.src} width={cardIllustration.attributes.width} height={cardIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
         {collection.slug === "personal-collections" && <img class="collection-art collection-art--books" src={personalIllustration.src} width={personalIllustration.attributes.width} height={personalIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
+        {collection.slug === "interesting-non-mathematical-pages" && <img class="collection-art collection-art--painting" src={nonmathIllustration.src} width={nonmathIllustration.attributes.width} height={nonmathIllustration.attributes.height} alt="" aria-hidden="true" decoding="async" />}
         <span class="collection-icon"><MiscCollectionIcon name={collection.icon} /></span>
         <h2 id={`${collection.slug}-title`}>{collection.title}</h2>
       </a>
@@ -98,6 +101,12 @@ const personalIllustration = await getImage({ src: personalBooks, width: 960, fo
   .collection-art--books { opacity: .16; }
   :global(html[data-theme="dark"]) .collection-art--books {
     opacity: .24;
+    filter: none;
+    mix-blend-mode: normal;
+  }
+  .collection-art--painting { opacity: .22; }
+  :global(html[data-theme="dark"]) .collection-art--painting {
+    opacity: .28;
     filter: none;
     mix-blend-mode: normal;
   }
