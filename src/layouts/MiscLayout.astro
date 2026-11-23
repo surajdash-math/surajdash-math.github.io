@@ -7,7 +7,6 @@ import PageWatermark from "../components/PageWatermark.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteVersion from "../components/SiteVersion.astro";
 import ThemeInit from "../components/ThemeInit.astro";
-import { siteBuildVersion } from "../lib/site-build-version";
 
 interface Props {
   title: string;
@@ -47,7 +46,6 @@ const wallpaper = await getImage({
           <header class="page-heading"><h1>{title}</h1></header>
           <slot />
         </> : <>
-          <a class="collection-back" href={`/misc/?v=${siteBuildVersion}`}>Miscellaneous</a>
           <article class="collection-panel" aria-labelledby="collection-title">
             <h1 id="collection-title">{title}</h1>
             <slot />
@@ -117,7 +115,6 @@ const wallpaper = await getImage({
   }
   :global(body.misc-diagram-page) { --bg: #e4ebef; }
   :global(html[data-theme="dark"] body.misc-diagram-page) { --bg: #111a20; }
-  :global(body.misc-diagram-page .page-watermark) { background-size: auto, contain, auto; }
   .page-shell {
     position: relative;
     z-index: 1;
@@ -141,19 +138,6 @@ const wallpaper = await getImage({
     line-height: 1.2;
     overflow-wrap: break-word;
   }
-  .collection-back {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    margin: -6px 0 18px;
-    padding: 3px 0;
-    color: var(--heading);
-    font-size: 15px;
-    font-weight: 500;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 5px;
-  }
-  .collection-back:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 5px; border-radius: 2px; }
   .collection-panel {
     position: relative;
     min-height: 360px;
