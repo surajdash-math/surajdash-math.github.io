@@ -20,11 +20,11 @@ export const miscCollections: MiscCollection[] = [
     watermark: "cinema",
     entries: [
       {
-        title: "A collection of my favorite literature",
+        title: "Literature catalogue",
         href: "https://surajdash-math.github.io/bibliotheca/",
       },
       {
-        title: "Cinema",
+        title: "Cinema catalogue",
         href: "https://surajdash-math.github.io/cinema/",
       },
     ],
