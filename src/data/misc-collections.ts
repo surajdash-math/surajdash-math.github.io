@@ -23,6 +23,10 @@ export const miscCollections: MiscCollection[] = [
         title: "A collection of my favorite literature",
         href: "https://surajdash-math.github.io/bibliotheca/",
       },
+      {
+        title: "Cinema",
+        href: "https://surajdash-math.github.io/cinema/",
+      },
     ],
   },
   {
