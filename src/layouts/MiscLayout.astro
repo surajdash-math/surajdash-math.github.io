@@ -1,7 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import miscWatermark from "../assets/misc-watermark.jpg";
-import franciaFlip from "../assets/misc-francia-flip.png";
+import franciaFlip from "../assets/misc-francia-flip-landscape.png";
 import cinema from "../assets/misc-cinema.jpg";
 import PageWatermark from "../components/PageWatermark.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -112,6 +112,11 @@ const wallpaper = await getImage({
     background-position: center;
     background-size: auto, cover, auto;
     background-repeat: no-repeat;
+  }
+  /* The whole diagram sits on a continuous paper-colored canvas. */
+  :global(body.misc-diagram-page .page-watermark) {
+    background-size: auto, contain, auto;
+    background-color: #fff;
   }
   :global(body.misc-diagram-page) { --bg: #e4ebef; }
   :global(html[data-theme="dark"] body.misc-diagram-page) { --bg: #111a20; }
