@@ -19,13 +19,17 @@ const quotations = [
 ];
 ---
 
-<section id="home-quotes" class="quote-card" data-home-quotes aria-label="Literary quotations">
+<section id="home-quotes" class="quote-card" data-home-quotes aria-label="Literary quotations" aria-roledescription="carousel">
   <div class="quote-pages">
-    {quotations.map((quote) => (
+    {quotations.map((quote, index) => (
       <figure
-        class="quote-page"
+        class:list={["quote-page", { "is-active": index === 0 }]}
         data-quote-page
-        data-quote-theme={quote.theme}
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`Quotation ${index + 1} of ${quotations.length}`}
+        aria-hidden={index === 0 ? "false" : "true"}
+        inert={index !== 0}
       >
         <blockquote class="quote-text" cite={quote.originalUrl}>
           <p>“{quote.text}”</p>
@@ -41,7 +45,103 @@ const quotations = [
       </figure>
     ))}
   </div>
+  <div class="quote-controls">
+    <span data-quote-position aria-live="off">1 / {quotations.length}</span>
+    <button type="button" data-quote-playback aria-label="Pause quotation rotation">Pause</button>
+    <button type="button" data-quote-next aria-label="Show the next quotation">Next</button>
+  </div>
 </section>
+
+<script>
+  let initializedQuotes: HTMLElement | null = null;
+  let cleanupQuotes = () => {};
+
+  function initializeQuotes() {
+    const carousel = document.querySelector<HTMLElement>("[data-home-quotes]");
+    if (carousel && initializedQuotes === carousel) return;
+    cleanupQuotes();
+    if (!carousel) return;
+
+    const pages = Array.from(carousel.querySelectorAll<HTMLElement>("[data-quote-page]"));
+    const playback = carousel.querySelector<HTMLButtonElement>("[data-quote-playback]")!;
+    const next = carousel.querySelector<HTMLButtonElement>("[data-quote-next]")!;
+    const position = carousel.querySelector<HTMLElement>("[data-quote-position]")!;
+    if (pages.length < 2) return;
+
+    initializedQuotes = carousel;
+    const controller = new AbortController();
+    const { signal } = controller;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let paused = motion.matches;
+    let current = 0;
+    let hovering = false;
+    let focused = false;
+    let visible = false;
+    let disposed = false;
+    let timer = 0;
+
+    function schedule() {
+      window.clearTimeout(timer);
+      if (disposed || paused || motion.matches || hovering || focused || !visible || document.hidden) return;
+      timer = window.setTimeout(() => show(current + 1), 15000);
+    }
+
+    function show(index: number) {
+      if (disposed) return;
+      current = (index + pages.length) % pages.length;
+      pages.forEach((page, item) => {
+        const active = item === current;
+        page.classList.toggle("is-active", active);
+        page.setAttribute("aria-hidden", String(!active));
+        page.inert = !active;
+      });
+      position.textContent = `${current + 1} / ${pages.length}`;
+      schedule();
+    }
+
+    function syncPlayback() {
+      playback.textContent = paused ? "Play" : "Pause";
+      playback.setAttribute("aria-label", paused ? "Resume quotation rotation" : "Pause quotation rotation");
+    }
+    playback.addEventListener("click", () => { paused = !paused; syncPlayback(); schedule(); }, { signal });
+    next.addEventListener("click", () => show(current + 1), { signal });
+
+    carousel.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse" || event.pointerType === "pen") hovering = true;
+      schedule();
+    }, { signal });
+    carousel.addEventListener("pointerleave", () => { hovering = false; schedule(); }, { signal });
+    carousel.addEventListener("focusin", () => { focused = true; schedule(); }, { signal });
+    carousel.addEventListener("focusout", () => queueMicrotask(() => {
+      if (disposed) return;
+      focused = carousel.contains(document.activeElement);
+      schedule();
+    }), { signal });
+    document.addEventListener("visibilitychange", schedule, { signal });
+    motion.addEventListener("change", () => { if (motion.matches) paused = true; syncPlayback(); schedule(); }, { signal });
+
+    const observer = new IntersectionObserver((entries) => {
+      visible = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio >= 0.25);
+      schedule();
+    }, { threshold: [0, 0.25] });
+    observer.observe(carousel);
+    syncPlayback();
+    show(0);
+
+    cleanupQuotes = () => {
+      disposed = true;
+      window.clearTimeout(timer);
+      controller.abort();
+      observer.disconnect();
+      initializedQuotes = null;
+      cleanupQuotes = () => {};
+    };
+  }
+
+  initializeQuotes();
+  document.addEventListener("astro:page-load", initializeQuotes);
+  document.addEventListener("astro:before-swap", () => cleanupQuotes());
+</script>
 
 <style>
   .quote-card {
@@ -71,14 +171,20 @@ const quotations = [
   .quote-card .quote-pages { display: grid; max-width: 1110px; margin: 0 auto; min-width: 0; }
   .quote-card .quote-page {
     grid-area: 1 / 1;
-    display: none;
+    display: flex;
     flex-direction: column;
     min-width: 0;
     margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 600ms ease, visibility 0s 600ms;
   }
-  :global(html:not([data-theme="dark"])) .quote-page[data-quote-theme="light"],
-  :global(html[data-theme="dark"]) .quote-page[data-quote-theme="dark"] {
-    display: flex;
+  .quote-card .quote-page.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 600ms ease, visibility 0s;
   }
   .quote-card .quote-text { margin: 0; padding: 0; border: 0; color: inherit; }
   .quote-card .quote-text p {
@@ -115,6 +221,11 @@ const quotations = [
     overflow-wrap: break-word;
   }
   :global(html[data-theme="dark"]) .quote-card .quote-edition { color: #c7c5b9; }
+  .quote-controls { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 18px; font: 400 .875rem/1.4 "DM Sans",sans-serif; }
+  .quote-controls > span { margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .quote-controls button { border: 1px solid currentColor; border-radius: 3px; background: transparent; color: inherit; min-height: 36px; padding: 6px 13px; cursor: pointer; font: inherit; }
+  .quote-controls button:hover { background: #ffffff25; }
+  .quote-controls button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
   .quote-card .quote-edition a { color: inherit; font: inherit; text-decoration: none; text-underline-offset: 3px; }
   .quote-card .quote-edition a:hover,
   .quote-card .quote-edition a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; }
@@ -124,5 +235,9 @@ const quotations = [
     .quote-card .quote-credit { padding-top: 12px; text-align: left; }
     .quote-card .quote-source-separator { display: none; }
     .quote-card .quote-edition > a:last-child { display: block; margin-top: 3px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .quote-card .quote-page,
+    .quote-card .quote-page.is-active { transition: none; }
   }
 </style>
