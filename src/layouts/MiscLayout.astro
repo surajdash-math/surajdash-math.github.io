@@ -80,6 +80,10 @@ const wallpaper = hasWatermark ? await getImage({
     --background-overlay-start: rgba(224, 235, 228, .46);
     --background-overlay-end: rgba(224, 235, 228, .58);
   }
+  :global(html[data-theme="light"]) {
+    --surface: #f7fafb;
+    --shadow: rgba(31, 57, 69, .15);
+  }
   :global(html[data-theme="dark"]) {
     color-scheme: dark;
     --bg: #111d1b;
