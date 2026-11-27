@@ -1,7 +1,7 @@
 ---
 import { getImage } from "astro:assets";
 import miscWatermark from "../assets/misc-watermark.jpg";
-import cinema from "../assets/misc-cinema.jpg";
+import cinema from "../assets/misc-got-pop-up.png";
 import PageWatermark from "../components/PageWatermark.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -18,7 +18,7 @@ interface Props {
 const { title, overview = false, showNavigation = overview, watermark } = Astro.props;
 const hasWatermark = watermark !== "none";
 const sourceImage = watermark === "cinema" ? cinema : miscWatermark;
-const watermarkLabel = watermark === "cinema" ? "The Guns of Navarone" : "UT Austin garden";
+const watermarkLabel = watermark === "cinema" ? "My Game of Thrones pop-up book" : "UT Austin garden";
 const wallpaper = hasWatermark ? await getImage({
   src: sourceImage,
   width: Math.min(1600, sourceImage.width),
@@ -40,7 +40,7 @@ const wallpaper = hasWatermark ? await getImage({
     <ThemeInit />
     <title>{title} | Suraj Dash</title>
   </head>
-  <body class:list={["misc-page", { "misc-plain-page": !hasWatermark }]}>
+  <body class:list={["misc-page", { "misc-plain-page": !hasWatermark, "misc-pop-up-page": watermark === "cinema" }]}>
     {wallpaper && <PageWatermark src={wallpaper.src} />}
     <main class:list={["page-shell", { "has-site-navigation": showNavigation }]}>
       {showNavigation && <SiteNav current="/misc" />}
@@ -120,6 +120,7 @@ const wallpaper = hasWatermark ? await getImage({
     background-size: auto, cover, auto;
     background-repeat: no-repeat;
   }
+  :global(body.misc-pop-up-page .page-watermark) { background-size: auto, contain, auto; }
   :global(body.misc-plain-page) {
     --bg: #d5d0c7;
     --card-bg: #fffdf8;
